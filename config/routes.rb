@@ -5,6 +5,8 @@ Unisonserver::Application.routes.draw do
   # RESOURCE ROUTES
   resources :teachers
   resources :breaches
+  resources :code_scores
+  resources :codes
 
   # ROOT ROUTE
   # 

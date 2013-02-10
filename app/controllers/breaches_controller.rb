@@ -6,42 +6,42 @@ class BreachesController < ApplicationController
   end
 
   def show
-    @Breach = Breach.find(params[:id])
-    render json: @breaches
+    @breach = Breach.find(params[:id])
+    render json: @breach
   end
 
   def new
-    @Breach = Breach.new
-    render json: @Breach
+    @breach = Breach.new
+    render json: @breach
   end
 
   def create
-    @Breach = Breach.create(params[:Breach])
+    @breach = Breach.create(params[:breach])
 
-    if @Breach.save
-      render json: @Breach, status: :created, location: @Breach
+    if @breach.save
+      render json: @breach, status: :created, location: @breach
     else
-      render json: @Breach.errors, status: :failed
+      render json: @breach.errors, status: :failed
     end
   end
 
   def update
-    @Breach = Breach.find(params[:id])
+    @breach = Breach.find(params[:id])
 
-    if @Breach.update_attributes(params[:Breach])
-      render json: @Breach, location: @Breach
+    if @breach.update_attributes(params[:breach])
+      render json: @breach, location: @breach
     else
-      render json: @Breach.errors, status: :failed
+      render json: @breach.errors, status: :failed
     end
   end
 
   def delete
-    @Breach = Breach.find(params[:id])
+    @breach = Breach.find(params[:id])
 
-    if @Breach.destroy
-      render json: @Breach
+    if @breach.destroy
+      render json: @breach
     else
-      render json: @Breach.errors, status: :failed
+      render json: @breach.errors, status: :failed
     end
   end
 
