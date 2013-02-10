@@ -8,6 +8,9 @@ Unisonserver::Application.routes.draw do
   resources :codes
   resources :conferences
   resources :contributions
+  resources :sessions
+  resources :students
+  resources :subjects
   resources :teachers
 
   # ROOT ROUTE
