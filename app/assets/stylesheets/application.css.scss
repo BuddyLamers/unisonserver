@@ -3,6 +3,13 @@
  *
  */
 
-@import "base.css.scss";
-@import "home.css.scss";
+//  Instead of the default `base.css.scss`, I swapped in
+//    a base bootstrap file, containing a reset and calibration.
+//  Not the most unique looking thing, but a decent start. -J
+@import "bootstrap.min.css";
 
+//  Base SCSS -- unused
+// @import "base.css.scss";
+
+//  Home Page SCSS
+@import "home.css.scss";
