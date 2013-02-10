@@ -4,6 +4,10 @@
 
 ## CSS Stuff
 
-Currently using a customized build of bootstrap without all the JS/jQuery plugins.
+Currently using a customized build of [Bootstrap](http://twitter.github.com/bootstrap/) without all the JS/jQuery plugins.
 
-To modify variables and do a new build, go here: http://twitter.github.com/bootstrap/customize.html
+If you want to do a new custom build, [go here](http://twitter.github.com/bootstrap/customize.html).
+
+Good alternatives, if you want just a reset and a grid:
+
+[Skeleton.css](http://www.getskeleton.com/)
