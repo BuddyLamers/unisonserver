@@ -7,6 +7,7 @@ Unisonserver::Application.routes.draw do
   resources :breaches
   resources :code_scores
   resources :codes
+  resources :conferences
 
   # ROOT ROUTE
   # 

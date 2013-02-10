@@ -16,7 +16,7 @@ class CodeScoresController < ApplicationController
   end
 
   def create
-    @codescore = CodeScore.create(params[:breach])
+    @codescore = CodeScore.create(params[:codescore])
 
     if @codescore.save
       render json: @codescore, status: :created, location: @codescore
@@ -28,7 +28,7 @@ class CodeScoresController < ApplicationController
   def update
     @codescore = CodeScore.find(params[:id])
 
-    if @codescore.update_attributes(params[:breach])
+    if @codescore.update_attributes(params[:codescore])
       render json: @codescore, location: @codescore
     else
       render json: @codescore.errors, status: :failed
