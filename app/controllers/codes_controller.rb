@@ -16,7 +16,7 @@ class CodesController < ApplicationController
   end
 
   def create
-    @code = Code.create(params[:breach])
+    @code = Code.create(params[:code])
 
     if @code.save
       render json: @code, status: :created, location: @code
@@ -28,7 +28,7 @@ class CodesController < ApplicationController
   def update
     @code = Code.find(params[:id])
 
-    if @code.update_attributes(params[:breach])
+    if @code.update_attributes(params[:code])
       render json: @code, location: @code
     else
       render json: @code.errors, status: :failed
