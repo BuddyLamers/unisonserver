@@ -3,14 +3,15 @@ Unisonserver::Application.routes.draw do
   get "home/index"
 
   # RESOURCE ROUTES
-  resources :teachers
   resources :breaches
   resources :code_scores
   resources :codes
   resources :conferences
+  resources :contributions
+  resources :teachers
 
   # ROOT ROUTE
-  # 
+  #
   # This is the root of the website.
   root :to => "home#index"
 
