@@ -10,8 +10,6 @@ Unisonserver::Application.routes.draw do
   resources :conferences
 
   # ROOT ROUTE
-  # 
-  # This is the root of the website.
   root :to => "home#index"
 
 
