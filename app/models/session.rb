@@ -1,4 +1,5 @@
 class Session
+  include Mongoid::Timestamps
   include Mongoid::Document
 
   has_many :breaches

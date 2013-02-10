@@ -1,5 +1,6 @@
 class Conference
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   has_many :code_scores
   belongs_to :student

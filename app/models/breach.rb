@@ -1,5 +1,6 @@
 class Breach
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   belongs_to :session
   has_and_belongs_to_many :people
