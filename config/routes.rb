@@ -3,6 +3,7 @@ Unisonserver::Application.routes.draw do
   resources :teachers
   resources :breaches
   resources :code_scores
+  resources :codes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

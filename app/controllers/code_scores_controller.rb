@@ -47,5 +47,3 @@ class CodeScoresController < ApplicationController
 
 end
 
-
-
