@@ -2,7 +2,14 @@ class SessionsController < ApplicationController
 
   def index
     @sessions = Session.all
-    render json: @sessions
+    respond_to do |format|
+      # index.html.erb
+      format.html      
+      # json dump
+      format.json do
+        render :json => @sessions
+      end
+    end
   end
 
   def show

@@ -2,7 +2,14 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all
-    render json: @students
+    respond_to do |format|
+      # index.html.erb
+      format.html      
+      # json dump
+      format.json do
+        render :json => @students
+      end
+    end
   end
 
   def show

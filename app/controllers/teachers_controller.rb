@@ -2,7 +2,6 @@ class TeachersController < ApplicationController
 
   def index
     @teachers = Teacher.all
-
     respond_to do |format|
       # index.html.erb
       format.html      

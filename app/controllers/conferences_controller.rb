@@ -2,7 +2,14 @@ class ConferencesController < ApplicationController
 
   def index
     @conferences = Conference.all
-    render json: @conferences
+    respond_to do |format|
+      # index.html.erb
+      format.html      
+      # json dump
+      format.json do
+        render :json => @conferences
+      end
+    end
   end
 
   def show
