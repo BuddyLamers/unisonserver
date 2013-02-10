@@ -7,7 +7,7 @@ class BreachesController < ApplicationController
 
   def show
     @breach = Breach.find(params[:id])
-    render json: @breaches
+    render json: @breach
   end
 
   def new
