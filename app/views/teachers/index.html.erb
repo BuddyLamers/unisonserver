@@ -3,4 +3,35 @@
 <!-- Template -->
 <div class="container">
     <h1>Teachers</h1>
+
+    <% if @teachers.length > 0 %>
+        <table>
+            <thead>
+                <tr>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>School</th>
+                    <th>Last Updated</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <% @teachers.each do |teacher| %>
+                <tr>
+                    <td><%= teacher.fname %></td>
+                    <td><%= teacher.lname %></td>
+                    <td><%= teacher.school %></td>
+                    <td>
+                        <%= link_to 'Show', teacher %>
+                        <%= link_to 'Edit', edit_teacher_path(teacher) %>
+                        <%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
+                    </td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    <% else %>
+        <p>No teachers at the moment.</p>
+    <% end %>
 </div>
