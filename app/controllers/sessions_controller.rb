@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     @sessions = Session.all
     respond_to do |format|
       # index.html.erb
-      format.html      
+      format.html
       # json dump
       format.json do
         render :json => @sessions
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @session = Session.create(params[:session])
+    @session = Session.new(params[:session])
 
     if @session.save
       render json: @session, status: :created, location: @session
@@ -33,7 +33,11 @@ class SessionsController < ApplicationController
   end
 
   def update
-    @session = Session.find(params[:id])
+    @session = Session.realize(params[:id])
+
+    if params[:breaches]
+      parse_breaches_hash(params[:breaches])
+    end
 
     if @session.update_attributes(params[:session])
       render json: @session, location: @session
@@ -43,12 +47,38 @@ class SessionsController < ApplicationController
   end
 
   def delete
-    @session = Session.find(params[:id])
+    @session = Session.realize(params[:id])
 
     if @session.destroy
       render json: @session
     else
       render json: @session.errors, status: :failed
+    end
+  end
+
+private
+
+  def parse_breaches_hash(breaches_hash)
+    breaches_hash.each do |breach_hash|
+      breach = Breach.realize(breach_hash[:id])
+
+      if breach_hash[:contributions]
+        parse_contributions_hash(breach_hash[:contributions])
+        breach_hash.delete(:contributions, breach)
+      end
+
+      breach.update_attributes(breach_hash)
+      breach.session = @session
+      breach.save
+    end
+  end
+
+  def parse_contributions_hash(contributions_hash, breach)
+    contributions_hash.each do |contrib_hash|
+      contrib = Contribution.realize(contrib_hash[:id])
+      contrib.update_attributes(contrib_hash)
+      contrib.breach = breach
+      contrib.save
     end
   end
 

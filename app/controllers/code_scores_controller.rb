@@ -1,5 +1,4 @@
 class CodeScoresController < ApplicationController
-
   def index
     @codescores = CodeScore.all
     render json: @codescores

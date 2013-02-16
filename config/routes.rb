@@ -12,6 +12,7 @@ Unisonserver::Application.routes.draw do
   resources :students
   resources :subjects
   resources :teachers
+  resources :code_types
 
   # ROOT ROUTE
   root :to => "home#index"

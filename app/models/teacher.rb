@@ -3,6 +3,7 @@ class Teacher < Person
 
   def as_json(options)
     {
+      id: id,
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
       fname: fname,
