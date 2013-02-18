@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_filter :require_user
+
   def index
     @sessions = Session.all
     respond_to do |format|
@@ -63,8 +65,8 @@ private
       breach = Breach.realize(breach_hash[:id])
 
       if breach_hash[:contributions]
-        parse_contributions_hash(breach_hash[:contributions])
-        breach_hash.delete(:contributions, breach)
+        parse_contributions_hash(breach_hash[:contributions], breach)
+        breach_hash.delete(:contributions)
       end
 
       breach.update_attributes(breach_hash)

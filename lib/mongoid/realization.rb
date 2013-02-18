@@ -1,6 +1,15 @@
 module Mongoid
   module Realization
+
     class << self
+      def included(base)
+        base.class_eval do |base|
+          extend ClassMethods
+        end
+      end
+    end
+
+    module ClassMethods
       def realize(id)
         begin
           self.find(id)
@@ -11,6 +20,7 @@ module Mongoid
         end
       end
     end
+
   end
 end
 

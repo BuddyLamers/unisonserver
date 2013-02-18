@@ -12,9 +12,17 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
+    return
     unless logged_in?
-      store_url
-      redirect_to session_auth_url
+      respond_to do |format|
+        format.json do
+          render json: {error: :bad_token}
+        end
+        format.html do
+          store_url
+          redirect_to session_auth_url
+        end
+      end
     end
   end
 

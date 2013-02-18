@@ -1,10 +1,12 @@
 class StudentsController < ApplicationController
 
+  before_filter :require_user
+
   def index
     @students = Student.all
     respond_to do |format|
       # index.html.erb
-      format.html      
+      format.html
       # json dump
       format.json do
         render :json => @students
