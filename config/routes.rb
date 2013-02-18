@@ -2,6 +2,8 @@ Unisonserver::Application.routes.draw do
 
   get "home/index"
 
+  post "session/auth"
+
   # RESOURCE ROUTES
   resources :breaches
   resources :code_scores

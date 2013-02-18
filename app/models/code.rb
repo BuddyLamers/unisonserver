@@ -16,7 +16,7 @@ class Code
       created_at: created_at.to_i,
       name: name,
       year: year,
-      subject_id: subject.id
+      subject_id: subject.andand.id
     }
   end
 end
