@@ -1,0 +1,16 @@
+<%= fields_for @user do |user| %>
+	<fieldset>
+		<%= user.label :email %>
+		<%= user.text_field :email %>
+	</fieldset>
+
+	<fieldset>
+		<%= user.label :password %>
+		<%= user.password_field :password %>
+	</fieldset>
+
+	<fieldset>
+		<%= user.label :password_confirmation %>
+		<%= user.password_field :password_confirmation %>
+	</fieldset>
+<% end %><!-- fields for user -->

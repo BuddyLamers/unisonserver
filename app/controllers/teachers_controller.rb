@@ -20,27 +20,48 @@ class TeachersController < ApplicationController
   end
 
   def new
+    @user = User.new
     @teacher = Teacher.new
-    render json: @teacher
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @teacher}
+    end
   end
 
+  # Since we don't have a users_controller, we,'re going to create the user
+  # via the teachers and students controllers.
   def create
-    @teacher = Teacher.create(params[:teacher])
+    @teacher = Teacher.new(params[:teacher])
 
-    if @teacher.save
-      render json: @teacher, status: :created, location: @teacher
-    else
-      render json: @teacher.errors, status: :failed
+    respond_to do |format|
+      if @user = User.create(params[:user])
+        @teacher.user_id = @user.id.to_s
+        if @teacher.save
+          format.html {redirect_to teacher_path(@teacher), notice: "Teacher created"}
+          format.json {render json: @teacher, status: :created, location: @teacher}
+        else
+          format.html {render 'new'}
+          format.json {render json: @teacher.errors, status: :failed}
+        end
+      else 
+        format.html {render 'new'}
+        format.json {render json: @user.errors, status: :failed}
+      end
     end
   end
 
   def update
     @teacher = Teacher.find(params[:id])
 
-    if @teacher.update_attributes(params[:teacher])
-      render json: @teacher, location: @teacher
-    else
-      render json: @teacher.errors, status: :failed
+    respond_to do |format|
+      if @teacher.update_attributes(params[:teacher])
+        format.html {redirect_to @teacher, notice: "Teacher updated."}
+        format.json {render json: @teacher, location: @teacher}
+      else
+        format.html {render 'edit'}
+        format.json {render json: @teacher.errors, status: :failed}
+      end
     end
   end
 

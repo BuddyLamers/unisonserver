@@ -26,6 +26,9 @@ end
 
 gem 'jquery-rails'
 
+# Authorization (https://github.com/ryanb/cancan)
+gem "cancan", "~> 1.6.9"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

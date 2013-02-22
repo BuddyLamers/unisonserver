@@ -1,0 +1,38 @@
+<section class="register">
+	<h1>Register a new teacher</h1>
+	
+	<%= form_for @teacher do |f| %>
+		<% if @user.errors.any? %>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		<% elsif @teacher.errors.any? %>
+			<% @teacher.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		<% end %>
+		
+		<% if @user %>
+			<%= render partial: 'users/fields' %>
+		<% end %>
+		
+		<fieldset>
+			<%= f.label :school %>
+			<%= f.select :school, ["foo", "bar", "baz"] %>
+		</fieldset>
+	
+		<fieldset>
+			<%= f.label :fname, "First name" %>
+			<%= f.text_field :fname %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.label :lname, "Last name" %>
+			<%= f.text_field :lname %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.submit %>
+		</fieldset>
+	<% end %>
+</section><!-- .register -->

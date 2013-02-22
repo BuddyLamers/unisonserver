@@ -4,8 +4,8 @@ class User
 
   PASSWORD_MIN_LENGTH = 4
   TOKEN_EXPIRE_TIME = 1.week
-
-  belongs_to :person
+  
+  has_one :teacher
 
   attr_accessor :password, :password_confirmation
 
@@ -13,6 +13,7 @@ class User
   field :token, type: String
   field :ph, as: :password_hash, type: String
   field :ps, as: :password_salt, type: String
+  field :role, type: String
 
   before_save :prepare_password
 

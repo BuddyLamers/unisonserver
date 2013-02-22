@@ -11,5 +11,9 @@
 //  Base SCSS -- unused
 // @import "base.css.scss";
 
-//  Home Page SCSS
 @import "home.css.scss";
+@import "base.css.scss";
+
+
+/* Don't display the authenticity token div (https://github.com/rails/rails/issues/6403) */
+form > div:first-child { display: none !important; margin: 0; padding: 0; }
