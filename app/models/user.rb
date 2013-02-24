@@ -5,6 +5,7 @@ class User
   PASSWORD_MIN_LENGTH = 4
   TOKEN_EXPIRE_TIME = 1.week
   
+  has_one :student
   has_one :teacher
 
   attr_accessor :password, :password_confirmation

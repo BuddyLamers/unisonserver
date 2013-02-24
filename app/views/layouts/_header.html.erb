@@ -1,13 +1,15 @@
 <header id="global">
 	<h1>UnisonServer</h1>
 	
-	<% if current_user %>
-		<%= link_to "Log out, #{current_user.email}", logout_path %>
-	<% else %>
-		<%= link_to "Log in", new_session_path %>
-	<% end %>
+	<div class="authentication group">
+		<% if current_user %>
+			<%= link_to "Log out, #{current_user.email}", logout_path %>
+		<% else %>
+			<a class="btn btn-primary btn-small" href="<%= login_path %>">Login</a>
+		<% end %>
+	</div>
 	
-	<nav>
+	<nav id="global">
 		<div class="navbar">
 			<div class="navbar-inner">
 				<ul class="nav">
@@ -21,6 +23,12 @@
 						<li class="active"><%= link_to "Teachers", teachers_path %></li>
 					<% else %>
 						<li><%= link_to "Teachers", teachers_path %></li>
+					<% end %>
+					
+					<% if controller_name == 'students' %>
+						<li class="active"><%= link_to "Students", students_path %></li>
+					<% else %>
+						<li><%= link_to "Students", students_path %></li>
 					<% end %>
 				</ul>
 			</div><!-- .navbar-inner -->

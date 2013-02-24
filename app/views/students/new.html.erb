@@ -1,0 +1,39 @@
+<section class="register">
+	<h1>Register a new student</h1>
+	
+	<%= form_for @student do |f| %>
+		<% if @user.errors.any? %>
+			<%= render partial: 'layouts/form_errors', locals: {instance: @user} %>
+		<% elsif @student.errors.any? %>
+			<%= render partial: 'layouts/form_errors', locals: {instance: @student} %>
+		<% end %>
+		
+		<% if @user %>
+			<%= render partial: 'users/fields' %>
+		<% end %>
+		
+		<fieldset>
+			<%= f.label :school %>
+			<%= f.select :school, ["foo", "bar", "baz"] %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.label :section %>
+			<%= f.text_field :section %>
+		</fieldset>
+	
+		<fieldset>
+			<%= f.label :fname, "First name" %>
+			<%= f.text_field :fname %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.label :lname, "Last name" %>
+			<%= f.text_field :lname %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.submit %>
+		</fieldset>
+	<% end %>
+</section><!-- .register -->

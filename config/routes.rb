@@ -1,6 +1,7 @@
 Unisonserver::Application.routes.draw do
 
   get "home/index"
+  get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
 
   post "session/auth"

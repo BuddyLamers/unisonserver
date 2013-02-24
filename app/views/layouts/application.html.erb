@@ -15,7 +15,9 @@
 	
 	<div class="container">
 		<%= render partial: 'layouts/header' %>
-		<%= yield %>
+		<section id="content" class="<%= controller_name %>">
+			<%= yield %>
+		</section>
 	</div><!-- .container -->
 </body>
 </html>

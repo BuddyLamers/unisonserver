@@ -14,7 +14,11 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = Teacher.find(params[:id])
-    render json: @teacher
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @teacher}
+    end
   end
 
   def new
@@ -77,6 +81,8 @@ class TeachersController < ApplicationController
       end
     end
   end
+  
+  private
 
 end
 
