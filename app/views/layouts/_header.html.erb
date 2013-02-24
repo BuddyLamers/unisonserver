@@ -1,0 +1,29 @@
+<header id="global">
+	<h1>UnisonServer</h1>
+	
+	<% if current_user %>
+		<%= link_to "Log out, #{current_user.email}", logout_path %>
+	<% else %>
+		<%= link_to "Log in", new_session_path %>
+	<% end %>
+	
+	<nav>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<ul class="nav">
+					<% if controller_name == 'home' %>
+						<li class="active"><%= link_to "Home", root_path %></li>
+					<% else %>
+						<li><%= link_to "Home", root_path %></li>
+					<% end %>
+					
+					<% if controller_name == 'teachers' %>
+						<li class="active"><%= link_to "Teachers", teachers_path %></li>
+					<% else %>
+						<li><%= link_to "Teachers", teachers_path %></li>
+					<% end %>
+				</ul>
+			</div><!-- .navbar-inner -->
+		</div><!-- .navbar -->
+	</nav>
+</header><!-- #global -->

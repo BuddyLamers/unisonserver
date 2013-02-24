@@ -5,9 +5,7 @@ class TeachersController < ApplicationController
   def index
     @teachers = Teacher.all
     respond_to do |format|
-      # index.html.erb
       format.html
-      # json dump
       format.json do
         render :json => @teachers
       end
@@ -33,9 +31,10 @@ class TeachersController < ApplicationController
   # via the teachers and students controllers.
   def create
     @teacher = Teacher.new(params[:teacher])
+    @user = User.new(params[:user])
 
     respond_to do |format|
-      if @user = User.create(params[:user])
+      if @user.save
         @teacher.user_id = @user.id.to_s
         if @teacher.save
           format.html {redirect_to teacher_path(@teacher), notice: "Teacher created"}
@@ -65,13 +64,17 @@ class TeachersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @teacher = Teacher.find(params[:id])
 
-    if @teacher.destroy
-      render json: @teacher
-    else
-      render json: @teacher.errors, status: :failed
+    respond_to do |format|
+      if @teacher.destroy
+        format.html {redirect_to teachers_path, notice: "Deleted #{@teacher.fname} #{@teacher.lname}."}
+        format.json {render json: @teacher}
+      else
+        format.html {render 'index'}
+        format.json {render json: @teacher.errors, status: :failed}
+      end
     end
   end
 

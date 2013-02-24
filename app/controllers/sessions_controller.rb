@@ -21,16 +21,27 @@ class SessionsController < ApplicationController
 
   def new
     @session = Session.new
-    render json: @session
+    @user = User.new
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @session}
+    end
   end
 
   def create
     @session = Session.new(params[:session])
+    user = User.auth(params[:email], params[:password])
 
-    if @session.save
-      render json: @session, status: :created, location: @session
-    else
-      render json: @session.errors, status: :failed
+    respond_to do |format|
+      if user
+        session[:user_id] = user.id
+        format.html {redirect_to root_path, notice: "You are logged in as #{user.email}."}
+        format.json {render json: @session, status: :created, location: @session}
+      else
+        format.html {redirect_to new_session_path, alert: "Email or password is invalid."}
+        format.json {render json: @session.errors, status: :failed}
+      end
     end
   end
 
@@ -55,6 +66,13 @@ class SessionsController < ApplicationController
       render json: @session
     else
       render json: @session.errors, status: :failed
+    end
+  end
+  
+  def destroy
+    session[:user_id] = nil
+    respond_to do |format|
+      format.html {redirect_to root_path, notice: "You have been logged out."}
     end
   end
 

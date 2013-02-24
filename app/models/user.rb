@@ -25,8 +25,8 @@ class User
   class << self
     def auth(email, password)
       user = where(email: email).first
-      user = nil unless user and user.password_matches?(password)
-      user.generate_token if user
+      user = nil unless user && user.password_matches?(password)
+      user.generate_token unless user.nil?
       user
     end
 

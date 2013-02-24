@@ -1,2 +1,11 @@
 /* Loaded after Bootstrap */
+$alert: rgba(238,59,55,1);
+$primary: rgba(0,136,204,1);
 
+
+div.errors { background-color: $alert; color: #fff; margin-bottom: 30px; }
+div.errors ul { list-style: none; padding: 10px; }
+
+div.flash { color: #fff; padding: 10px; text-align: center; }
+div#alert { background-color: $alert; }
+div#notice { background-color: $primary; }

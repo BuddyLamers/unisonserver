@@ -1,13 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  helper_method :current_user, :logged_in?
+
   def logged_in?
     current_user.present?
   end
 
+  # session[:user_id] set on sessions#create.
   def current_user
-    @current_user ||= authenticate_with_http_token do |token, options|
-      User.with_token(token)
+    if session[:user_id]
+      @current_user ||= User.find(session[:user_id])
+    else
+      @current_user ||= authenticate_with_http_token do |token, options|
+        User.with_token(token)
+      end
     end
   end
 

@@ -3,13 +3,9 @@
 	
 	<%= form_for @teacher do |f| %>
 		<% if @user.errors.any? %>
-			<% @user.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
+			<%= render partial: 'layouts/form_errors', locals: {instance: @user} %>
 		<% elsif @teacher.errors.any? %>
-			<% @teacher.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
+			<%= render partial: 'layouts/form_errors', locals: {instance: @teacher} %>
 		<% end %>
 		
 		<% if @user %>

@@ -41,5 +41,7 @@ gem "cancan", "~> 1.6.9"
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+group :development, :test do
+  # To use debugger
+  gem 'debugger'
+end
