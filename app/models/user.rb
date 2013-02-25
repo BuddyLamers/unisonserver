@@ -4,7 +4,7 @@ class User
 
   PASSWORD_MIN_LENGTH = 4
   TOKEN_EXPIRE_TIME = 1.week
-  
+
   has_one :student
   has_one :teacher
 
@@ -28,6 +28,7 @@ class User
       user = where(email: email).first
       user = nil unless user && user.password_matches?(password)
       user.generate_token unless user.nil?
+      user.save
       user
     end
 

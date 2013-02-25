@@ -17,8 +17,8 @@
     <tbody>
 	    <% @teachers.each do |teacher| %>
         <tr>
-					<td><%= teacher.user.email %></td>
-					<td><%= teacher.user.role %></td>
+					<td><%= teacher.user.andand.email %></td>
+					<td><%= teacher.user.andand.role %></td>
 					<td><%= teacher.fname %></td>
 					<td><%= teacher.lname %></td>
 					<td><%= teacher.school %></td>

@@ -17,7 +17,7 @@
     <tbody>
 	    <% @students.each do |student| %>
         <tr>
-					<td><%= student.user.email %></td>
+					<td><%= student.user.andand.email %></td>
 					<td><%= student.fname %></td>
 					<td><%= student.lname %></td>
 					<td><%= student.school %></td>
