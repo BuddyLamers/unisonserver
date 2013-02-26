@@ -3,9 +3,11 @@ class Subject
   include Mongoid::Timestamps
   include Mongoid::Realization
 
-  has_many :codes
+  has_many :codes, dependent: :destroy
 
   field :name, type: String
+  
+  validates_uniqueness_of :name
 
   def as_json(options)
     {

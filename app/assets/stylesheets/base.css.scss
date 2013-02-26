@@ -4,14 +4,17 @@ $primary: rgba(0,136,204,1);
 
 .group:after { content: ""; display: table; clear: both; }
 
-div.errors { background-color: $alert; color: #fff; margin-bottom: 30px; }
-div.errors ul { list-style: none; padding: 10px; }
+div.errors { background-color: $alert; color: #fff; margin-bottom: 30px; 
+	ul { list-style: none; padding: 10px; }
+}
 
 div.flash { color: #fff; padding: 10px; text-align: center; }
 div#alert { background-color: $alert; }
 div#notice { background-color: $primary; }
 
-header#global div.authentication { float: right; margin-top: 20px;}
-header#global h1 { display: inline-block; }
+header#global {
+	div.authentication { float: right; margin-top: 20px;}
+	h1 { color: #ccc; display: inline-block; }
+}
 
 nav#global { clear: both; }

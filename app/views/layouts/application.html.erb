@@ -12,12 +12,12 @@
 			<%= content_tag :div, value, id: key, class: 'flash' %>
 		<% end %>
 	<% end %>
-	
-	<div class="container">
+
+	<div class="container container-fluid">
 		<%= render partial: 'layouts/header' %>
 		<section id="content" class="<%= controller_name %>">
 			<%= yield %>
 		</section>
-	</div><!-- .container -->
+	</div><!-- .container .container-fluid -->
 </body>
 </html>

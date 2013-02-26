@@ -2,7 +2,11 @@ class SubjectsController < ApplicationController
 
   def index
     @subjects = Subject.all
-    render json: @subjects
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @subjects}
+    end
   end
 
   def show
@@ -12,26 +16,46 @@ class SubjectsController < ApplicationController
 
   def new
     @subject = Subject.new
-    render json: @subject
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @subject}
+    end
   end
 
   def create
     @subject = Subject.create(params[:subject])
 
-    if @subject.save
-      render json: @subject, status: :created, location: @subject
-    else
-      render json: @subject.errors, status: :failed
+    respond_to do |format|
+      if @subject.save
+        format.html {redirect_to subjects_path, notice: "Created a new subject: #{@subject.name}."}
+        format.json {render json: @subject, status: :created, location: @subject}
+      else
+        format.html {render 'new', alert: "We were unable to create a new subject."}
+        format.json {render json: @subject.errors, status: :failed}
+      end
+    end
+  end
+  
+  def edit
+    @subject = Subject.find(params[:id])
+
+    respond_to do |format|
+      format.html
     end
   end
 
   def update
     @subject = Subject.find(params[:id])
 
-    if @subject.update_attributes(params[:subject])
-      render json: @subject, location: @subject
-    else
-      render json: @subject.errors, status: :failed
+    respond_to do |format|
+      if @subject.update_attributes(params[:subject])
+        format.html {redirect_to subjects_path, notice: "Updated #{@subject.name}."}
+        format.json {render json: @subject, location: @subject}
+      else
+        format.html {render 'edit', alert: "Unable to update #{@subject.name}."}
+        format.josn {render json: @subject.errors, status: :failed}
+      end
     end
   end
 
@@ -45,5 +69,13 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @subject = Subject.find(params[:id])
+    
+    if @subject.destroy
+      redirect_to subjects_path, notice: "Deleted #{@subject.name}."
+    else
+      render 'index', alert: "Unable to delete #{@subject.name}."
+    end
+  end
 end
-

@@ -2,11 +2,8 @@
 	<h1>Register a new teacher</h1>
 	
 	<%= form_for @teacher do |f| %>
-		<% if @user.errors.any? %>
-			<%= render partial: 'layouts/form_errors', locals: {instance: @user} %>
-		<% elsif @teacher.errors.any? %>
-			<%= render partial: 'layouts/form_errors', locals: {instance: @teacher} %>
-		<% end %>
+		<%= render partial: 'layouts/form_errors', locals: {instance: @user} %>
+		<%= render partial: 'layouts/form_errors', locals: {instance: @teacher} %>
 		
 		<% if @user %>
 			<%= render partial: 'users/fields' %>

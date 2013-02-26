@@ -1,0 +1,12 @@
+<%= form_for @subject do |f| %>
+	<%= render partial: 'layouts/form_errors', locals: {instance: @subject} %>
+	
+	<fieldset>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</fieldset>
+	
+	<fieldset>
+		<%= f.submit %>
+	</fieldset>
+<% end %>
