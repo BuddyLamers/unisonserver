@@ -3,7 +3,7 @@ class Subject
   include Mongoid::Timestamps
   include Mongoid::Realization
 
-  has_many :codes, dependent: :destroy
+  has_many :codes
 
   field :name, type: String
   

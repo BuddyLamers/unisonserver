@@ -36,6 +36,12 @@
 					<% else %>
 						<li><%= link_to "Subjects", subjects_path %></li>
 					<% end %>
+					
+					<% if controller_name == 'codes' %>
+						<li class="active"><%= link_to "Codes", codes_path %></li>
+					<% else %>
+						<li><%= link_to "Codes", codes_path %></li>
+					<% end %>
 				</ul>
 			</div><!-- .navbar-inner -->
 		</div><!-- .navbar -->

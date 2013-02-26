@@ -9,6 +9,9 @@ class Code
   field :name, type: String
   field :year, type: Integer
 
+  validates_presence_of :code_type, :name, :subject
+  validates_uniqueness_of :name, scope: :subject && :code_type
+
   def as_json(options)
     {
       id: id,

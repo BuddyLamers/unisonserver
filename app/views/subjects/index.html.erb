@@ -13,8 +13,8 @@
 		<% @subjects.each do |subject| %>
 			<tbody>
 				<tr>
-					<td><%= subject.name %></td>
-					<td><%= subject.codes.count %></td>
+					<td><%= link_to subject.name, subject_path(subject) %></td>
+					<td><%= subject.codes.map {|code| code.name }.join(", ") %></td>
 					<td><%= link_to "Edit", edit_subject_path(subject) %> <%= link_to "Destroy", subject, method: :delete, confirm: "Are you sure you would like to delete the subject: #{subject.name} and all of its related codes?" %></td>
 				</tr>
 			</tbody>

@@ -1,0 +1,27 @@
+<%= form_for @code do |f| %>
+	<%= render partial: 'layouts/form_errors', locals: {instance: @code} %>
+
+	<fieldset>
+		<%= f.label :code_type %>
+		<%= f.collection_select :code_type_id, CodeType.all, :id, :name, prompt: true %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.label :subject %>
+		<%= f.collection_select :subject_id, Subject.all, :id, :name, prompt: true %>
+	</fieldset>
+	
+	<fieldset>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</fieldset>
+	
+	<fieldset>
+		<%= f.label :year %>
+		<%= f.text_field :year, placeholder: "#{Date.today.strftime("%Y")}" %>
+	</fieldset>
+	
+	<fieldset>
+		<%= f.submit %>
+	</fieldset>
+<% end %>

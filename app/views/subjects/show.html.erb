@@ -1,0 +1,21 @@
+<h1><%= @subject.name %></h1>
+
+<h2>Subject codes</h2>
+
+<% if @codes.any? %>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<th>Name</th>
+			<th>Action</th>
+		</thead>
+		<% @codes.each do |code| %>
+			<tbody>
+				<tr>
+					<td><%= code.name %></td><td><%= link_to "Edit", edit_code_path(code) %></td>
+				</tr>
+			</tbody>
+		<% end %>
+	</table>
+<% else %>
+	<p>We don't have any codes for this subject.</p>
+<% end %>

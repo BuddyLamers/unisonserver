@@ -11,7 +11,12 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find(params[:id])
-    render json: @subject
+    @codes = @subject.codes
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @subject}
+    end
   end
 
   def new
