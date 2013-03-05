@@ -28,7 +28,6 @@ class User
       user = where(email: email).first
       user = nil unless user && user.password_matches?(password)
       user.generate_token unless user.nil?
-      user.save
       user
     end
 
@@ -48,14 +47,16 @@ class User
   end
 
   def generate_token
-    self.token = Digest::SHA1.hexdigest(password_salt + Time.now.to_i.to_s + rand.to_s)
+    update_attribute :token, Digest::SHA1.hexdigest(password_salt + Time.now.to_i.to_s + rand.to_s)
   end
 
 private
 
   def prepare_password
-    self.password_salt = Digest::SHA1.hexdigest(Time.now.to_i.to_s + rand.to_s)
-    self.password_hash = encrypt_password(password)
+    if password
+      self.password_salt = Digest::SHA1.hexdigest(Time.now.to_i.to_s + rand.to_s)
+      self.password_hash = encrypt_password(password)
+    end
   end
 
   def encrypt_password(password)
