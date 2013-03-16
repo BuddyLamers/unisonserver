@@ -43,5 +43,5 @@ gem "cancan", "~> 1.6.9"
 
 group :development, :test do
   # To use debugger
-  gem 'debugger'
+  #gem 'debugger'
 end
