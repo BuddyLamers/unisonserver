@@ -4,7 +4,7 @@ class ConferencesController < ApplicationController
     @conferences = Conference.all
     respond_to do |format|
       # index.html.erb
-      format.html      
+      format.html
       # json dump
       format.json do
         render :json => @conferences
@@ -33,7 +33,11 @@ class ConferencesController < ApplicationController
   end
 
   def update
-    @conference = Conference.find(params[:id])
+    @conference = Conference.realize(params[:id])
+
+    if params[:code_scores]
+      parse_code_scores_hash(params[:code_scores])
+    end
 
     if @conference.update_attributes(params[:conference])
       render json: @conference, location: @conference
@@ -43,12 +47,23 @@ class ConferencesController < ApplicationController
   end
 
   def delete
-    @conference = Conference.find(params[:id])
+    @conference = Conference.realize(params[:id])
 
     if @conference.destroy
       render json: @conference
     else
       render json: @conference.errors, status: :failed
+    end
+  end
+
+private
+
+  def parse_code_scores_hash(code_scores_hash)
+    code_scores_hash.each do |code_score_hash|
+      code_score = CodeScore.realize(code_score_hash[:id])
+      code_score.update_attributes(code_score_hash)
+      code_score.conference = @conference
+      code_score.save
     end
   end
 

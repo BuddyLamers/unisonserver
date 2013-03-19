@@ -8,5 +8,14 @@ class CodeScore
 
   field :comment, type: String
   field :score, type: Integer
+
+  def as_json(options)
+    {
+      comment: comment,
+      score: score,
+      code: code.andand.id,
+      conference: conference.andand.id
+    }
+  end
 end
 
