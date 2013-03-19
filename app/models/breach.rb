@@ -10,5 +10,15 @@ class Breach
 
   field :time, type: DateTime
   field :type, type: String
+
+  def as_json(options)
+    {
+      id: id,
+      updated_at: updated_at.to_i,
+      created_at: created_at.to_i,
+      time: time.to_i,
+      type: type
+    }
+  end
 end
 
