@@ -3,7 +3,12 @@ class SessionsController < ApplicationController
   before_filter :require_user
 
   def index
-    @sessions = Session.all
+    if params[:person_id]
+      @sessions = Session.where(person_ids: {"$in" => [Moped::BSON::ObjectId(params[:person_id])]})
+    else
+      @sessions = Session.all
+    end
+
     respond_to do |format|
       # index.html.erb
       format.html
@@ -22,7 +27,7 @@ class SessionsController < ApplicationController
   def new
     @session = Session.new
     @user = User.new
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @session}
@@ -68,7 +73,7 @@ class SessionsController < ApplicationController
       render json: @session.errors, status: :failed
     end
   end
-  
+
   def destroy
     session[:user_id] = nil
     respond_to do |format|

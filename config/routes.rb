@@ -13,9 +13,22 @@ Unisonserver::Application.routes.draw do
   resources :conferences
   resources :contributions
   resources :sessions
-  resources :students
   resources :subjects
-  resources :teachers
+  resources :people, only: [] do
+    resources :sessions
+    resources :breaches
+    resources :contributions
+  end
+  resources :teachers do
+    resources :sessions
+    resources :conferences
+  end
+  resources :students do
+    resources :sessions
+    resources :conferences
+    resources :breaches
+    resources :contributions
+  end
   resources :code_types
 
   # ROOT ROUTE

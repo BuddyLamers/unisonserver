@@ -1,7 +1,14 @@
 class ConferencesController < ApplicationController
 
   def index
-    @conferences = Conference.all
+    if params[:teacher_id]
+      @conferences = Teacher.find(params[:teacher_id]).conferences
+    elsif params[:student_id]
+      @conferences = Student.find(params[:student_id]).conferences
+    else
+      @conferences = Conference.all
+    end
+
     respond_to do |format|
       # index.html.erb
       format.html

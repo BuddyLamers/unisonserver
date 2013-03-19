@@ -17,7 +17,9 @@ class Conference
       id: id,
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
-      is_completed: is_completed
+      is_completed: is_completed,
+      student: student.andand.id,
+      teacher: teacher.andand.id
     }
   end
 end

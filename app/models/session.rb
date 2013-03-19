@@ -4,7 +4,7 @@ class Session
   include Mongoid::Realization
 
   has_many :breaches
-  has_and_belongs_to_many :people
+  has_and_belongs_to_many :people, inverse_of: nil
   belongs_to :subject
 
   field :is_coded, type: Boolean

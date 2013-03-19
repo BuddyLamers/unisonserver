@@ -1,7 +1,11 @@
 class ContributionsController < ApplicationController
 
   def index
-    @contributions = Contribution.all
+    if params[:person_id]
+      @contributions = Person.find(params[:person_id]).contributions
+    else
+      @contributions = Contribution.all
+    end
     render json: @contributions
   end
 

@@ -1,7 +1,12 @@
 class BreachesController < ApplicationController
 
   def index
-    @breaches = Breach.all
+    person_id = params[:person_id] || params[:student_id] || params[:teacher_id]
+    if person_id
+      @breaches = Breach.where(person_ids: {"$in" => [Moped::BSON::ObjectId(person_id)]})
+    else
+      @breaches = Breach.all
+    end
     render json: @breaches
   end
 
