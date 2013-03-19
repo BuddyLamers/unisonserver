@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
   before_filter :require_user
 
   def index
-    if params[:person_id]
-      @sessions = Session.where(person_ids: {"$in" => [Moped::BSON::ObjectId(params[:person_id])]})
+    person_id = params[:person_id] || params[:student_id] || params[:teacher_id]
+    if person_id
+      @sessions = Session.where(person_ids: {"$in" => [Moped::BSON::ObjectId(person_id)]})
     else
       @sessions = Session.all
     end
