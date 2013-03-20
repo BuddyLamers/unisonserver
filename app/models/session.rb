@@ -21,7 +21,8 @@ class Session
       is_coded: is_coded,
       is_completed: is_completed,
       length: length,
-      order: order
+      order: order,
+      people: people.map(&:id)
     }
   end
 

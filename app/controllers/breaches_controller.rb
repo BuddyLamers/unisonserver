@@ -4,6 +4,8 @@ class BreachesController < ApplicationController
     person_id = params[:person_id] || params[:student_id] || params[:teacher_id]
     if person_id
       @breaches = Breach.where(person_ids: {"$in" => [Moped::BSON::ObjectId(person_id)]})
+    elsif params[:session_id]
+      @breaches = Session.find(params[:session_id]).breaches
     else
       @breaches = Breach.all
     end

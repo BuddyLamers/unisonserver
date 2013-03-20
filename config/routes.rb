@@ -12,7 +12,9 @@ Unisonserver::Application.routes.draw do
   resources :codes
   resources :conferences
   resources :contributions
-  resources :sessions
+  resources :sessions do
+    resources :breaches
+  end
   resources :subjects
   resources :people, only: [] do
     resources :sessions
