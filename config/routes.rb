@@ -30,6 +30,7 @@ Unisonserver::Application.routes.draw do
     resources :conferences
     resources :breaches
     resources :contributions
+    resources :code_scores
   end
   resources :code_types
 

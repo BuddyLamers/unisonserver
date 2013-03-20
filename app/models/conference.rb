@@ -19,7 +19,8 @@ class Conference
       created_at: created_at.to_i,
       is_completed: is_completed,
       student: student.andand.id,
-      teacher: teacher.andand.id
+      teacher: teacher.andand.id,
+      codeScores: code_scores
     }
   end
 end
