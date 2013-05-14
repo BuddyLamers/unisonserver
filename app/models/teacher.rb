@@ -1,10 +1,7 @@
 class Teacher < Person
   belongs_to :user
   has_many :conferences
-  
-  # Ensure that the user object is created before the teacher
-  validates_presence_of :user_id
-  
+
   accepts_nested_attributes_for :user, allow_destroy: true
 
   def as_json(options)

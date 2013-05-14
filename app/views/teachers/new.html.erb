@@ -1,29 +1,28 @@
 <section class="register">
 	<h1>Register a new teacher</h1>
-	
+
 	<%= form_for @teacher do |f| %>
-		<%= render partial: 'layouts/form_errors', locals: {instance: @user} %>
 		<%= render partial: 'layouts/form_errors', locals: {instance: @teacher} %>
-		
+
 		<% if @user %>
 			<%= render partial: 'users/fields' %>
 		<% end %>
-		
+
 		<fieldset>
 			<%= f.label :school %>
-			<%= f.select :school, ["foo", "bar", "baz"] %>
+			<%= f.select :school, ["Unison"] %>
 		</fieldset>
-	
+
 		<fieldset>
 			<%= f.label :fname, "First name" %>
 			<%= f.text_field :fname %>
 		</fieldset>
-		
+
 		<fieldset>
 			<%= f.label :lname, "Last name" %>
 			<%= f.text_field :lname %>
 		</fieldset>
-		
+
 		<fieldset>
 			<%= f.submit %>
 		</fieldset>

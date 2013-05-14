@@ -14,7 +14,7 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = Teacher.find(params[:id])
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @teacher}
@@ -22,34 +22,26 @@ class TeachersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    # we need another way to make accounts
+    # @user = User.new
     @teacher = Teacher.new
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @teacher}
     end
   end
 
-  # Since we don't have a users_controller, we,'re going to create the user
-  # via the teachers and students controllers.
   def create
     @teacher = Teacher.new(params[:teacher])
-    @user = User.new(params[:user])
 
     respond_to do |format|
-      if @user.save
-        @teacher.user_id = @user.id.to_s
-        if @teacher.save
-          format.html {redirect_to teacher_path(@teacher), notice: "Teacher created"}
-          format.json {render json: @teacher, status: :created, location: @teacher}
-        else
-          format.html {render 'new'}
-          format.json {render json: @teacher.errors, status: :failed}
-        end
-      else 
+      if @teacher.save
+        format.html {redirect_to teachers_path, notice: "Teacher created"}
+        format.json {render json: @teacher, status: :created, location: @teacher}
+      else
         format.html {render 'new'}
-        format.json {render json: @user.errors, status: :failed}
+        format.json {render json: @teacher.errors, status: :failed}
       end
     end
   end
@@ -81,7 +73,7 @@ class TeachersController < ApplicationController
       end
     end
   end
-  
+
   private
 
 end
