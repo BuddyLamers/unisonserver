@@ -10,4 +10,8 @@ class Person
   field :fname, type: String
   field :lname, type: String
   field :school, type: String
+
+  def name
+    "#{fname} #{lname}"
+  end
 end

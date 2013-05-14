@@ -4,8 +4,8 @@
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-				<th>Email</th>
-				<th>Role</th>
+        <th>Email</th>
+        <th>Role</th>
         <th>First</th>
         <th>Last</th>
         <th>School</th>
@@ -15,24 +15,32 @@
     </thead>
 
     <tbody>
-	    <% @teachers.each do |teacher| %>
+      <% @teachers.each do |teacher| %>
         <tr>
-					<td><%= teacher.user.andand.email %></td>
-					<td><%= teacher.user.andand.role %></td>
-					<td><%= teacher.fname %></td>
-					<td><%= teacher.lname %></td>
-					<td><%= teacher.school %></td>
-					<td><%= teacher.updated_at %></td>
-					<td>
-						<%= link_to 'Edit', edit_teacher_path(teacher) %>
-						<%= link_to 'Delete', teacher, confirm: 'Are you sure?', method: :delete %>
-					</td>
+          <td><%= teacher.user.andand.email %></td>
+          <td><%= teacher.user.andand.role %></td>
+          <td><%= teacher.fname %></td>
+          <td><%= teacher.lname %></td>
+          <td><%= teacher.school %></td>
+          <td><%= teacher.updated_at %></td>
+          <td>
+            <% if teacher.user %>
+              <%= link_to 'Edit Account', edit_user_path(teacher.user) %>
+            <% else %>
+              <%= link_to 'Create Account', new_user_path(teacher_id: teacher.id) %>
+            <% end %>
+            &middot;
+            <%= link_to 'Edit', edit_teacher_path(teacher) %>
+            &middot;
+            <%= link_to 'Delete', teacher, confirm: 'Are you sure?', method: :delete %>
+          </td>
         </tr>
-	    <% end %>
+      <% end %>
     </tbody>
   </table>
  <% else %>
- 	<p>No teachers at the moment.</p>
+   <p>No teachers at the moment.</p>
  <% end %>
 
 <p><%= link_to "Register a new teacher", new_teacher_path %></p>
+

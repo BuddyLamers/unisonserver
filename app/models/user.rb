@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  ROLES = [:super, :admin, :teacher, :student]
   PASSWORD_MIN_LENGTH = 4
   TOKEN_EXPIRE_TIME = 1.week
 
@@ -13,7 +14,7 @@ class User
   field :token, type: String
   field :ph, as: :password_hash, type: String
   field :ps, as: :password_salt, type: String
-  field :role, type: String
+  field :role, type: Symbol
 
   before_save :prepare_password
 

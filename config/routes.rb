@@ -33,6 +33,7 @@ Unisonserver::Application.routes.draw do
     resources :code_scores
   end
   resources :code_types
+  resources :users
 
   # ROOT ROUTE
   root :to => "home#index"

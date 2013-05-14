@@ -1,0 +1,45 @@
+<h1>Users</h1>
+
+<% if @users.any? %>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+				<th>Email</th>
+				<th>Role</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>School</th>
+        <th>Last Updated</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+	    <% @users.each do |user| %>
+        <tr>
+					<td><%= user.andand.email %></td>
+					<td><%= user.andand.role %></td>
+					<td><%= user.person.andand.fname %></td>
+					<td><%= user.person.andand.lname %></td>
+					<td><%= user.person.andand.school %></td>
+					<td><%= user.updated_at %></td>
+					<td>
+            <% if user.person %>
+              <% if user.person.class == Teacher %>
+                <%= link_to 'Edit Teacher', edit_teacher_path(user.person) %>
+              <% end %>
+            <% end %>
+
+						<%= link_to 'Edit', edit_user_path(user) %>
+						<%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %>
+					</td>
+        </tr>
+	    <% end %>
+    </tbody>
+  </table>
+ <% else %>
+ 	<p>No users at the moment.</p>
+ <% end %>
+
+<p><%= link_to "Register a new user", new_user_path %></p>
+
