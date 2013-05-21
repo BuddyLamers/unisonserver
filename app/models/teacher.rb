@@ -1,6 +1,6 @@
 class Teacher < Person
-  belongs_to :user
   has_many :conferences
+  has_and_belongs_to_many :students
 
   accepts_nested_attributes_for :user, allow_destroy: true
 

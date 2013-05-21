@@ -21,6 +21,15 @@ class TeachersController < ApplicationController
     end
   end
 
+  def edit
+    @teacher = Teacher.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @teacher}
+    end
+  end
+
   def new
     # we need another way to make accounts
     # @user = User.new

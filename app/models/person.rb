@@ -3,6 +3,7 @@ class Person
   include Mongoid::Timestamps
   include Mongoid::Realization
 
+  has_one :user
   has_many :breaches
   has_many :sessions
   has_many :contributions

@@ -6,6 +6,7 @@ class CodeType
   has_many :codes
 
   field :name, type: String
+  field :key, type: String
 
   def as_json(options)
     {

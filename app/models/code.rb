@@ -8,8 +8,10 @@ class Code
 
   field :name, type: String
   field :year, type: Integer
+  field :topic, type: String
+  field :text, type: String
 
-  validates_presence_of :code_type, :name, :subject
+  validates_presence_of :name, :subject
   validates_uniqueness_of :name, scope: :subject && :code_type
 
   def as_json(options)
