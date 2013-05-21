@@ -18,3 +18,22 @@ header#global {
 }
 
 nav#global { clear: both; }
+
+/* selector */
+.row-selector {
+  .selected, .deselected {
+    float: left;
+    width: 200px;
+    height: 300px;
+  }
+
+  .row {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+
+    &:hover {
+      background: rgb(200, 200, 255);
+    }
+  }
+}
