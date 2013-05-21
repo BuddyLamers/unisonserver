@@ -59,6 +59,8 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(params[:id])
 
     respond_to do |format|
+      puts params[:teacher]
+      puts 'hi'
       if @teacher.update_attributes(params[:teacher])
         format.html {redirect_to @teacher, notice: "Teacher updated."}
         format.json {render json: @teacher, location: @teacher}

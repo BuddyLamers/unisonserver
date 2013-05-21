@@ -1,0 +1,23 @@
+<%= form_for @teacher do |f| %>
+  <%= render partial: 'layouts/form_errors', locals: {instance: @teacher} %>
+
+  <fieldset>
+    <%= f.label :school %>
+    <%= f.select :school, ["Unison"] %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :fname, "First name" %>
+    <%= f.text_field :fname %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :lname, "Last name" %>
+    <%= f.text_field :lname %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.submit %>
+  </fieldset>
+<% end %>
+

@@ -37,9 +37,11 @@ class User
   end
 
   def check_password
-    errors.add(:base, 'Password cannot be blank.') if password.blank?
-    errors.add(:base, 'Password and confirmation must match.') if password != password_confirmation
-    errors.add(:base, "Password must be at least #{PASSWORD_MIN_LENGTH} characters long.") if password.length < PASSWORD_MIN_LENGTH
+    if password
+      errors.add(:base, 'Password cannot be blank.') if password.blank? or password.nil?
+      errors.add(:base, 'Password and confirmation must match.') if password != password_confirmation
+      errors.add(:base, "Password must be at least #{PASSWORD_MIN_LENGTH} characters long.") if !password.nil? and password.length < PASSWORD_MIN_LENGTH
+    end
   end
 
   def password_matches?(given_password)
