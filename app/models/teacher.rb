@@ -9,7 +9,8 @@ class Teacher < Person
       created_at: created_at.to_i,
       fname: fname,
       lname: lname,
-      school: school
+      school: school,
+      students: students.map(&:id)
     }
   end
 end
