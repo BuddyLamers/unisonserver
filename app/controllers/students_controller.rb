@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @student}
@@ -24,7 +24,7 @@ class StudentsController < ApplicationController
   def new
     @user = User.new
     @student = Student.new
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @student}
@@ -47,11 +47,15 @@ class StudentsController < ApplicationController
           format.html {render 'new'}
           format.json {render json: @student.errors, status: :failed}
         end
-      else 
+      else
         format.html {render 'new'}
         format.json {render json: @user.errors, status: :failed}
       end
     end
+  end
+
+  def edit
+    @student = Student.find(params[:id])
   end
 
   def update
@@ -81,7 +85,7 @@ class StudentsController < ApplicationController
       end
     end
   end
-  
+
   private
 
 end

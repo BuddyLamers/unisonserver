@@ -1,0 +1,11 @@
+<section class="edit col">
+  <h1>Edit Student</h1>
+  <%= render partial: "form" %>
+</section><!-- .register -->
+
+<section class="teachers col">
+  <h3>Teachers</h3>
+  <% @student.teachers.each do |teacher| %>
+    <div class="teacher"><%= link_to teacher.name, edit_teacher_path(teacher)  %></div>
+  <% end %>
+</section>

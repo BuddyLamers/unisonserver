@@ -1,9 +1,9 @@
-<section class="edit">
+<section class="edit col">
 	<h1>Edit Teacher</h1>
   <%= render partial: "form" %>
 </section><!-- .edit -->
 
-<section class="teacher-students">
+<section class="teacher-students col">
   <%= form_for @teacher, html: {class: "row-selector"} do |f| %>
     <div class="selector-column">
       <div class="teacher-student-title">Students</div>

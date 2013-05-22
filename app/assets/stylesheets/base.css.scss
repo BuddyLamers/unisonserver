@@ -24,6 +24,12 @@ nav#global { clear: both; }
 
 }
 
+section.col {
+  float: left;
+  width: 450px;
+  margin-right: 20px;
+}
+
 .row-selector {
   .selector-column {
     float: left;
