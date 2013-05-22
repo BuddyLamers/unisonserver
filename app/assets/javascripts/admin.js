@@ -10,9 +10,11 @@
     var allRows = [];
     var selectedRows = [];
     var deselectedRows = [];
+    var filteredRows = [];
     var $selector;
     var $selected;
     var $deselected;
+    var $search;
 
     me.setUp = function () {
       var selector = $selector = $('.row-selector');
@@ -45,6 +47,7 @@
 
       $selected = $('.selected', selector).on('click', '.row', me.clickSelected);
       $deselected = $('.deselected', selector).on('click', '.row', me.clickDeselected);
+      $search = $('.search-deselected', selector).on('keydown', _.debounce(me.searchKeyDown, 100));
       selector.submit(me.submit);
     };
 
@@ -78,6 +81,38 @@
       } else {
         $el.prependTo($to);
       }
+    };
+
+    me.searchKeyDown = function (e) {
+      var val = $search.val().trim().toLowerCase();
+
+      if (!val) {
+        filteredRows = deselectedRows;
+      } else {
+        filteredRows = _.filter(deselectedRows, function (row) {
+          return row.name.toLowerCase().indexOf(val) > -1;
+        });
+      }
+
+      me.populate();
+    };
+
+    me.populate = function () {
+      var $row;
+      var row;
+      $rows = $();
+
+      for (var i = 0, l = filteredRows.length; i < l; i++) {
+        row = filteredRows[i];
+
+        $row = $('<div class="row">' + row.name + '</div>');
+        $row.data('id', row.id);
+        $row.data('ob', row);
+
+        $rows.push($row[0]);
+      }
+
+      $deselected.html($rows);
     };
 
     me.submit = function () {
