@@ -20,7 +20,8 @@ class Conference
       is_completed: is_completed,
       student: student.andand.id,
       teacher: teacher.andand.id,
-      codeScores: code_scores
+      codeScores: code_scores,
+      subject: subject.andand.id
     }
   end
 end
