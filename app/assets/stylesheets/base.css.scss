@@ -20,14 +20,24 @@ header#global {
 nav#global { clear: both; }
 
 /* selector */
+.teacher-students {
+
+}
+
 .row-selector {
-  .selected, .deselected {
+  .selector-column {
     float: left;
     width: 200px;
     height: 300px;
+    margin-right: 10px;
+  }
+
+  .teacher-student-title {
+    padding: 5px 0;
   }
 
   .row {
+    margin: 0;
     padding: 5px 10px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
