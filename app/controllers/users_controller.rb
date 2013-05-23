@@ -21,9 +21,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def new
     if params[:person_id]
       @user = User.new(person_id: params[:person_id])
+      @user.person = Person.find(params[:person_id])
     else
       @user = User.new
     end

@@ -1,35 +1,4 @@
 <section class="register">
   <h1>Register a new user<% if @user.person %> for <%= @user.person.name %>.<% end %></h1>
-
-  <%= form_for @user do |f| %>
-    <%= render partial: 'layouts/form_errors', locals: {instance: @user} %>
-
-    <% if @user.person %>
-      <input type="hidden" name="user[person_id]" value="<%= @user.person.id %>" />
-    <% end %>
-
-    <fieldset>
-      <%= f.label :email, "Email Address" %>
-      <%= f.text_field :email %>
-    </fieldset>
-
-    <fieldset>
-      <%= f.label :password, "Password" %>
-      <%= f.text_field :password %>
-    </fieldset>
-
-    <fieldset>
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.text_field :password_confirmation %>
-    </fieldset>
-
-    <fieldset>
-      <%= f.label :role, "Role" %>
-      <%= f.select :role, User::ROLES %>
-    </fieldset>
-
-    <fieldset>
-      <%= f.submit %>
-    </fieldset>
-  <% end %>
+  <%= render partial: "form" %>
 </section><!-- .register -->

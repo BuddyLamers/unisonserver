@@ -13,4 +13,9 @@
 		<%= user.label :password_confirmation %>
 		<%= user.password_field :password_confirmation %>
 	</fieldset>
+
+  <fieldset>
+    <%= user.label :person %>
+    <%= user.select, Teacher.all %>
+  </fieldset>
 <% end %><!-- fields for user -->

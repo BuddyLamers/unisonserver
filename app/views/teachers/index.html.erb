@@ -27,7 +27,7 @@
             <% if teacher.user %>
               <%= link_to 'Edit Account', edit_user_path(teacher.user) %>
             <% else %>
-              <%= link_to 'Create Account', new_user_path(teacher_id: teacher.id) %>
+              <%= link_to 'Create Account', new_user_path(person_id: teacher.id) %>
             <% end %>
             &middot;
             <%= link_to 'Edit', edit_teacher_path(teacher) %>
