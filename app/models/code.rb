@@ -20,6 +20,7 @@ class Code
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
       name: name,
+      text: text,
       year: year,
       subject: subject.andand.id
     }

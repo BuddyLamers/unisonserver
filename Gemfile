@@ -7,6 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 
+# going to try not using mongoid
 gem 'mongoid', '~> 3.0.0'
 gem 'ejs'
 gem 'andand'

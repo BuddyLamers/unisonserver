@@ -39,7 +39,7 @@ CSV.foreach(Rails.root.join('db', 'subject_codes.csv'), {
 
       if !code_types[topic_code]
         code_type = CodeType.where(key: topic_code).first
-        code_type = CodeType.create(key: topic_code, name: "No Name") unless code_type
+        code_type = CodeType.create(key: topic_code, name: topic_code) unless code_type
         code_types[topic_code] = code_type
       end
 
