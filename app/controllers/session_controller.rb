@@ -6,19 +6,21 @@ class SessionController < ApplicationController
   end
 
   def auth
-    user = User.auth(params[:email], params[:password])
+    @user = User.auth(params[:email], params[:password])
 
     respond_to do |format|
-      if user
-        session[:user_id] = user.id
+      if @user
+        session[:user_id] = @user.id
+        puts 'hi'
+        puts @user
         format.html do
           return_to_stored_location
           # redirect_to root_path, notice: "You are logged in as #{user.email}."
         end
-        format.json {render json: @session, status: :created, location: @session}
+        format.json {render json: {teacher: @user.person, token: @user.token, uid: @user.id}, status: :ok, location: @user}
       else
         format.html {redirect_to session_auth_path, alert: "Email or password is invalid."}
-        format.json {render json: @session.errors, status: :failed}
+        format.json {render json: @user.errors, status: :failed}
       end
     end
   end
