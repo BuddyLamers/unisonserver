@@ -72,6 +72,6 @@ production:
       uri: <%= ENV['MONGOLAB_URI'] %>
       options:
         consistency: :strong
-        safe: true
         skip_version_check: true
+        safe: true
 
