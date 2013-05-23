@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html {redirect_to @user, notice: "User updated."}
+        format.html {redirect_to users_path, notice: "User updated."}
         format.json {render json: @user, location: @user}
       else
         format.html {render 'edit'}
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.destroy
-        format.html {redirect_to users_path, notice: "Deleted #{@user.fname} #{@user.lname}."}
+        format.html {redirect_to users_path, notice: "Deleted #{@user.email}"}
         format.json {render json: @user}
       else
         format.html {render 'index'}
