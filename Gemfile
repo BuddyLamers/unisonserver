@@ -6,13 +6,10 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 # going to try not using mongoid
 gem 'mongoid', '~> 3.0.0'
 gem 'ejs'
 gem 'andand'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,6 +41,7 @@ gem 'unicorn'
 # gem 'capistrano'
 
 group :development, :test do
+  gem 'sqlite3'
   # To use debugger
   #gem 'debugger'
 end
