@@ -27,7 +27,6 @@ class SessionsController < ApplicationController
 
   def new
     @session = Session.new
-    @user = User.new
 
     respond_to do |format|
       format.html
@@ -37,7 +36,6 @@ class SessionsController < ApplicationController
 
   def create
     @session = Session.new(params[:session])
-    user = User.auth(params[:email], params[:password])
 
     respond_to do |format|
       if user
@@ -76,10 +74,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    respond_to do |format|
-      format.html {redirect_to root_path, notice: "You have been logged out."}
-    end
+    # implement me
   end
 
 private

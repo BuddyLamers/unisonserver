@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
+  before_filter :require_user
+
   def logged_in?
     current_user.present?
   end
@@ -19,26 +21,25 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    return
-    unless logged_in?
+    unless logged_in? and current_user.can_use_site?
       respond_to do |format|
         format.json do
           render json: {error: :bad_token}
         end
         format.html do
-          store_url
-          redirect_to session_auth_url
+          store_location
+          redirect_to login_path
         end
       end
     end
   end
 
   def store_location
-    session[:stored_url] = request.request_uri
+    session[:stored_path] = request.fullpath
   end
 
   def return_to_stored_location
-    redirect_to session.delete(:stored_url) || home_url
+    redirect_to session.delete(:stored_path) || home_path
   end
 end
 

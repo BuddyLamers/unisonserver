@@ -3,6 +3,8 @@ class User
   include Mongoid::Timestamps
 
   ROLES = [:super, :admin, :teacher, :student]
+  SITE_ROLES = [:super, :admin]
+  IPAD_ROLES = [:super, :admin, :teacher]
   PASSWORD_MIN_LENGTH = 4
   TOKEN_EXPIRE_TIME = 1.week
 
@@ -50,6 +52,10 @@ class User
 
   def generate_token
     update_attribute :token, Digest::SHA1.hexdigest(password_salt + Time.now.to_i.to_s + rand.to_s)
+  end
+
+  def can_use_site?
+    return SITE_ROLES.include? role
   end
 
 private
