@@ -2,6 +2,10 @@
 $alert: rgba(238,59,55,1);
 $primary: rgba(0,136,204,1);
 
+a {
+  cursor: pointer;
+}
+
 .group:after { content: ""; display: table; clear: both; }
 
 div.errors { background-color: $alert; color: #fff; margin-bottom: 30px; 
@@ -31,7 +35,7 @@ nav#global { clear: both; }
   position: fixed;
   top: 100px;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -200px;
   width: 400px;
   border-radius: 5px;
   border: 1px solid #999;
@@ -41,18 +45,18 @@ nav#global { clear: both; }
     margin: 0;
   }
 }
-.modal-header {
-  border-bottom: 1px solid #eee;
-  padding: 0 10px;
-}
-.modal-body {
-  padding: 10px;
-}
-.modal-footer {
-  padding: 10px;
-  border-top: 1px solid #eee;
-  text-align: right;
-}
+  .modal-header {
+    border-bottom: 1px solid #eee;
+    padding: 0 10px;
+  }
+  .modal-body {
+    padding: 10px;
+  }
+  .modal-footer {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    text-align: right;
+  }
 
 /* selector */
 .teacher-students {

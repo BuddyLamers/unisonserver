@@ -9,7 +9,11 @@ Unisonserver::Application.routes.draw do
   # RESOURCE ROUTES
   resources :breaches
   resources :code_scores
-  resources :codes
+  resources :codes do
+    collection do
+      post :csv
+    end
+  end
   resources :conferences
   resources :contributions
   resources :sessions do

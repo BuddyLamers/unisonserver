@@ -1,3 +1,5 @@
+require 'csv'
+
 class CodesController < ApplicationController
   def index
     @codes = Code.all
@@ -136,6 +138,8 @@ class CodesController < ApplicationController
           puts code.errors.full_messages
         end
     end
+
+    redirect_to codes_path
   end
 
 end

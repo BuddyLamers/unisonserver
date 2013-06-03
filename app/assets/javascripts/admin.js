@@ -136,10 +136,15 @@
 
     me.init = function () {
       $('.uploader').click(me.click);
+      $('.modal .close').click(me.close);
     };
 
     me.click = function () {
       $('.modal-uploader').fadeIn(200);
+    };
+
+    me.close = function () {
+      $('.modal').fadeOut(200);
     };
 
     return me;
