@@ -24,7 +24,7 @@
 					<td><%= student.section %></td>
 					<td><%= student.updated_at %></td>
 					<td>
-						<%= link_to 'Edit', edit_student_path(student) %>
+						<%= link_to 'Edit', edit_student_path(student) %> &middot;
 						<%= link_to 'Delete', student, confirm: 'Are you sure?', method: :delete %>
 					</td>
         </tr>

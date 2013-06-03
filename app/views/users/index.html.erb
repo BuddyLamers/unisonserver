@@ -26,11 +26,11 @@
 					<td>
             <% if user.person %>
               <% if user.person.class == Teacher %>
-                <%= link_to 'Edit Teacher', edit_teacher_path(user.person) %>
+                <%= link_to 'Edit Teacher', edit_teacher_path(user.person) %> &middot;
               <% end %>
             <% end %>
 
-						<%= link_to 'Edit', edit_user_path(user) %>
+						<%= link_to 'Edit', edit_user_path(user) %> &middot;
 						<%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %>
 					</td>
         </tr>

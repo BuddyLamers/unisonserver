@@ -39,7 +39,7 @@
 					<td><b><%= code.name %></b></td>
 					<td><%= code.year %></td>
 					<td><%= code.code_type.andand.name %></td>
-					<td><%= link_to "Edit", edit_code_path(code) %> <%= link_to "Destroy", code, method: :delete, confirm: "Are you sure you would like to delete the code: #{code.name} and all of its related codes?" %></td>
+					<td><%= link_to "Edit", edit_code_path(code) %> &middot; <%= link_to "Destroy", code, method: :delete, confirm: "Are you sure you would like to delete the code: #{code.name} and all of its related codes?" %></td>
 				</tr>
 			<% end %>
 		</tbody>
