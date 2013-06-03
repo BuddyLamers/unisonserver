@@ -11,8 +11,6 @@ class SessionController < ApplicationController
     respond_to do |format|
       if @user
         session[:user_id] = @user.id
-        puts 'hi'
-        puts @user
         format.html do
           return_to_stored_location
           # redirect_to root_path, notice: "You are logged in as #{user.email}."
