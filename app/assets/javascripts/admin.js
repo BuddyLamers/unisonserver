@@ -3,6 +3,7 @@
 
   me.init = function () {
     me.RowSelector.setUp();
+    me.CsvUploader.init();
   };
 
   me.RowSelector = (function () {
@@ -125,6 +126,20 @@
         data: data,
         dataType: 'json'
       });
+    };
+
+    return me;
+  }());
+
+  me.CsvUploader = (function () {
+    var me = {};
+
+    me.init = function () {
+      $('.uploader').click(me.click);
+    };
+
+    me.click = function () {
+      $('.modal-uploader').fadeIn(200);
     };
 
     return me;

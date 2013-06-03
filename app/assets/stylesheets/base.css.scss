@@ -19,6 +19,41 @@ header#global {
 
 nav#global { clear: both; }
 
+.commands {
+  margin: 10px 0;
+  text-align: right;
+  > a {
+    
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  margin-left: -150px;
+  width: 400px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: white;
+  form {
+    margin: 0;
+  }
+}
+.modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 0 10px;
+}
+.modal-body {
+  padding: 10px;
+}
+.modal-footer {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
 /* selector */
 .teacher-students {
 
