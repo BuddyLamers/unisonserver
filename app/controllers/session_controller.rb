@@ -17,7 +17,7 @@ class SessionController < ApplicationController
         end
         format.json {render json: {teacher: @user.person, token: @user.token, uid: @user.id}, status: :ok, location: @user}
       else
-        format.html {redirect_to session_auth_path, alert: "Email or password is invalid."}
+        format.html {redirect_to login_path, alert: "Email or password is invalid."}
         format.json {render json: {error: "Invalid email or password."}, status: :failed}
       end
     end
