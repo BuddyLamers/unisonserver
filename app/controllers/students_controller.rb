@@ -53,7 +53,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
-        format.html {redirect_to @student, notice: "Teacher updated."}
+        format.html {redirect_to edit_student_path(@student), notice: "Teacher updated."}
         format.json {render json: @student, location: @student}
       else
         format.html {render 'edit'}
