@@ -62,7 +62,7 @@ class TeachersController < ApplicationController
       puts params[:teacher]
       puts 'hi'
       if @teacher.update_attributes(params[:teacher])
-        format.html {redirect_to @teacher, notice: "Teacher updated."}
+        format.html {redirect_to edit_teacher_path(@teacher), notice: "Teacher updated."}
         format.json {render json: @teacher, location: @teacher}
       else
         format.html {render 'edit'}
