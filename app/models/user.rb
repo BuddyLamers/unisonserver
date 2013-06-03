@@ -58,6 +58,10 @@ class User
     return SITE_ROLES.include? role
   end
 
+  def token_expired?
+    Time.now - updated_at > TOKEN_EXPIRE_TIME
+  end
+
 private
 
   def prepare_password
@@ -69,10 +73,6 @@ private
 
   def encrypt_password(password)
     Digest::SHA1.hexdigest(password + password_salt)
-  end
-
-  def token_expired?
-    updated_at < TOKEN_EXPIRE_TIME
   end
 
 end
