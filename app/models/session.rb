@@ -22,7 +22,8 @@ class Session
       is_completed: is_completed,
       length: length,
       order: order,
-      people: people.map(&:id)
+      people: people.map(&:id),
+      subject: subject.andand.id
     }
   end
 
