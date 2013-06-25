@@ -7,6 +7,7 @@
   <%= form_for @teacher, html: {class: "row-selector"} do |f| %>
     <div class="selector-column">
       <div class="teacher-student-title">Students</div>
+      <div><span class="remove-all btn">Remove All</span></div>
       <div class="teacher_student_list selected" data-name="teacher[student_ids]">
         <% @teacher.students.each do |student| %>
           <div class="row student student-<%= student.id %>" data-id="<%= student.id %>"><%= student.name %></div>
@@ -16,7 +17,8 @@
 
     <div class="selector-column">
       <div class="teacher-student-title">All Students</div>
-      <input type="search" class="search-deselected" placeholder="search" />
+      <div><span class="add-all btn">Add All</span></div>
+      <div><input type="search" class="search-deselected" placeholder="search" /></div>
       <div class="all_students_list deselected">
         <% Student.all.each do |student| %>
           <div class="row student student-<%= student.id %>" data-id="<%= student.id %>"><%= student.name %></div>

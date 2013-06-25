@@ -21,7 +21,7 @@
       var selector = $selector = $('.row-selector');
 
       $('.selected .row', selector).each(function () {
-        var ob = {id: $(this).data('id'), name: $(this).text()};
+        var ob = {id: $(this).data('id'), name: $(this).text(), $el: $(this)};
 
         selectedRows.push(ob);
         allRows.push(ob);
@@ -31,7 +31,7 @@
 
       $('.deselected .row', selector).each(function () {
         var id = $(this).data('id');
-        var ob = {id: id, name: $(this).text()};
+        var ob = {id: id, name: $(this).text(), $el: $(this)};
 
         $(this).data('ob', ob);
 
@@ -49,6 +49,8 @@
       $selected = $('.selected', selector).on('click', '.row', me.clickSelected);
       $deselected = $('.deselected', selector).on('click', '.row', me.clickDeselected);
       $search = $('.search-deselected', selector).on('keydown', _.debounce(me.searchKeyDown, 100));
+      $('.add-all', selector).on('click', me.addAll);
+      $('.remove-all', selector).on('click', me.removeAll);
       selector.submit(me.submit);
     };
 
@@ -60,6 +62,32 @@
     me.clickDeselected = function () {
       me.swapEl($(this), deselectedRows, selectedRows, $deselected, $selected);
       me.submit();
+    };
+
+    me.addAll = function () {
+      selectedRows = allRows;
+      deselectedRows = [];
+      me.reset();
+      me.submit();
+    };
+
+    me.removeAll = function () {
+      selectedRows = [];
+      deselectedRows = allRows;
+      me.reset();
+      me.submit();
+    };
+
+    me.reset = function () {
+      var ob;
+      for (var i = 0, l = selectedRows.length; i < l; i++) {
+        ob = selectedRows[i];
+        $selected.append(ob.$el);
+      }
+      for (var i = 0, l = deselectedRows.length; i < l; i++) {
+        ob = deselectedRows[i];
+        $deselected.append(ob.$el);
+      }
     };
 
     me.swapEl = function ($el, from, to, $from, $to) {
