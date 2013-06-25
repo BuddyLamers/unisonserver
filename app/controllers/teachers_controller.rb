@@ -85,7 +85,22 @@ class TeachersController < ApplicationController
     end
   end
 
-  private
+  def csv
+    CSV.foreach(params[:csv].path, {
+        headers: :first_row
+      }) do |row|
+        attrs = {
+          name: row[0]
+        }
+
+        name = attrs[:name].split(' ')
+
+        teacher = Teacher.where(fname: name[0], lname: name[1]).first
+        Teacher.create(fname: name[0], lname: name[1]) unless teacher
+    end
+
+    redirect_to teachers_path
+  end
 
 end
 

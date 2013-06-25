@@ -28,6 +28,9 @@ Unisonserver::Application.routes.draw do
   resources :teachers do
     resources :sessions
     resources :conferences
+    collection do
+      post :csv
+    end
   end
   resources :students do
     resources :sessions
@@ -35,6 +38,9 @@ Unisonserver::Application.routes.draw do
     resources :breaches
     resources :contributions
     resources :code_scores
+    collection do
+      post :csv
+    end
   end
   resources :code_types
   resources :users
