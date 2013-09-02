@@ -79,6 +79,8 @@ class SessionsController < ApplicationController
 private
 
   def parse_breaches_hash(breaches_hash)
+    new_breaches = []
+
     breaches_hash.each do |breach_hash|
       breach = Breach.realize(breach_hash[:id])
 
@@ -90,16 +92,28 @@ private
       breach.update_attributes(breach_hash)
       breach.session = @session
       breach.save
+
+      new_breaches << breach
     end
+
+    to_delete = @session.breaches - new_breaches
+    to_delete.each(&:destroy)
   end
 
   def parse_contributions_hash(contributions_hash, breach)
+    contribs = []
+
     contributions_hash.each do |contrib_hash|
       contrib = Contribution.realize(contrib_hash[:id])
       contrib.update_attributes(contrib_hash)
       contrib.breach = breach
       contrib.save
+
+      contribs << contrib
     end
+
+    to_delete = breach.contributions - contribs
+    to_delete.each(&:destroy)
   end
 
 end
