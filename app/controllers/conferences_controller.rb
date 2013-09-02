@@ -66,12 +66,18 @@ class ConferencesController < ApplicationController
 private
 
   def parse_code_scores_hash(code_scores_hash)
+    code_scores = []
+
     code_scores_hash.each do |code_score_hash|
       code_score = CodeScore.realize(code_score_hash[:id])
       code_score.update_attributes(code_score_hash)
       code_score.conference = @conference
       code_score.save
+      code_scores << code_score
     end
+
+    to_delete = @conference.code_scores - code_score
+    to_delete.each(&:destroy)
   end
 
 end
