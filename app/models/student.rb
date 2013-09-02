@@ -9,6 +9,7 @@ class Student < Person
       id: id,
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
+      deleted_at: deleted_at.to_i,
       fname: fname,
       lname: lname,
       school: school,

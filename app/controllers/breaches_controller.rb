@@ -42,7 +42,7 @@ class BreachesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @breach = Breach.find(params[:id])
 
     if @breach.destroy

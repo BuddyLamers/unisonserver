@@ -64,6 +64,9 @@ class SessionsController < ApplicationController
   end
 
   def delete
+  end
+
+  def destroy
     @session = Session.realize(params[:id])
 
     if @session.destroy
@@ -71,10 +74,6 @@ class SessionsController < ApplicationController
     else
       render json: @session.errors, status: :failed
     end
-  end
-
-  def destroy
-    # implement me
   end
 
 private

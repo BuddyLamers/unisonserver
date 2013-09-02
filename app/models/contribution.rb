@@ -1,6 +1,7 @@
 class Contribution
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paranoia
   include Mongoid::Realization
 
   belongs_to :person
@@ -14,6 +15,7 @@ class Contribution
       id: id,
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
+      deleted_at: deleted_at.to_i,
       text: text,
       time: time.to_i,
       person: person.andand.id,

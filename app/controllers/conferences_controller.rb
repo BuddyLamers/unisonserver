@@ -53,7 +53,7 @@ class ConferencesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @conference = Conference.realize(params[:id])
 
     if @conference.destroy

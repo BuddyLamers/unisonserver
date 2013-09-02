@@ -1,6 +1,7 @@
 class Breach
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paranoia
   include Mongoid::Realization
 
   belongs_to :session
@@ -16,6 +17,7 @@ class Breach
       id: id,
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
+      deleted_at: deleted_at.to_i,
       time: time.to_i,
       contributions: contributions,
       session: session.andand.id,

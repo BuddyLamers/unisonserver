@@ -1,6 +1,7 @@
 class Conference
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paranoia
   include Mongoid::Realization
 
   has_many :code_scores
@@ -17,6 +18,7 @@ class Conference
       id: id,
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
+      deleted_at: deleted_at.to_i,
       is_completed: is_completed,
       student: student.andand.id,
       teacher: teacher.andand.id,

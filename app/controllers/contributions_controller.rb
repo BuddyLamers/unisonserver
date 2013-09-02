@@ -39,7 +39,7 @@ class ContributionsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @contribution = Contribution.find(params[:id])
 
     if @contribution.destroy

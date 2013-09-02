@@ -1,6 +1,7 @@
 class Session
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paranoia
   include Mongoid::Realization
 
   has_many :breaches
@@ -18,6 +19,7 @@ class Session
       id: id,
       updated_at: updated_at.to_i,
       created_at: created_at.to_i,
+      deleted_at: deleted_at.to_i,
       is_coded: is_coded,
       is_completed: is_completed,
       length: length,
