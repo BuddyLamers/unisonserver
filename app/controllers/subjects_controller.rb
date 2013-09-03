@@ -1,8 +1,10 @@
 class SubjectsController < ApplicationController
 
+  before_filter :require_admin, only: [:create, :update, :destroy, :csv]
+
   def index
     @subjects = Subject.all
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @subjects}
@@ -12,7 +14,7 @@ class SubjectsController < ApplicationController
   def show
     @subject = Subject.find(params[:id])
     @codes = @subject.codes
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @subject}
@@ -21,7 +23,7 @@ class SubjectsController < ApplicationController
 
   def new
     @subject = Subject.new
-    
+
     respond_to do |format|
       format.html
       format.json {render json: @subject}
@@ -41,7 +43,7 @@ class SubjectsController < ApplicationController
       end
     end
   end
-  
+
   def edit
     @subject = Subject.find(params[:id])
 
@@ -76,7 +78,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     @subject = Subject.find(params[:id])
-    
+
     if @subject.destroy
       redirect_to subjects_path, notice: "Deleted #{@subject.name}."
     else

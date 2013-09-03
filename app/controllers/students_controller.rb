@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
 
-  before_filter :require_user
+  before_filter :require_admin, only: [:create, :update, :destroy, :csv]
 
   def index
     @students = Student.all

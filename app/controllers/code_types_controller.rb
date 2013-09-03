@@ -1,4 +1,7 @@
 class CodeTypesController < ApplicationController
+
+  before_filter :require_admin, only: [:create, :update, :destroy, :csv]
+
   def index
     @code_types = CodeType.all
     render json: @code_types

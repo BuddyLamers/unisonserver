@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-  before_filter :require_user
-
   def index
     person_id = params[:person_id] || params[:student_id] || params[:teacher_id]
     if person_id

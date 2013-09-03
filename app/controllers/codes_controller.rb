@@ -1,6 +1,9 @@
 require 'csv'
 
 class CodesController < ApplicationController
+
+  before_filter :require_admin, only: [:create, :update, :destroy, :csv]
+
   def index
     @codes = Code.all
 

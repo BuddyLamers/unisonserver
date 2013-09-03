@@ -34,6 +34,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    unless logged_in? and current_user.can_use_admin?
+      respond_to do |format|
+        format.json do
+          render json: {error: :bad_token}
+        end
+        format.html do
+          raise ActionController::RoutingError.new('Not Found')
+        end
+      end
+    end
+  end
+
   def store_location
     session[:stored_path] = request.fullpath
   end

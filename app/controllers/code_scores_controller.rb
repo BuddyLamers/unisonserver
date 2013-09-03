@@ -1,4 +1,7 @@
 class CodeScoresController < ApplicationController
+
+  before_filter :require_admin, only: [:create, :update, :destroy, :csv]
+
   def index
     @codescores = CodeScore.all
     render json: @codescores
