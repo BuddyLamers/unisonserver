@@ -19,7 +19,7 @@
             <li><%= link_to "Home", root_path %></li>
           <% end %>
 
-          <% if current_user.can_use_admin? %>
+          <% if current_user and current_user.can_use_admin? %>
             <% if controller_name == 'users' %>
               <li class="active"><%= link_to "Users", users_path %></li>
             <% else %>
@@ -27,7 +27,7 @@
             <% end %>
           <% end %>
 
-          <% if current_user.can_use_admin? %>
+          <% if current_user and current_user.can_use_admin? %>
             <% if controller_name == 'teachers' %>
               <li class="active"><%= link_to "Teachers", teachers_path %></li>
             <% else %>
