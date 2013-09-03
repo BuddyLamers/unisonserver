@@ -2,6 +2,8 @@
 $alert: rgba(238,59,55,1);
 $primary: rgba(0,136,204,1);
 
+.clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}.clearfix{display:inline-block;}html[xmlns] .clearfix{display:block;}* html .clearfix{height:1%;}div.clearfix{display:block;}
+
 a {
   cursor: pointer;
 }
@@ -58,10 +60,26 @@ nav#global { clear: both; }
     text-align: right;
   }
 
+.data-points {
+  @extend .clearfix;
+  margin-top: 20px;
+}
+.data-point {
+  float: left;
+  margin: 0 20px 10px 0;
+}
+  .data-point-number {
+    font-size: 48px;
+  }
+  .data-point-text {
+    
+  }
+
 /* selector */
 .teacher-students {
-
+  
 }
+  
 
 section.col {
   float: left;

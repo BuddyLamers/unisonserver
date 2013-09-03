@@ -6,6 +6,8 @@ class CodeType
 
   has_many :codes
 
+  default_scope asc(:name)
+
   field :name, type: String
   field :key, type: String
 

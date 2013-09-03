@@ -50,6 +50,8 @@
               <%= link_to 'Create Account', new_user_path(person_id: teacher.id) %>
             <% end %>
             &middot;
+            <%= link_to 'Show', teacher_path(teacher) %>
+            &middot;
             <%= link_to 'Edit', edit_teacher_path(teacher) %>
             &middot;
             <%= link_to 'Delete', teacher, confirm: 'Are you sure?', method: :delete %>

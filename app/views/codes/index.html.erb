@@ -1,6 +1,7 @@
 <h1>Subject codes</h1>
 
 <div class="commands">
+  <span>There are <%= @codes.count %> in the database.</span>
   <%= link_to "Create a New Subject code", new_code_path %> &middot;
   <a class="uploader codes-csv-link" data-type="csv" data-model="codes">Upload a CSV</a>
 </div>

@@ -12,6 +12,8 @@ class Code
   field :topic, type: String
   field :text, type: String
 
+  default_scope asc(:code_type, :name)
+
   validates_presence_of :name, :subject
   validates_uniqueness_of :name, scope: :subject && :code_type
 
