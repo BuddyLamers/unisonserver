@@ -1,28 +1,34 @@
 <h1>Subjects</h1>
 
 <% if @subjects.any? %>
-	<table class="table table-striped table-bordered">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Codes</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Codes</th>
+        <% if current_user.can_use_admin? %>
+          <th>Actions</th>
+        <% end %>
+      </tr>
+    </thead>
 
-		<% @subjects.each do |subject| %>
-			<tbody>
-				<tr>
-					<td><%= link_to subject.name, subject_path(subject) %></td>
-					<td><%= subject.codes.map {|code| code.name }.join(", ") %></td>
-					<td><%= link_to "Edit", edit_subject_path(subject) %> &middot; <%= link_to "Destroy", subject, method: :delete, confirm: "Are you sure you would like to delete the subject: #{subject.name} and all of its related codes?" %></td>
-				</tr>
-			</tbody>
-		<% end %>
-	</table>
+    <% @subjects.each do |subject| %>
+      <tbody>
+        <tr>
+          <td><%= link_to subject.name, subject_path(subject) %></td>
+          <td><%= subject.codes.map {|code| code.name }.join(", ") %></td>
+          <% if current_user.can_use_admin? %>
+            <td><%= link_to "Edit", edit_subject_path(subject) %> &middot; <%= link_to "Destroy", subject, method: :delete, confirm: "Are you sure you would like to delete the subject: #{subject.name} and all of its related codes?" %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
 <% else %>
-	<p>We don't have any subjects yet.</p>
+  <p>We don't have any subjects yet.</p>
 <% end %>
 
-<%= link_to "Create a new subject", new_subject_path %>
+<% if current_user.can_use_admin? %>
+  <%= link_to "Create a new subject", new_subject_path %>
+<% end %>
 

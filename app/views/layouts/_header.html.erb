@@ -1,55 +1,60 @@
 <header id="global">
-	<h1>UnisonServer</h1>
+  <h1>UnisonServer</h1>
 
-	<div class="authentication group">
-		<% if current_user %>
-			<%= link_to "Log out, #{current_user.email}", logout_path %>
-		<% else %>
-			<a class="btn btn-primary btn-small" href="<%= login_path %>">Login</a>
-		<% end %>
-	</div>
+  <div class="authentication group">
+    <% if current_user %>
+      <%= link_to "Log out, #{current_user.email}", logout_path %>
+    <% else %>
+      <a class="btn btn-primary btn-small" href="<%= login_path %>">Login</a>
+    <% end %>
+  </div>
 
-	<nav id="global">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<ul class="nav">
-					<% if controller_name == 'home' %>
-						<li class="active"><%= link_to "Home", root_path %></li>
-					<% else %>
-						<li><%= link_to "Home", root_path %></li>
-					<% end %>
+  <nav id="global">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <ul class="nav">
+          <% if controller_name == 'home' %>
+            <li class="active"><%= link_to "Home", root_path %></li>
+          <% else %>
+            <li><%= link_to "Home", root_path %></li>
+          <% end %>
 
-					<% if controller_name == 'users' %>
-						<li class="active"><%= link_to "Users", users_path %></li>
-					<% else %>
-						<li><%= link_to "Users", users_path %></li>
-					<% end %>
+          <% if current_user.can_use_admin? %>
+            <% if controller_name == 'users' %>
+              <li class="active"><%= link_to "Users", users_path %></li>
+            <% else %>
+              <li><%= link_to "Users", users_path %></li>
+            <% end %>
+          <% end %>
 
-					<% if controller_name == 'teachers' %>
-						<li class="active"><%= link_to "Teachers", teachers_path %></li>
-					<% else %>
-						<li><%= link_to "Teachers", teachers_path %></li>
-					<% end %>
+          <% if current_user.can_use_admin? %>
+            <% if controller_name == 'teachers' %>
+              <li class="active"><%= link_to "Teachers", teachers_path %></li>
+            <% else %>
+              <li><%= link_to "Teachers", teachers_path %></li>
+            <% end %>
+          <% end %>
 
-					<% if controller_name == 'students' %>
-						<li class="active"><%= link_to "Students", students_path %></li>
-					<% else %>
-						<li><%= link_to "Students", students_path %></li>
-					<% end %>
+          <% if controller_name == 'students' %>
+            <li class="active"><%= link_to "Students", students_path %></li>
+          <% else %>
+            <li><%= link_to "Students", students_path %></li>
+          <% end %>
 
-					<% if controller_name == 'subjects' %>
-						<li class="active"><%= link_to "Subjects", subjects_path %></li>
-					<% else %>
-						<li><%= link_to "Subjects", subjects_path %></li>
-					<% end %>
+          <% if controller_name == 'subjects' %>
+            <li class="active"><%= link_to "Subjects", subjects_path %></li>
+          <% else %>
+            <li><%= link_to "Subjects", subjects_path %></li>
+          <% end %>
 
-					<% if controller_name == 'codes' %>
-						<li class="active"><%= link_to "Codes", codes_path %></li>
-					<% else %>
-						<li><%= link_to "Codes", codes_path %></li>
-					<% end %>
-				</ul>
-			</div><!-- .navbar-inner -->
-		</div><!-- .navbar -->
-	</nav>
+          <% if controller_name == 'codes' %>
+            <li class="active"><%= link_to "Codes", codes_path %></li>
+          <% else %>
+            <li><%= link_to "Codes", codes_path %></li>
+          <% end %>
+        </ul>
+      </div><!-- .navbar-inner -->
+    </div><!-- .navbar -->
+  </nav>
 </header><!-- #global -->
+
