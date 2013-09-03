@@ -1,5 +1,7 @@
 class Teacher < Person
+
   has_many :conferences
+  has_many :sessions
   has_and_belongs_to_many :students
 
   def as_json(options)

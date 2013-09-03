@@ -7,6 +7,7 @@ class Session
   has_many :breaches
   has_and_belongs_to_many :people, inverse_of: nil
   belongs_to :subject
+  belongs_to :teacher
 
   field :is_coded, type: Boolean
   field :is_completed, type: Boolean

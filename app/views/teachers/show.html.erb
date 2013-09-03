@@ -14,11 +14,12 @@
 
 <h4>Students</h4>
 <div class="teacher-students">
-  <div class="teacher-student header"><span class="name">Name</span> <span>Conferences this week</span></div>
+  <div class="teacher-student header"><span class="name">Name</span> <span>Conferences this month</span></div>
   <% @teacher.students.each do |student| %>
     <div class="teacher-student">
       <span class="name"><%= student.name %></span>
-      <span class="count"><%= student.conferences.where(created_at: {"$gt" => 1.week.ago}, teacher: @teacher).count %></span>
+      <span class="count"><%= student.conferences.where(created_at: {"$gt" => 1.month.ago}, teacher: @teacher).count %></span>
+      <span class="count"><%= student.sessions.where(created_at: {"$gt" => 1.week.ago}, teacher: @teacher).count %></span>
     </div>
   <% end %>
 </div>

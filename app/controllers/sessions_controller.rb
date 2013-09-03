@@ -57,6 +57,15 @@ class SessionsController < ApplicationController
     end
 
     if @session.update_attributes(params[:session])
+
+      if @session.teacher == nil
+        people = Person.where(_id: {"$in" => @session.person_ids})
+
+        people.each do |person|
+          @session.update_attribute :teacher_id, person.id if person._type == 'Teacher'
+        end
+      end
+
       render json: @session, location: @session
     else
       render json: @session.errors, status: :failed
