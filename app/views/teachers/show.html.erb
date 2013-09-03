@@ -1,0 +1,25 @@
+<h3><%= @teacher.name %></h3>
+
+<div class="data-points">
+  <div class="data-point">
+    <span class="data-point-number"><%= @teacher.conferences.where(created_at: {"$gt" => 1.month.ago}).count %></span>
+    <span class="data-point-text">conferences this month</span>
+  </div>
+
+  <div class="data-point">
+    <span class="data-point-number"><%= @teacher.sessions.where(created_at: {"$gt" => 1.week.ago}).count %></span>
+    <span class="data-point-text">sessions this week</span>
+  </div>
+</div>
+
+<h4>Students</h4>
+<div class="teacher-students">
+  <div class="teacher-student header"><span class="name">Name</span> <span>Conferences this week</span></div>
+  <% @teacher.students.each do |student| %>
+    <div class="teacher-student">
+      <span class="name"><%= student.name %></span>
+      <span class="count"><%= student.conferences.where(created_at: {"$gt" => 1.week.ago}, teacher: @teacher).count %></span>
+    </div>
+  <% end %>
+</div>
+

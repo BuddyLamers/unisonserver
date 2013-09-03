@@ -77,9 +77,26 @@ nav#global { clear: both; }
 
 /* selector */
 .teacher-students {
-  
+  margin-bottom: 20px;
 }
-  
+  .teacher-student {
+    display: block;
+
+    &.header {
+      border-bottom: 1px solid #eee;
+    }
+
+    > span {
+      display: inline-block;
+    }
+
+    .name {
+      width: 200px;
+    }
+    .count {
+      width: 50px;
+    }
+  }
 
 section.col {
   float: left;
