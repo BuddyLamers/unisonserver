@@ -80,14 +80,9 @@ class StudentsController < ApplicationController
     CSV.foreach(params[:csv].path, {
         headers: :first_row
       }) do |row|
-        attrs = {
-          name: row[0]
-        }
 
-        name = attrs[:name].split(' ')
-
-        student = Student.where(fname: name[0], lname: name[1]).first
-        Student.create(fname: name[0], lname: name[1]) unless student
+        student = Student.where(fname: row[0], lname: row[1])
+        Student.create(fname: row[0], lname: row[1], school: row[2],section:row[3]) unless student
     end
 
     redirect_to students_path
