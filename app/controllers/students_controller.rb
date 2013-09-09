@@ -83,18 +83,12 @@ class StudentsController < ApplicationController
         attrs = {
             fname: row[0],
             lname: row[1],
-            school: row[2],
             section: row[3]
         }
 
-        if !sections[attrs[:section]]
-            section = Section.where(name:row[3])
-            section = Section.create(name:row[3]) unless section
-            sections[attrs[:section]] = section
-        end
-            
-        student = Student.where(fname: row[0], lname: row[1])
-        Student.create(fname: fname, lname: lname, school:school,section:section]) unless student
+        student = Student.where(fname: fname, lname: lname)
+        Student.create(fname: fname, lname: lname, section: section) unless student
+        
     end
 
     redirect_to students_path
