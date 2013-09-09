@@ -86,8 +86,8 @@ class StudentsController < ApplicationController
             section: row[3]
         }
 
-        student = Student.where(fname: fname, lname: lname)
-        Student.create(fname: fname, lname: lname, section: section) unless student
+        student = Student.where(fname: attrs[:fname], lname: attrs[:lname])
+        Student.create(fname: attrs[:fname], lname: attrs[:lname], section: attrs[:section]) unless student
         
     end
 
