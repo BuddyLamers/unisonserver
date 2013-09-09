@@ -81,8 +81,15 @@ class StudentsController < ApplicationController
         headers: :first_row
       }) do |row|
 
+	school = School.where(name: row[2])
+	section = Section.where(name:row[3])
+
+	if !section
+	section = Section.create(name:row[3])
+	end
+
         student = Student.where(fname: row[0], lname: row[1])
-        Student.create(fname: row[0], lname: row[1], school: row[2],section:row[3]) unless student
+        Student.create(fname: row[0], lname: row[1], school:school,section:section]) unless student
     end
 
     redirect_to students_path
