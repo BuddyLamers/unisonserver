@@ -26,7 +26,8 @@ class Session
       length: length,
       order: order,
       people: people.map(&:id),
-      subject: subject.andand.id
+      subject: subject.andand.id,
+      time: time.to_i
     }
   end
 

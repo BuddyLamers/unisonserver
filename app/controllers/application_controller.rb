@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def return_to_stored_location
-    redirect_to session.delete(:stored_path) || "home"
+    redirect_to session.delete(:stored_path) || root_path
   end
 end
 
