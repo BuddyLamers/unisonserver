@@ -23,7 +23,8 @@ class Conference
       student: student.andand.id,
       teacher: teacher.andand.id,
       codeScores: code_scores,
-      subject: subject.andand.id
+      subject: subject.andand.id,
+      time: time.to_i
     }
   end
 end
