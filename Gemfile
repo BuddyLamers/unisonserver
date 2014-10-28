@@ -30,16 +30,25 @@ gem "cancan", "~> 1.6.9"
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-gem 'unicorn'
+
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
+group :production do
+# Use unicorn as the app server
+# remember to bundle install --without production on windows
+gem 'unicorn'
+end
+
 group :development, :test do
   gem 'sqlite3'
   # To use debugger
-  #gem 'debugger'
+  gem 'debugger'
+  # debugger is depreciated and should be used only for ruby 1.9
+  #gem 'byebug'
+  gem 'binding_of_caller'
+  gem 'better_errors', '1.1.0'
 end
 
 # going to try not using mongoid
