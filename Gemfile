@@ -32,7 +32,7 @@ gem "cancan", "~> 1.6.9"
 
 
 
-# Deploy with Capistrano
+# Deploy with Capistrano (not needed for heroku)
 # gem 'capistrano'
 
 group :production do
@@ -55,3 +55,5 @@ end
 gem 'mongoid', '~> 3.0.0'
 gem 'andand'
 
+#performance improvements w/BSON
+# gem 'bson_ext'
