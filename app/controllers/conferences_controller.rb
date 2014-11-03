@@ -20,23 +20,50 @@ class ConferencesController < ApplicationController
   end
 
   def show
-    @conference = Conference.find(params[:id])
-    render json: @conference
+    @conference = Conference.find(params[:id]) unless @conference
+
+    respond_to do |format|
+      format.html do
+        render :show
+      end
+      format.json do
+        render json: @conference
+      end
+    end
+    
   end
 
   def new
     @conference = Conference.new
-    render json: @conference
+
+    respond_to do |format|
+      format.html do
+        render :new
+      end
+      format.json do
+        render json: @conference
+      end
+    end
   end
 
   def create
     @conference = Conference.create(params[:conference])
-
-    if @conference.save
-      render json: @conference, status: :created, location: @conference
-    else
-      render json: @conference.errors, status: :failed
+    
+    respond_to do |format|
+      format.html do
+        
+        redirect_to @conference
+      end
+      format.json do
+        if @conference.save
+          render json: @conference, status: :created, location: @conference
+        else
+          render json: @conference.errors, status: :failed
+        end
+      end
     end
+
+    
   end
 
   def update

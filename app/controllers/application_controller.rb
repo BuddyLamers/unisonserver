@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :current_person
 
   before_filter :require_user
 
@@ -18,6 +18,15 @@ class ApplicationController < ActionController::Base
         User.with_token(token)
       end
     end
+  end
+
+  def current_person
+    if current_user.person
+      current_user.person
+    else
+      
+    end
+       
   end
 
   def require_user

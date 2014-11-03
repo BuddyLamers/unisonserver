@@ -3,7 +3,8 @@
 
   <div class="authentication group">
     <% if current_user %>
-      <%= link_to "Log out, #{current_user.email}", logout_path %>
+      <%= link_to "#{current_user.email}", current_user.person %>
+      <a class="btn btn-primary btn-small" href="<%= logout_path %>">Log Out</a>
     <% else %>
       <a class="btn btn-primary btn-small" href="<%= login_path %>">Login</a>
     <% end %>

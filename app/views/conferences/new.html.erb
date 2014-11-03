@@ -1,0 +1,28 @@
+<%= form_for @conference do |f| %>
+  <%= render partial: 'layouts/form_errors', locals: {instance: @conference} %>
+
+  <fieldset>
+    <%= f.label :teacher %>
+    <%= f.collection_select :teacher, Teacher.all, :id, :name, prompt: true %>
+  </fieldset>
+  
+  <fieldset>
+    <%= f.label :student %>
+    <%= f.collection_select :student, current_person.students.all, :id, :name, prompt: true %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :subject %>
+    <%= f.collection_select :subject_id, Subject.all, :id, :name, prompt: true %>
+  </fieldset>
+  
+  
+  <fieldset>
+    <%= f.label :time %>
+    <%= f.datetime_select :time %>
+  </fieldset>
+  
+  <fieldset>
+    <%= f.submit %>
+  </fieldset>
+<% end %>

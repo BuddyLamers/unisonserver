@@ -15,7 +15,15 @@
 # REMEMBER: using criteria methods returns a criteria object
 # use User.all.to_a to return a meaningful object
 
-# need one teacher to create one admin
-Teacher.create(fname: "Example", lname: "Teacher", school: "Unison")
+# need one teacher to create one superuser
+# Teacher.create(fname: "Example", lname: "Teacher", school: "Unison")
+# my_teacher = Teacher.create(fname: "Buddy", lname: "Lamers", school: "Unison")
 
-User.create!(email: "BuddyLamers@gmail.com", password: "unison", password_confirmation: "unison", role: :admin )
+# my_user = User.create(person_id: me.id, email: "BuddyLamers@gmail.com", password: "unison", password_confirmation: "unison", role: :super )
+# my_teacher.user = User.create(email: "superuser@gmail.com", password: "unison", password_confirmation: "unison", role: :super )
+# me.user = my_user
+# my_user.person = me
+
+Student.create(fname: "Student", lname: "Number1", school: "unison")
+Subject.create(name: "Maths")
+
