@@ -1,0 +1,49 @@
+<h1>Schedule a new Session for <%= current_person.name %></h1>
+
+<form method="post" action="<%= sessions_url%>">
+
+<%= auth_token %>
+
+<!-- <label>Teacher -->
+  
+  <!-- <input name="session[:teacher]" value="<%= current_person.name %>"> -->
+<!-- </label> -->
+
+<label>Subject
+  <input name="session[:subject]">
+</label>
+
+<h4>Students</h4>
+
+<!-- optimize this -->
+  <%if current_person.students%>
+    <% current_person.students.each_with_index do |student, i|%>
+      <% @student, @i = student, i %>
+      <%= render partial: "student_checkbox" %>
+    <% end %>
+  <% end %>
+
+<label>Section (not implemented)
+  <input>
+</label>
+
+<label>Code (select if coded)
+  <input name="session[:code]">
+</label>
+
+<label>Order
+  <input name="session[:order]">
+</label>
+
+<label>Time
+  <input type="datetime" name="session[:time]">
+</label>
+
+<label>Length
+  <input name="session[:length]">
+</label>
+
+
+
+<input type="submit">
+</form>

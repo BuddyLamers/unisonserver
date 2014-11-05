@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def index
+    # will work for a student or a teacher
     person_id = params[:person_id] || params[:student_id] || params[:teacher_id]
     if person_id
       @sessions = Session.where(person_ids: {"$in" => [Moped::BSON::ObjectId(person_id)]})
@@ -9,8 +10,7 @@ class SessionsController < ApplicationController
     end
 
     respond_to do |format|
-      # index.html.erb
-      format.html
+      format.html {render :index}
       # json dump
       format.json do
         render :json => @sessions
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     @session = Session.new
 
     respond_to do |format|
-      format.html
+      format.html {render :new}
       format.json {render json: @session}
     end
   end
@@ -35,16 +35,35 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(params[:session])
 
+    @session.teacher = current_person
+    current_person.sessions << @session
+    @session.people << current_person
+
     respond_to do |format|
-      if user
-        session[:user_id] = user.id
-        format.html {redirect_to root_path, notice: "You are logged in as #{user.email}."}
+      if @session.save
+        format.html {redirect_to teacher_sessions_path(current_person), notice: "Session created"}
         format.json {render json: @session, status: :created, location: @session}
       else
-        format.html {redirect_to new_session_path, alert: "Email or password is invalid."}
-        format.json {render json: @session.errors, status: :failed}
+        format.html do
+          flash.now[:errors] += "Something went wrong"
+          render :new
+        end 
+        format.json {render json: @student.errors, status: :failed}
       end
     end
+
+    #not sure why this auth stuff was in here. perhaps accidentally confusing session and sessions
+    # respond_to do |format|
+      # if user
+        
+        # session[:user_id] = user.id
+        # format.html {redirect_to root_path, notice: "You are logged in as #{user.email}."}
+        # format.json {render json: @session, status: :created, location: @session}
+      # else
+        # format.html {redirect_to new_session_path, alert: "Email or password is invalid."}
+        # format.json {render json: @session.errors, status: :failed}
+      # end
+    # end
   end
 
   def update

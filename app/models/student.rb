@@ -1,6 +1,7 @@
 class Student < Person
   has_many :conferences
   has_and_belongs_to_many :teachers
+  has_and_belongs_to_many :class_groups
 
   field :section, type: String
 
