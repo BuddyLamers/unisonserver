@@ -1,0 +1,25 @@
+<h3><%= @student.name %></h3>
+<h4>Section <%= @student.section %></h4>
+
+<%  %>
+<h4>Has contributed to 
+  <%=  %> out of
+<%= Breach.where(person_ids: {"$in" => [@student.id]}).count %> breaches
+</h4>
+
+<h4>Has breached
+<%=  %> out of
+<%= Breach.where(person_ids: {"$in" => [@student.id]}).count %> breaches
+</h4>
+
+<h3>Teachers</h3>
+<div class="teacher-students">
+  <div class="teacher-student header"><span class="name">Name</span> <span class="count">Conferences this month</span> <span class="count">Sessions this week</span></div>
+  <% @student.teachers.each do |teacher| %>
+    <div class="teacher-student">
+      <span class="name"><a href="<%= person_url(teacher) %>"><%= teacher.name %></a></span>
+      <span class="count"><%= teacher.conferences.where(created_at: {"$gt" => 1.month.ago}, student: @student).count %></span>
+      <span class="count"><%= Session.where(created_at: {"$gt" => 1.week.ago}, student_ids: {"$in" => [@student.id]}, person_ids: {"$in" => [teacher.id]}).count %></span>
+    </div>
+  <% end %>
+</div>

@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     respond_to do |format|
-      format.html
+      format.html {render :show}
       format.json {render json: @student}
     end
   end

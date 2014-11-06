@@ -1,12 +1,16 @@
 class Student < Person
   has_many :conferences
   has_and_belongs_to_many :teachers
-  has_and_belongs_to_many :class_groups
+  has_and_belongs_to_many :sessions
 
   field :section, type: String
 
   def self.section_list
     Student.all.distinct(:section)
+  end
+
+  def breaches_breached
+    ""
   end
 
   def as_json(options)

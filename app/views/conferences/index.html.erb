@@ -1,2 +1,7 @@
 <% @title = "Conferences" %>
-<h1>Hello conferences</h1>
+<h1>Your Conferences</h1>
+
+<% @conferences.each do |conference| %>
+<%= conference.inspect %>
+  <input type="datetime" value="<%= conference.time %>">
+<% end %>

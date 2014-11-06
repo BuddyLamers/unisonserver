@@ -28,12 +28,16 @@ class BreachesController < ApplicationController
         @breach = Breach.new()
         @breach.session_id = params[:breach][:session_id]
         @breach.code_type_id = params[:breach][:code_type_id]
-
-        params[:breach][:person_ids].each do |person_id|
-          @breach.person_ids << person_id 
+        # adds all people present, even if they did not contribute
+        @breach.session.people.each do |person|
+          @breach.people << person
+          person.breaches << @breach
         end
 
-        @breach.code_ids = params[:breach][:code_ids]
+        params[:breach][:code_ids].each do |key, value|
+          @breach.code_ids << key if value == "on"
+        end
+        
 
         # initialize contributions
         params[:breach][:contributions].each_with_index do |text, i|

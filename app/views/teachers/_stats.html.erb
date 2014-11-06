@@ -17,7 +17,7 @@
   <div class="teacher-student header"><span class="name">Name</span> <span class="count">Conferences this month</span> <span class="count">Sessions this week</span></div>
   <% @teacher.students.each do |student| %>
     <div class="teacher-student">
-      <span class="name"><%= student.name %></span>
+      <span class="name"><a href="<%= person_url(student) %>"><%= student.name %></a></span>
       <span class="count"><%= student.conferences.where(created_at: {"$gt" => 1.month.ago}, teacher: @teacher).count %></span>
       <span class="count"><%= Session.where(created_at: {"$gt" => 1.week.ago}, teacher: @teacher, person_ids: {"$in" => [student.id]}).count %></span>
     </div>

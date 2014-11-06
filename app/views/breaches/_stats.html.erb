@@ -1,0 +1,23 @@
+
+
+<% people_length = breach.people.length %>
+<% contribution_total = breach.contributions.length %>
+
+<table class="table table-striped  table-condensed">
+  <tr><h5> Contribution Breakdown </h5></tr>
+  <tr>
+    <th>Person</th>
+    <th>Contribution Rate</th>
+  </tr>
+  
+
+<% breach.session.people.each do |person| %>
+<tr>
+  <% contribution_count = breach.contributions.where(person_id: person.id).count %>
+
+<td><%= person.name %></td>
+<td><%= contribution_count %>/<%= contribution_total %> : <%= contribution_count / contribution_total.to_f %>%</td>
+</tr>
+<% end %>
+  
+</table>

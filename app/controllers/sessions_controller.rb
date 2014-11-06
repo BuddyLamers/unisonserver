@@ -130,6 +130,10 @@ private
     students = Student.where(section: @session.section)
     @session.people << students
     @session.students << students
+    @session.students.each do |student|
+      # student.sessions << @session
+    end
+
     @session.subject = Subject.where(name: params["session"]["subject"]).first
     code = Code.where(name: params["session"]["code"]).first
     @session.code = code

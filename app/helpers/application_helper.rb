@@ -21,4 +21,8 @@ module ApplicationHelper
     end
     html_string.html_safe
   end
+
+  def human_time(time)
+    time.strftime("%a, %B %d %Y")
+  end
 end

@@ -1,12 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :logged_in?, :current_person
+  helper_method :current_user, :logged_in?, :current_person, :person_url
 
   before_filter :require_user
 
   def logged_in?
     current_user.present?
+  end
+
+  def person_url(person)
+    if person.class == Teacher
+      teacher_url(person)
+    else
+      student_url(person)
+    end
   end
 
   # session[:user_id] set on sessions#create.

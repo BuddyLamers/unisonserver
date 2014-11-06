@@ -12,6 +12,14 @@ class Breach
 
   field :time, type: DateTime
 
+  def breacher
+    self.contributions.first.person
+  end
+
+  def has_contributed(person)
+    
+  end
+
   def as_json(options)
     {
       id: id,
