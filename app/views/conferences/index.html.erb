@@ -1,7 +1,28 @@
 <% @title = "Conferences" %>
 <h1>Your Conferences</h1>
 
-<% @conferences.each do |conference| %>
-<%= conference.inspect %>
-  <input type="datetime" value="<%= conference.time %>">
+<% if current_person.class == Teacher %>
+  <div class="commands">
+    <%= link_to "Create a New Conference", new_conference_path %> &middot;
+  </div>
+<% end %>
+
+<% if @conferences.any? %>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+    <th>Teacher</th>
+    <th>Student</th>
+    <th>Subject</th>
+    <th>Time</th>
+    <th>Completed?</th>
+    </tr>
+  </thead>
+
+<tbody>
+    <%= render @conferences %>
+</tbody>
+
+</table>
+
 <% end %>

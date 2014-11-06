@@ -1,0 +1,11 @@
+  <tr class="clickableRow" href="<%= session_url(session) %>">
+    <td><%= conference.teacher.name  %></td>
+    <td><%= conference.student.name %></td>
+    <td><%= conference.subject.name %></td>
+    <td><%= conference.time.strftime("%a, %B %d %Y") %></td>
+    <td>
+      <% if conference.is_completed? %>
+      &#x2713;
+      <% end %>
+    </td>
+  </tr>

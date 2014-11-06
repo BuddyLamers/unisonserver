@@ -47,14 +47,26 @@ class ConferencesController < ApplicationController
   end
 
   def create
-    @conference = Conference.create(params[:conference])
+   
     
     respond_to do |format|
       format.html do
-        
+        @conference = Conference.new()
+
+        @conference.teacher_id = conference_params[:teacher]
+          @conference.student_id = conference_params[:student]
+          @conference.subject_id = conference_params[:subject_id]
+
+          datetime = DateTime.civil(conference_params["time(1i)"].to_i, conference_params["time(2i)"].to_i, conference_params["time(3i)"].to_i,
+                            conference_params["time(4i)"].to_i, conference_params["time(5i)"].to_i)
+        @conference.time = datetime
+        @conference.is_completed = false
+
+        @conference.save
         redirect_to @conference
       end
       format.json do
+         @conference = Conference.create(params[:conference])
         if @conference.save
           render json: @conference, status: :created, location: @conference
         else
@@ -105,6 +117,10 @@ private
 
     to_delete = @conference.code_scores - code_score
     to_delete.each(&:destroy)
+  end
+
+  def conference_params
+    params[:conference]
   end
 
 end
