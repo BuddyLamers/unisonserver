@@ -10,37 +10,50 @@
 <!-- </label> -->
 
 <label>Subject
-  <input name="session[:subject]">
-</label>
-
-<h4>Students</h4>
-
-<!-- optimize this -->
-  <%if current_person.students%>
-    <% current_person.students.each_with_index do |student, i|%>
-      <% @student, @i = student, i %>
-      <%= render partial: "student_checkbox" %>
-    <% end %>
-  <% end %>
-
-<label>Section (not implemented)
-  <input>
+  <select name="session[subject]">
+    <%= options_from_collection(Subject.all) %>
+    <%# Subject.all.each do |subject| %>
+      <!-- <option value="<%# subject.name %>"><%# subject.name %></option> -->
+    <%# end %>
+  </select>
 </label>
 
 <label>Code (select if coded)
-  <input name="session[:code]">
+  <select name="session[code]">
+<%= options_from_collection(Code.all) %>
+  </select>
 </label>
 
+
+<!-- if students need to be selected individually -->
+<!-- <h4>Students</h4> -->
+  <%#if current_person.students%>
+    <%# current_person.students.each_with_index do |student, i|%>
+      <%# @student, @i = student, i %>
+      <%#= render partial: "student_checkbox" %>
+    <%# end %>
+  <%# end %>
+
+<label>Section
+  <select name="session[section]">
+    <% Student.section_list.each do |item| %>
+      <option value='<%= item %>'><%= item %></option>
+    <% end %>
+  </select>
+</label>
+
+
 <label>Order
-  <input name="session[:order]">
+  <input name="session[order]">
 </label>
 
 <label>Time
-  <input type="datetime" name="session[:time]">
+  <br>
+  <%= datetime_select("session", "time") %>
 </label>
 
-<label>Length
-  <input name="session[:length]">
+<label>Length (minutes)
+  <input name="session[length]">
 </label>
 
 

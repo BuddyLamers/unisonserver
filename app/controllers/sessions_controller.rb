@@ -20,7 +20,10 @@ class SessionsController < ApplicationController
 
   def show
     @session = Session.find(params[:id])
-    render json: @session
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @session}
+    end
   end
 
   def new
@@ -33,11 +36,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @session = Session.new(params[:session])
+    # explain why "session" and not :session later
+    @session = Session.new()
+    setup_atsession
 
-    @session.teacher = current_person
-    current_person.sessions << @session
-    @session.people << current_person
+    # make helper method for use in views
+    # session_time = @session.time.to_i
+    # seconds_since_epoc += (@session.length * 60)
+    # end_time = Time.at(seconds_since_epoc).to_datetime
 
     respond_to do |format|
       if @session.save
@@ -103,6 +109,34 @@ class SessionsController < ApplicationController
   end
 
 private
+
+  def setup_atsession
+    p_s = params["session"]
+
+    datetime = DateTime.civil(p_s["time(1i)"].to_i, p_s["time(2i)"].to_i, p_s["time(3i)"].to_i,
+                            p_s["time(4i)"].to_i, p_s["time(5i)"].to_i)
+    @session.time = datetime
+
+    @session.section = params["session"]["section"]
+    @session.order = params["session"]["order"]
+    @session.length = params["session"]["length"]
+    @session.is_completed = false
+
+    @session.teacher = current_person
+    current_person.sessions << @session
+    @session.people << current_person
+    students = Student.where(section: @session.section)
+    @session.people << students
+    @session.students << students
+    @session.subject = Subject.where(name: params["session"]["subject"]).first
+    code = Code.where(name: params["session"]["code"]).first
+    @session.code = code
+    if @session.code
+      @session.is_coded = true
+    else
+      @session.is_coded = false
+    end
+  end
 
   def parse_breaches_hash(breaches_hash)
     new_breaches = []

@@ -26,4 +26,7 @@
 
 Student.create(fname: "Student", lname: "Number1", school: "unison")
 Subject.create(name: "Maths")
+Subject.create(name: "SuperScience")
+Code.create(name: "MyCode", year: 6, topic: "Comprehension", text: "MyText")
+Code.create(name: "MyCode2", year: 6, topic: "Comprehension2", text: "MyText2")
 

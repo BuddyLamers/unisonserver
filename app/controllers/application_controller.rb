@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     if current_user.person
       current_user.person
     else
-      
+      # raise exception instead of crashing program
     end
        
   end

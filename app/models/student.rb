@@ -5,6 +5,10 @@ class Student < Person
 
   field :section, type: String
 
+  def self.section_list
+    Student.all.distinct(:section)
+  end
+
   def as_json(options)
     {
       id: id,

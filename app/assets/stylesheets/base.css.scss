@@ -130,3 +130,7 @@ section.col {
   }
 }
 
+.table-hover tbody tr:hover > td {
+  cursor: pointer;
+  cursor: hand;
+}

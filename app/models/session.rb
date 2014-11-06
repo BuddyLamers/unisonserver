@@ -8,12 +8,15 @@ class Session
   has_and_belongs_to_many :people, inverse_of: nil
   belongs_to :subject
   belongs_to :teacher
+  has_and_belongs_to_many :students, inverse_of: nil
+  belongs_to :code, inverse_of: nil
 
   field :is_coded, type: Boolean
   field :is_completed, type: Boolean
   field :length, type: Integer
   field :order, type: Integer
   field :time, type: DateTime
+  field :section, type: String
 
   def as_json(options)
     {
