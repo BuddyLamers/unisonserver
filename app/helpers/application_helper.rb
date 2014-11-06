@@ -9,7 +9,7 @@ module ApplicationHelper
   def options_from_collection(collection)
     html_string = ""
     collection.each do |item|
-      html_string += " <option value='#{item.name}'>#{item.name}</option>"
+      html_string += "<option value='#{item.name}'>#{item.name}</option>"
     end
     html_string.html_safe
   end

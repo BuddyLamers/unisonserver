@@ -1,25 +1,12 @@
 <h1>Session Details</h1>
-<table class="table table-striped ">
-  <thead>
-    <tr>
-    <th>Teacher</th>
-    <th>Section</th>
-    <th>Subject</th>
-    <th>Code</th>
-    <th>Order</th>
-    <th>Time</th>
-    <th>Length</th>
-    <th>Completed?</th>
-    </tr>
-  </thead>
-
-<tbody>
-    <%= render @session %>
-</tbody>
-
-</table>
 <!-- show the info for the session -->
+<%= render partial: "details" %>
 
 <!-- show past breaches in this session -->
 
-<!-- form for creating a new breach -->
+<%= render @breaches %>
+
+<!-- form for creating a new breach IF it is not completed -->
+<% unless @session.is_completed %>
+<%= render "breaches/form" %>
+<% end %>

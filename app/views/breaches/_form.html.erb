@@ -1,0 +1,94 @@
+<form action="<%= breaches_url %>" method="post">
+  <%= auth_token %>
+
+  <label>Code Type
+    <select name="breach[code_type]">
+      <%= options_from_collection(CodeType.all) %>
+    </select>
+  </label> 
+
+Breacher:
+    <select name="breach[people][]">
+      <%= options_from_collection(@session.people) %>
+    </select>
+
+
+First Contribution:
+    <input name="breach[contributions][]">
+
+
+  <!-- <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Contributor</th>
+        <th>Contribution text</th>
+      </tr>
+    </thead> -->
+
+    <!-- <tbody>
+      <tr>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <!-- <tbody> -->
+
+  <h4>Additional Contributions</h4>
+    <div class="input_fields_wrap">
+      <button class="add_field_button">Add Fields</button>
+      <br>
+      <div>
+       <!--  <tr>
+          <td> -->
+            <select name="breach[people][]">
+              <%= options_from_collection(@session.people) %>
+            </select>
+          <!-- </td>
+          <td> -->
+            <input type="text" name="breach[contributions][]">
+          <!-- </td>
+        </tr> -->
+      </div>
+    </div>
+  <!-- </tbody> -->
+  
+  <h4>Select Specific Codes</h4>
+  <% Code.all.each do |code| %>
+    <%= render partial: "codes/checkbox", locals: {code: code} %>
+  <% end %>
+
+
+
+  <label>
+  <input type="submit" value="Close the Breach">
+  </label>
+</form>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var max_fields      = 42; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+    
+    console.log("<%= options_from_collection(@session.people).html_safe  %>");
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append("<div><select name='breach[people][]'><%= options_from_collection(@session.people) %></select> <input type='text' name='breach[contributions][]'/><a href='#'' class='remove_field'>Remove</a></div>"); //add input box
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>

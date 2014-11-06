@@ -20,6 +20,8 @@ class SessionsController < ApplicationController
 
   def show
     @session = Session.find(params[:id])
+    @breaches = @session.breaches
+    
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @session}
