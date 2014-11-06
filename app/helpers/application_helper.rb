@@ -13,4 +13,12 @@ module ApplicationHelper
     end
     html_string.html_safe
   end
+
+  def options_from_collection_with_id(collection)
+    html_string = ""
+    collection.each do |item|
+      html_string += "<option value='#{item.id}'>#{item.name}</option>"
+    end
+    html_string.html_safe
+  end
 end

@@ -23,14 +23,58 @@ class BreachesController < ApplicationController
   end
 
   def create
-    @breach = Breach.create(params[:breach])
+    respond_to do |format|
+      format.html do
+        @breach = Breach.new()
+        @breach.session_id = params[:breach][:session_id]
+        @breach.code_type_id = params[:breach][:code_type_id]
 
-    if @breach.save
-      render json: @breach, status: :created, location: @breach
-    else
-      render json: @breach.errors, status: :failed
+        params[:breach][:person_ids].each do |person_id|
+          @breach.person_ids << person_id 
+        end
+
+        @breach.code_ids = params[:breach][:code_ids]
+
+        # initialize contributions
+        params[:breach][:contributions].each_with_index do |text, i|
+           
+          new_contribution = Contribution.new(
+            text: text,
+            time: Time.now,
+            breach: @breach,
+            person_id: params[:breach][:person_ids][i]
+            )
+          if new_contribution.save
+            @breach.contribution_ids << new_contribution.id
+          else
+            # crash something
+            raise "contribution did not save"
+          end
+        end
+
+        @breach.time = Time.now
+
+
+        if @breach.save
+          redirect_to "/sessions/#{@breach.session_id}"
+        else
+          flash.now[:errors] += @breach.errors.full_messages
+          redirect_to "#{@breach.session_id}"
+        end
+
+      end
+      format.json do
+        @breach = Breach.create(params[:breach])
+        if @breach.save
+          render json: @breach, status: :created, location: @breach
+        else
+          render json: @breach.errors, status: :failed
+        end
+      end
     end
   end
+
+    
 
   def update
     @breach = Breach.find(params[:id])

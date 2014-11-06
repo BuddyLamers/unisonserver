@@ -1,15 +1,18 @@
+<h1>New Breach</h1>
 <form action="<%= breaches_url %>" method="post">
   <%= auth_token %>
 
+  <input type="hidden" name="breach[session_id]" value="<%= @session.id %>">
+
   <label>Code Type
-    <select name="breach[code_type]">
-      <%= options_from_collection(CodeType.all) %>
+    <select name="breach[code_type_id]">
+      <%= options_from_collection_with_id(CodeType.all) %>
     </select>
   </label> 
 
 Breacher:
-    <select name="breach[people][]">
-      <%= options_from_collection(@session.people) %>
+    <select name="breach[person_ids][]">
+      <%= options_from_collection_with_id(@session.people) %>
     </select>
 
 
@@ -45,8 +48,8 @@ First Contribution:
       <div>
        <!--  <tr>
           <td> -->
-            <select name="breach[people][]">
-              <%= options_from_collection(@session.people) %>
+            <select name="breach[person_ids][]">
+              <%= options_from_collection_with_id(@session.people) %>
             </select>
           <!-- </td>
           <td> -->
@@ -77,13 +80,13 @@ $(document).ready(function() {
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
     
-    console.log("<%= options_from_collection(@session.people).html_safe  %>");
+    
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div><select name='breach[people][]'><%= options_from_collection(@session.people) %></select> <input type='text' name='breach[contributions][]'/><a href='#'' class='remove_field'>Remove</a></div>"); //add input box
+            $(wrapper).append("<div><select name='breach[person_ids][]'><%= options_from_collection_with_id(@session.people) %></select> <input type='text' name='breach[contributions][]'/><a href='#'' class='remove_field'>Remove</a></div>"); //add input box
         }
     });
     
