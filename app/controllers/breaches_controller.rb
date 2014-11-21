@@ -31,7 +31,7 @@ class BreachesController < ApplicationController
         # adds all people present, even if they did not contribute
         @breach.session.people.each do |person|
           @breach.people << person
-          person.breaches << @breach
+          # person.breaches << @breach
         end
 
         params[:breach][:code_ids].each do |key, value|

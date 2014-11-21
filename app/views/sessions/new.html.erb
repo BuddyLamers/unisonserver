@@ -24,16 +24,6 @@
   </select>
 </label>
 
-
-<!-- if students need to be selected individually -->
-<!-- <h4>Students</h4> -->
-  <%#if current_person.students%>
-    <%# current_person.students.each_with_index do |student, i|%>
-      <%# @student, @i = student, i %>
-      <%#= render partial: "student_checkbox" %>
-    <%# end %>
-  <%# end %>
-
 <label>Section
   <select name="session[section]">
     <% Student.section_list.each do |item| %>
@@ -43,9 +33,21 @@
 </label>
 
 
-<label>Order
+<!-- if students need to be selected individually -->
+<h4>Students</h4>
+  <%if current_person.students%>
+    <% current_person.students.each_with_index do |student, i|%>
+      <% @student, @i = student, i %>
+      <%= render partial: "student_checkbox" %>
+    <% end %>
+  <% end %>
+
+
+
+
+<!-- <label>Order
   <input name="session[order]">
-</label>
+</label> -->
 
 <label>Time
   <br>

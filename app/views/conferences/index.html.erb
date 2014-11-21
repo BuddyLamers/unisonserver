@@ -3,7 +3,7 @@
 
 <% if current_person.class == Teacher %>
   <div class="commands">
-    <%= link_to "Create a New Conference", new_conference_path %> &middot;
+    <%= link_to "Schedule a New Conference", new_conference_path %> &middot;
   </div>
 <% end %>
 
@@ -26,3 +26,11 @@
 </table>
 
 <% end %>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+      $(".clickableRow").click(function() {
+            window.document.location = $(this).attr("href");
+      });
+});
+</script>

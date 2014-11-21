@@ -55,15 +55,15 @@
           <% end %>
 
           <% if controller_name == 'conferences' %>
-            <li class="active"><%= link_to "Conferences", codes_path %></li>
+            <li class="active"><%= link_to "My Conferences", conferences_path %></li>
           <% else %>
-            <li><%= link_to "Conferences", conferences_path %></li>
+            <li><%= link_to "My Conferences", conferences_path %></li>
           <% end %>
 
           <% if controller_name == 'sessions' %>
-            <li class="active"><%= link_to "Sessions", sessions_path %></li>
+            <li class="active"><%= link_to "My Sessions", sessions_path %></li>
           <% else %>
-            <li><%= link_to "Sessions", sessions_path %></li>
+            <li><%= link_to "My Sessions", sessions_path %></li>
           <% end %>
 
         </ul>

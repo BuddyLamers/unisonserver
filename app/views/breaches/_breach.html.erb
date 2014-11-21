@@ -1,9 +1,9 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
-    <tr><h3>Breach on <%= human_time(breach.time) %></h3> </tr>
+    <tr><h3>Breach at <%= human_time_of_day(breach.time) %></h3> </tr>
     <tr>
-        Type:   <%= breach.code_type.name %> --   
-        Codes: <% breach.codes.each do |code| %>
+        <b>Type:</b>   <%= breach.code_type.name %> --   
+        <b>Codes:</b> <% breach.codes.each do |code| %>
             <%= code.name %>, 
 
             <% end %>

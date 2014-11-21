@@ -1,0 +1,19 @@
+<h1>Conference for <%= @conference.teacher.name %> and <%= @conference.student.name %></h1>
+
+
+<%= @conference.time %>
+<%= @conference.subject %>
+
+<form action="<%= conferences_url %>" method="post">
+  <input type="hidden" method="_patch">
+<%= auth_token %>
+<label> Notes
+<input type="text" name="conference[:notes]">
+</label>
+
+<label> Completed?
+<input type="checkbox" name="conference[is_completed]">
+</label>
+
+<input type="submit">
+</form>

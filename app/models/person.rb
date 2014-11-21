@@ -13,7 +13,13 @@ class Person
   field :lname, type: String
   field :school, type: String
 
-  def name
-    "#{fname} #{lname}"
-  end
+
+def self.find_and_sort_by_ids(ids)
+  self.find(ids).sort_by{|m| ids.index(m.id) }
+end
+
+def name
+  "#{fname} #{lname}"
+end
+
 end

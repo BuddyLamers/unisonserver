@@ -13,7 +13,18 @@
   </thead>
 
 <tbody>
-    <%= render @session %>
+    <%= render @session %>       
 </tbody>
 
 </table>
+
+<div>
+<h4>Students:</h4>
+        <%@session.students.each do |student| %>
+        
+            <%= student.name %>, 
+        
+        <% end %>
+
+</div>
+

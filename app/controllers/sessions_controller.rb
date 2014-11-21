@@ -75,26 +75,36 @@ class SessionsController < ApplicationController
   end
 
   def update
-    @session = Session.realize(params[:id])
 
-    if params[:breaches]
-      parse_breaches_hash(params[:breaches])
-    end
+    respond_to do |format|
 
-    if @session.update_attributes(params[:session])
+      format.html do
+        @session = Session.find(params[:id])
+        @session.is_completed = true
+        @session.save
+        redirect_to sessions_url
+      end
 
-      if @session.teacher == nil
-        people = Person.where(_id: {"$in" => @session.person_ids})
-
-        people.each do |person|
-          @session.update_attribute :teacher_id, person.id if person._type == 'Teacher'
+      format.json do
+        @session = Session.realize(params[:id])
+        if params[:breaches]
+          parse_breaches_hash(params[:breaches])
+        end
+        if @session.update_attributes(params[:session])
+          if @session.teacher == nil
+            people = Person.where(_id: {"$in" => @session.person_ids})
+            people.each do |person|
+              @session.update_attribute :teacher_id, person.id if person._type == 'Teacher'
+            end
+          end
+          render json: @session, location: @session
+        else
+          render json: @session.errors, status: :failed
         end
       end
 
-      render json: @session, location: @session
-    else
-      render json: @session.errors, status: :failed
     end
+    
   end
 
   def delete
@@ -120,19 +130,22 @@ private
     @session.time = datetime
 
     @session.section = params["session"]["section"]
-    @session.order = params["session"]["order"]
+    # not being used
+    # @session.order = params["session"]["order"]
     @session.length = params["session"]["length"]
     @session.is_completed = false
 
     @session.teacher = current_person
     current_person.sessions << @session
     @session.people << current_person
-    students = Student.where(section: @session.section)
+    # if needing to find students by session
+    # students = Student.where(section: @session.section)
+    students = Sudent.find(p_s["students"])
     @session.people << students
     @session.students << students
-    @session.students.each do |student|
-      # student.sessions << @session
-    end
+    # @session.students.each do |student|
+    #    student.sessions << @session
+    # end
 
     @session.subject = Subject.where(name: params["session"]["subject"]).first
     code = Code.where(name: params["session"]["code"]).first

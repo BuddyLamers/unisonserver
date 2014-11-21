@@ -23,6 +23,11 @@ module ApplicationHelper
   end
 
   def human_time(time)
+    # http://apidock.com/ruby/DateTime/strftime
     time.strftime("%a, %B %d %Y")
+  end
+
+  def human_time_of_day(time)
+    time.strftime("%I:%M%P")
   end
 end

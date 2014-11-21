@@ -61,6 +61,7 @@ class ConferencesController < ApplicationController
                             conference_params["time(4i)"].to_i, conference_params["time(5i)"].to_i)
         @conference.time = datetime
         @conference.is_completed = false
+        @conference.notes = conference_params[:notes]
 
         @conference.save
         redirect_to @conference

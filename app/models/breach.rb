@@ -6,7 +6,7 @@ class Breach
 
   belongs_to :session
   belongs_to :code_type
-  has_and_belongs_to_many :people, inverse_of: nil
+  has_and_belongs_to_many :people
   has_and_belongs_to_many :codes, inverse_of: nil
   has_many :contributions
 
