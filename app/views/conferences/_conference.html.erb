@@ -3,6 +3,7 @@
     <td><%= conference.student.name %></td>
     <td><%= conference.subject.name %></td>
     <td><%= conference.time.strftime("%a, %B %d %Y") %></td>
+    <td><%= conference.notes %></td>
     <td>
       <% if conference.is_completed? %>
       &#x2713;

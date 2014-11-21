@@ -22,6 +22,14 @@ module ApplicationHelper
     html_string.html_safe
   end
 
+  def options_from_collection_codes(collection)
+    html_string = ""
+    collection.each do |item|
+      html_string += "<option value='#{item.id}'>#{item.text}</option>"
+    end
+    html_string.html_safe
+  end
+
   def human_time(time)
     # http://apidock.com/ruby/DateTime/strftime
     time.strftime("%a, %B %d %Y")

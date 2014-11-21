@@ -43,7 +43,7 @@ First Contribution:
 
   <h4>Additional Contributions</h4>
     <div class="input_fields_wrap">
-      <button class="add_field_button">Add Another Blank</button>
+      <button class="add_field_button btn btn-primary btn-primary">Add Another Blank</button>
       <br>
       <div>
        <!--  <tr>
@@ -61,14 +61,16 @@ First Contribution:
   <!-- </tbody> -->
   
   <h4>Select Specific Codes</h4>
-  <% Code.all.each do |code| %>
+  <ul>
+  <% @session.subject.codes.each do |code| %>
     <%= render partial: "codes/checkbox", locals: {code: code} %>
   <% end %>
+  </ul>
 
 
 
   <label>
-  <input type="submit" value="Close the Breach">
+  <input type="submit" class="btn btn-lg btn-success" value="Close the Breach">
   </label>
 </form>
 

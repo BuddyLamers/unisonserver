@@ -1,4 +1,13 @@
-<h1>Session on <%= human_time(@session.time) %></h1>
+<h1>Session on <%= human_time(@session.time) %> 
+
+
+<%= form_tag session_path(@session), method: 'put' do -%>
+<%= hidden_field_tag :completed, true -%>
+<%= submit_tag 'Complete the Session', class: "btn btn-lg btn-success" -%>
+<% end %>
+
+</h1>
+
 <!-- show the info for the session -->
 <%= render partial: "details" %>
 
@@ -6,6 +15,8 @@
 
 <!-- form for creating a new breach IF it is not completed -->
 <% unless @session.is_completed %>
+
+
 
 <table class="table table-bordered">
   <tr>
@@ -22,10 +33,6 @@
   </tr>
 </table>
 
-<%= form_tag session_path(@session), method: 'put' do -%>
-<%= hidden_field_tag :completed, true -%>
-<%= submit_tag 'Complete the Session' -%>
-<%- end -%>
 
 
 <% else %>
@@ -39,9 +46,9 @@
 
 <script type="text/javascript">
 
- $(document).scroll(function(){
-        $('.thisone').css('position','');
-        top = $('.thisone').offset().top;
-      $('.thisone').css('position','absolute');   $('.thisone').css('top',Math.max(top,$(document).scrollTop()));
-    });
+ // $(document).scroll(function(){
+ //        $('.thisone').css('position','');
+ //        top = $('.thisone').offset().top;
+ //      $('.thisone').css('position','absolute');   $('.thisone').css('top',Math.max(top,$(document).scrollTop()));
+ //    });
 </script>
