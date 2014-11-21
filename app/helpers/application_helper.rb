@@ -25,7 +25,8 @@ module ApplicationHelper
   def options_from_collection_codes(collection)
     html_string = ""
     collection.each do |item|
-      html_string += "<option value='#{item.id}'>#{item.text}</option>"
+    # some codes contain mathematical notiation /n : so gsub to escape
+      html_string += "<option value='#{item.id}'>#{item.text.gsub("\n", "\\n")}</option>"
     end
     html_string.html_safe
   end
@@ -37,5 +38,9 @@ module ApplicationHelper
 
   def human_time_of_day(time)
     time.strftime("%I:%M%P")
+  end
+
+  def human_time_full_datetime(time)
+    time.strftime("%a, %B %d %Y") + " " + time.strftime("%I:%M%P")
   end
 end

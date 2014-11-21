@@ -2,11 +2,14 @@
     <td><%= conference.teacher.name  %></td>
     <td><%= conference.student.name %></td>
     <td><%= conference.subject.name %></td>
-    <td><%= conference.time.strftime("%a, %B %d %Y") %></td>
+    <td><%= human_time_full_datetime(conference.time) %></td>
     <td><%= conference.notes %></td>
     <td>
       <% if conference.is_completed? %>
       &#x2713;
       <% end %>
     </td>
+  </tr>
+  <tr>
+    <%= conference.notes %>
   </tr>
