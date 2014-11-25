@@ -92,7 +92,8 @@ class ConferencesController < ApplicationController
             score: pcs[:scores][i],
             comment: pcs[:comments][i],
             code: Code.find(pcs[:codes][i]),
-            conference: @conference).save!
+            conference: @conference,
+            student: @conference.student).save
         end
 
         @conference.is_completed = true

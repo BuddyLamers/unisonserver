@@ -8,6 +8,7 @@ class CodeScore
 
   belongs_to :conference
   belongs_to :code
+  belongs_to :student
 
   field :comment, type: String
   field :score, type: Integer
