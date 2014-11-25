@@ -25,10 +25,10 @@ module ApplicationHelper
   def options_from_collection_codes(collection)
     html_string = ""
     collection.each do |item|
-    # some codes contain mathematical notiation /n : so gsub to escape
-      html_string += "<option value='#{item.id}'>#{item.text.gsub("\n", "\\n")}</option>"
+      html_string += "<option class='code-option' value='#{item.id}'>#{item.name}: #{item.text}</option>"
     end
-    html_string.html_safe
+    # some codes in math contain \n : so gsub to escape
+    html_string.gsub("\n", "\\n").html_safe
   end
 
   def human_time(time)

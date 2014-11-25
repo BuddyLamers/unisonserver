@@ -6,46 +6,63 @@
 
 <% unless @conference.is_completed %>
 
+<form action="<%= conference_url(@conference) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="put">
 
-<h4>Additional Comments</h4>
+<h4>Code Scores and Comments</h4>
     <div class="input_fields_wrap">
-      <button class="add_field_button">Add Another Blank</button>
+      <button class="add_field_button btn btn-primary btn-primary">Add Another Score</button>
       <br>
       <div>
-            <select name="conference[code_scores][notions][]">
+            <select name="code_scores[notions][]">
               <option value="strength">Strength</option>
               <option value="weakness">Weakness</option>
               <option value="goal">Goal</option>
             </select>
-            <select name="conference[code_scores][codes][]">
+            <select name="code_scores[codes][]">
+              <optgroup class="code-options">
               <%= options_from_collection_codes(@conference.subject.codes) %>
+              </optgroup>
             </select>
+            <input type="text" name="code_scores[scores][]" placeholder="Score, out of 4">
             
-            <input type="text" name="conference[code_scores][comments][]">
+            <input type="text" name="code_scores[comments][]" placeholder="Comment">
       </div>
     </div>
 
-<%= form_tag conference_path(@conference), method: 'put' do -%>
-<%= hidden_field_tag :completed, true -%>
-<%= submit_tag 'Complete the Conference' -%>
-<% end %>
+    <input type="hidden" name="conference[is_completed]" value="true">
+    <input type="submit" class="btn btn-lg btn-success" value="Save Scores">
 
+<% else %>
+<h2>Code Scores and Comments</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Notion</th>
+        <th>Code</th>
+        <th>Score</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <%= render @conference.code_scores %>
+  </table>
+  
 <% end %>
 
 
 <script type="text/javascript">
 $(document).ready(function() {
-    var max_fields      = 42; //maximum input boxes allowed
+    var max_fields      = 42; //maximum input boxes allowed. Arbitrary number.
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
-    console.log("<%= options_from_collection_codes(@conference.subject.codes) %>")
     
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div><select name='conference[code_scores][notions][]'><option value='strength'>Strength</option><option value='weakness'>Weakness</option><option value='goal'>Goal</option></select><select name='conference[code_scores][codes][]'><%= options_from_collection_codes(@conference.subject.codes) %></select> <input type='text' name='conference[code_scores][comments][]'/><a href='#' class='remove_field'>Remove</a></div>"); //add input box
+            $(wrapper).append("<div><select name='code_scores[notions][]'><option value='strength'>Strength</option><option value='weakness'>Weakness</option><option value='goal'>Goal</option> </select><select name='code_scores[codes][]'><optgroup class='code-options'><%= options_from_collection_codes(@conference.subject.codes) %></optgroup></select> <input type='text' name='code_scores[scores][]' placeholder='Score, out of 4'/> <input type='text' name='code_scores[comments][]' placeholder='Comment'/><a href='#' class='remove_field'>Remove</a></div>"); //add input box
         }
     });
     

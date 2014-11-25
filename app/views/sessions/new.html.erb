@@ -20,6 +20,7 @@
 
 <label>Code (select if coded)
   <select name="session[code]">
+    <option value="" disabled selected>Select if Coded</option>
 <%= options_from_collection(Code.all) %>
   </select>
 </label>

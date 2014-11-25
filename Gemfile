@@ -49,6 +49,8 @@ group :development, :test do
   #gem 'byebug'
   gem 'binding_of_caller'
   gem 'better_errors', '1.1.0'
+  # for use with rails_panel
+  gem 'meta_request'
 end
 
 # going to try not using mongoid

@@ -82,14 +82,38 @@ class ConferencesController < ApplicationController
   def update
     @conference = Conference.realize(params[:id])
 
-    if params[:code_scores]
-      parse_code_scores_hash(params[:code_scores])
-    end
+    respond_to do |format|
 
-    if @conference.update_attributes(params[:conference])
-      render json: @conference, location: @conference
-    else
-      render json: @conference.errors, status: :failed
+      format.html do
+        pcs = params[:code_scores]
+        pcs[:notions].length.times do |i|
+          code_score = CodeScore.new(
+            notion: pcs[:notions][i],
+            score: pcs[:scores][i],
+            comment: pcs[:comments][i],
+            code: Code.find(pcs[:codes][i]),
+            conference: @conference).save!
+        end
+
+        @conference.is_completed = true
+          if @conference.save
+            redirect_to @conference
+          else
+
+          end
+      end
+
+      format.json do
+        if params[:code_scores]
+          parse_code_scores_hash(params[:code_scores])
+        end
+
+        if @conference.update_attributes(params[:conference])
+          render json: @conference, location: @conference
+        else
+          render json: @conference.errors, status: :failed
+        end
+      end
     end
   end
 
