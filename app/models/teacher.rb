@@ -2,7 +2,7 @@ class Teacher < Person
 
   has_many :conferences
   has_many :sessions
-  has_and_belongs_to_many :students
+  has_and_belongs_to_many :students, order: :section.asc
   has_many :class_groups
 
   def as_json(options)

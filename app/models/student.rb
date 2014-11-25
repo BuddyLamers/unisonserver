@@ -11,7 +11,11 @@ class Student < Person
   end
 
   def breaches_breached
-    ""
+    breached = 0
+    self.breaches.each do |breach|
+      breached += 1 if breach.contributions[0].student == self
+    end
+    breached
   end
 
   def as_json(options)

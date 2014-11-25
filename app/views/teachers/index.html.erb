@@ -21,7 +21,7 @@
 </div>
 
 <% if @teachers.any? %>
-  <table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
         <th>Email</th>
@@ -36,7 +36,7 @@
 
     <tbody>
       <% @teachers.each do |teacher| %>
-        <tr>
+        <tr class="clickableRow" href="<%= teacher_url(teacher) %>">
           <td><%= teacher.user.andand.email %></td>
           <td><%= teacher.user.andand.role %></td>
           <td><%= teacher.fname %></td>
@@ -64,3 +64,10 @@
    <p>No teachers at the moment.</p>
  <% end %>
 
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+      $(".clickableRow").click(function() {
+            window.document.location = $(this).attr("href");
+      });
+});
+</script>

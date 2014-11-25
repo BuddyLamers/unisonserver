@@ -4,7 +4,7 @@ class Session
   include Mongoid::Paranoia
   include Mongoid::Realization
 
-  has_many :breaches
+  has_many :breaches, order: :created_at.asc
   has_and_belongs_to_many :people, inverse_of: nil
   belongs_to :subject
   belongs_to :teacher
