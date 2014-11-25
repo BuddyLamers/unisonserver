@@ -1,7 +1,7 @@
   <tr class="clickableRow" href="<%= session_url(session) %>">
     <td><%= session.teacher.name  %></td>
     <td><%= session.section %></td>
-    <td><%= session.subject.name %></td>
+    <td><%= session.subject.andand.name %></td>
     <td><%= session.code.andand.name %></td>
     <td><%= session.order %></td>
     <td><%= session.time.strftime("%a, %B %d %Y") %></td>

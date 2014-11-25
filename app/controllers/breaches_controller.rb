@@ -34,7 +34,7 @@ class BreachesController < ApplicationController
           # person.breaches << @breach
         end
 
-        params[:breach][:code_ids].each do |key, value|
+        params[:breach][:code_ids].andand.each do |key, value|
           @breach.code_ids << key if value == "on"
         end
         

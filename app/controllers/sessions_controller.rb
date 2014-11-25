@@ -140,9 +140,13 @@ private
     @session.people << current_person
     # if needing to find students by session
     # students = Student.where(section: @session.section)
-    students = Sudent.find(p_s["students"])
-    @session.people << students
-    @session.students << students
+
+    p_s["students"].each do |student_option|
+      if student_option[1] == "on"
+        @session.person_ids << student_option[0]
+        @session.student_ids << student_option[0]
+      end
+    end
     # @session.students.each do |student|
     #    student.sessions << @session
     # end
