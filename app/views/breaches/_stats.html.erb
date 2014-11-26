@@ -16,7 +16,7 @@
   <% contribution_count = breach.contributions.where(person_id: person.id).count %>
 
 <td><%= person.name %></td>
-<td><%= contribution_count %>/<%= contribution_total %> : <%= contribution_count / contribution_total.to_f %>%</td>
+<td><%= contribution_count %>/<%= contribution_total %> : <%= contribution_count / contribution_total.to_f * 100 %>%</td>
 </tr>
 <% end %>
   
