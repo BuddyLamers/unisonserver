@@ -17,15 +17,14 @@
 
 # need one teacher to create one superuser
 # Teacher.create(fname: "Example", lname: "Teacher", school: "Unison")
-# my_teacher = Teacher.create(fname: "Buddy", lname: "Lamers", school: "Unison")
+my_teacher = Teacher.create(fname: "Buddy", lname: "Lamers", school: "Unison")
 
-# my_user = User.create(person_id: me.id, email: "BuddyLamers@gmail.com", password: "unison", password_confirmation: "unison", role: :super )
+my_user = User.create(person_id: my_teacher.id, email: "BuddyLamers@gmail.com", password: "unison", password_confirmation: "unison", role: :super )
 # my_teacher.user = User.create(email: "superuser@gmail.com", password: "unison", password_confirmation: "unison", role: :super )
 # me.user = my_user
 # my_user.person = me
 
 Student.create(fname: "Student", lname: "Number1", school: "unison")
-Subject.create(name: "Maths")
 Subject.create(name: "SuperScience")
 Code.create(name: "MyCode", year: 6, topic: "Comprehension", text: "MyText")
 Code.create(name: "MyCode2", year: 6, topic: "Comprehension2", text: "MyText2")
