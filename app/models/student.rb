@@ -10,36 +10,16 @@ class Student < Person
     Student.all.distinct(:section)
   end
 
-  def breaches_breached
-    breached = 0
-    self.breaches.each do |breach|
-      breached += 1 if breach.contributions[0].person == self
+  def code_types_counts
+    breach_types = {}
+    CodeType.each do |type|
+      breach_types[type.name] = 0
     end
-    breached
-  end
-
-  def breaches_contributed
-    # contributed = 0
-    # contributions = self.contributions
-    # self.breaches.includes(:contribution).each do |breach|
-    #    contributions.each do |contribution|
-    #     if condition
-          
-    #     end
-    #   end
-    # end
-
-    count = 0
-    breaches = self.breaches.includes(:contributions)
-    self.contributions.each do |contribution|
-      breaches.each do |breach|
-        if breach.contributions.include?(contribution)
-          count += 1
-          next
-        end
-      end
+    self.breaches.includes(:code_type).each do |breach|
+      current_type = breach.code_type.name
+      breach_types[current_type] += 1
     end
-    count
+    breach_types
   end
     
 

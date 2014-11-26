@@ -18,6 +18,28 @@ def self.find_and_sort_by_ids(ids)
   self.find(ids).sort_by{|m| ids.index(m.id) }
 end
 
+def breaches_breached
+    breached = 0
+    self.breaches.each do |breach|
+      breached += 1 if breach.contributions[0].person == self
+    end
+    breached
+  end
+
+  def breaches_contributed
+    count = 0
+    breaches = self.breaches.includes(:contributions)
+    self.contributions.each do |contribution|
+      breaches.each do |breach|
+        if breach.contributions.include?(contribution)
+          count += 1
+          next
+        end
+      end
+    end
+    count
+  end
+
 def name
   "#{fname} #{lname}"
 end

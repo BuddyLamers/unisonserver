@@ -1,19 +1,29 @@
 <h3><%= @student.name %></h3>
+
 <h4>Section <%= @student.section %></h4>
+
 <% breach_count = Breach.where(person_ids: {"$in" => [@student.id]}).count %>
+
+<% breached = @student.breaches_breached %>
+<% contributed = @student.breaches_contributed %>
 <h4>Has contributed to 
-  <%= @student.breaches_contributed %> out of
-<%= breach_count %> breaches
+  <%= contributed %> out of
+<%= breach_count %> breaches. (<%= (contributed/ breach_count).to_f * 100 %>%)
 </h4>
 
 <h4>Has breached
-<%= @student.breaches_breached %> out of
-<%= breach_count %> breaches
+<%= breached %> out of
+<%= breach_count %> breaches. (<%= (breached / breach_count).to_f * 100 %>%)
 </h4>
+
+
+<% @student.code_types_counts.each do |k, v| %>
+<div><%=k  %> : <%= v %></div>
+<% end %>
 
 <h3>Teachers</h3>
 <div class="teacher-students">
-  <div class="teacher-student header"><span class="name">Name</span> <span class="count">Conferences this month</span> <span class="count">Sessions this week</span></div>
+  <div class="teacher-student header"><span class="name">Name</span> <span class="count">Conferences last 30 days</span> <span class="count">Sessions last 7 days</span></div>
   <% @student.teachers.each do |teacher| %>
     <div class="teacher-student">
       <span class="name"><a href="<%= person_url(teacher) %>"><%= teacher.name %></a></span>
