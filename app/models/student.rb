@@ -13,10 +13,35 @@ class Student < Person
   def breaches_breached
     breached = 0
     self.breaches.each do |breach|
-      breached += 1 if breach.contributions[0].student == self
+      breached += 1 if breach.contributions[0].person == self
     end
     breached
   end
+
+  def breaches_contributed
+    # contributed = 0
+    # contributions = self.contributions
+    # self.breaches.includes(:contribution).each do |breach|
+    #    contributions.each do |contribution|
+    #     if condition
+          
+    #     end
+    #   end
+    # end
+
+    count = 0
+    breaches = self.breaches.includes(:contributions)
+    self.contributions.each do |contribution|
+      breaches.each do |breach|
+        if breach.contributions.include?(contribution)
+          count += 1
+          next
+        end
+      end
+    end
+    count
+  end
+    
 
   def as_json(options)
     {

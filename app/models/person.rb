@@ -5,7 +5,7 @@ class Person
   include Mongoid::Realization
 
   has_one :user
-  has_many :breaches
+  has_and_belongs_to_many :breaches, inverse_of: :people, class_name: 'Breach', foreign_key: :breach_ids
   has_many :sessions
   has_many :contributions
 

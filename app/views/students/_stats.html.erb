@@ -1,14 +1,14 @@
 <h3><%= @student.name %></h3>
 <h4>Section <%= @student.section %></h4>
-
+<% breach_count = Breach.where(person_ids: {"$in" => [@student.id]}).count %>
 <h4>Has contributed to 
-  <%=  %> out of
-<%= Breach.where(person_ids: {"$in" => [@student.id]}).count %> breaches
+  <%= @student.breaches_contributed %> out of
+<%= breach_count %> breaches
 </h4>
 
 <h4>Has breached
 <%= @student.breaches_breached %> out of
-<%= Breach.where(person_ids: {"$in" => [@student.id]}).count %> breaches
+<%= breach_count %> breaches
 </h4>
 
 <h3>Teachers</h3>
