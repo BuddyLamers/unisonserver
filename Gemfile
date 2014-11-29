@@ -38,7 +38,7 @@ gem "cancan", "~> 1.6.9"
 group :production do
 # Use unicorn as the app server
 # remember to bundle install --without production on windows
-gem 'unicorn'
+# gem 'unicorn'
 end
 
 group :development, :test do
@@ -53,13 +53,20 @@ group :development, :test do
   gem 'meta_request'
 end
 
+gem 'mongo'
+# gem 'heroku'
+gem 'bson'
+
 # going to try not using mongoid
 gem 'mongoid', '~> 3.0.0'
 gem 'andand'
+
+gem 'figaro', '~> 1.0'
 
 # not being used
 # gem 'momentjs-rails', '>= 2.8.1'
 # gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 
 #performance improvements w/BSON
+# (has issues with windows)., need to #include <Winsock2.h>
 # gem 'bson_ext'
