@@ -38,7 +38,7 @@ gem "cancan", "~> 1.6.9"
 group :production do
 # Use unicorn as the app server
 # remember to bundle install --without production on windows
-gem 'unicorn'
+# gem 'unicorn'
 end
 
 group :development, :test do
