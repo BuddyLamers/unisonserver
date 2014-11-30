@@ -18,12 +18,12 @@
 <% contributed = @teacher.breaches_contributed %>
 <h4>Has contributed to 
   <%= contributed %> out of
-<%= breach_count %> breaches. (<%= (contributed/ breach_count).to_f * 100 %>%)
+<%= breach_count %> breaches. (<%= (contributed/ (breach_count.nonzero? || 1)).to_f * 100 %>%)
 </h4>
 
 <h4>Has breached
 <%= breached %> out of
-<%= breach_count %> breaches. (<%= (breached / breach_count).to_f * 100 %>%)
+<%= breach_count %> breaches. (<%= (breached / (breach_count.nonzero? || 1)).to_f * 100 %>%)
 </h4>
 
 <h3>Students</h3>

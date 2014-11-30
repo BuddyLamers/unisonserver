@@ -38,8 +38,6 @@ my_teacher.students << Student.create(fname: "Fred", lname: "Student4", school: 
 
 
 
-
-
 # Subject.create(name: "SuperScience")
 # Code.create(name: "MyCode", year: 6, topic: "Comprehension", text: "MyText")
 # Code.create(name: "MyCode2", year: 6, topic: "Comprehension2", text: "MyText2")
