@@ -20,12 +20,27 @@
 # my_teacher = Teacher.create(fname: "Buddy", lname: "Lamers", school: "Unison")
 
 # my_user = User.create(person_id: me.id, email: "BuddyLamers@gmail.com", password: "unison", password_confirmation: "unison", role: :super )
-User.create(email: "superuser@gmail.com", password: "unison", password_confirmation: "unison", role: :super )
+User.create(email: "superuser@example.com", password: "unison", password_confirmation: "unison", role: :super )
 # me.user = my_user
 # my_user.person = me
+my_teacher = Teacher.create(fname: "Buddy", lname: "Lamers", school: "unison")
 
-Student.create(fname: "Student", lname: "Number1", school: "unison")
-Subject.create(name: "SuperScience")
-Code.create(name: "MyCode", year: 6, topic: "Comprehension", text: "MyText")
-Code.create(name: "MyCode2", year: 6, topic: "Comprehension2", text: "MyText2")
+
+my_teacher.students << Student.create(fname: "George", lname: "Student1", school: "unison", section: "502")
+my_teacher.students << Student.create(fname: "Stephanie", lname: "Student2", school: "unison", section: "502")
+my_teacher.students << Student.create(fname: "Ann", lname: "Student3", school: "unison", section: "601")
+my_teacher.students << Student.create(fname: "Fred", lname: "Student4", school: "unison", section: "601")
+
+
+# add some conferences here
+
+# add some sessions here
+
+
+
+
+
+# Subject.create(name: "SuperScience")
+# Code.create(name: "MyCode", year: 6, topic: "Comprehension", text: "MyText")
+# Code.create(name: "MyCode2", year: 6, topic: "Comprehension2", text: "MyText2")
 
