@@ -41,7 +41,7 @@
       <% @codes.each do |code| %>
         <tr>
           <td><%= code.subject.andand.name %></td>
-          <td><b><%= code.name %></b></td>
+          <td><b><%= code.name %>: <%= code.text %></b></td>
           <td><%= code.year %></td>
           <td><%= code.code_type.andand.name %></td>
           <% if current_user.can_use_admin? %>
