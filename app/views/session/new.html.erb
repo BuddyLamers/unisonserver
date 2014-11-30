@@ -1,3 +1,12 @@
+<form action="<%= session_auth_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="email" value="BuddyLamers@gmail.com">
+  <input type="hidden" name="password" value="unison">
+  <input type="submit" value="Demo as Buddy Lamers" class="btn btn-lg btn-success">
+</form>
+
+<p>Or log in:</p>
+
 <%= form_tag session_auth_path do %>
 
 	<fieldset>
@@ -14,3 +23,5 @@
 		<%= submit_tag "Login", class: "btn" %>
 	</fieldset>
 <% end %>
+
+
