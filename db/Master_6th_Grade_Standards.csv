@@ -1,0 +1,144 @@
+Subject,Code,Code Description,Year,Code Type
+Math,6.RP.1,Understand the concept of a ratio and use ratio language to describe a ratio relationship between two quantities.,6,Ratios & Proportional Relationships
+Math,6.RP.2,"Understand the concept of a unit rate a/b associated with a ratio a:b with b ≠ 0, and use rate language in the context of a ratio relationship.",6,Ratios & Proportional Relationships
+Math,6.RP.3,"Use ratio and rate reasoning to solve real-world and mathematical problems, e.g., by reasoning about tables of equivalent ratios, tape diagrams, double number line diagrams, or equations.",6,Ratios & Proportional Relationships
+Math,6.NS.1," Interpret and compute quotients of fractions, and solve word problems involving division of fractions by fractions, e.g., by using visual fraction models and equations to represent the problem. ",6,The Number System
+Math,6.NS.2,Fluently divide multi-digit numbers using the standard algorithm.,6,The Number System
+Math,6.NS.3,"Fluently add, subtract, multiply, and divide multi-digit decimals using the standard algorithm for each operation.",6,The Number System
+Math,6.NS.4,Find the greatest common factor of two whole numbers less than or equal to 100 and the least common multiple of two whole numbers less than or equal to 12. Use the distributive property to express a sum of two whole numbers 1–100 with a common factor as a multiple of a sum of two whole numbers with no common factor.,6,The Number System
+Math,6.NS.5,"Understand that positive and negative numbers are used together to describe quantities having opposite directions or values (e.g., temperature above/below zero, elevation above/below sea level, credits/debits, positive/negative electric charge); use positive and negative numbers to represent quantities in real-world contexts, explaining the meaning of 0 in each situation.",6,The Number System
+Math,6.NS.6,Understand a rational number as a point on the number line. Extend number line diagrams and coordinate axes familiar from previous grades to represent points on the line and in the plane with negative number coordinates. ,6,The Number System
+Math,6.NS.7,Understand ordering and absolute value of rational numbers.,6,The Number System
+Math,6.NS.8,Solve real-world and mathematical problems by graphing points in all four quadrants of the coordinate plane. Include use of coordinates and absolute value to find distances between points with the same first coordinate or the same second coordinate.,6,The Number System
+Math,6.EE.1,Write and evaluate numerical expressions involving whole-number exponents.,6,Expressions & Equations
+Math,6.EE.2,"Write, read, and evaluate expressions in which letters stand for numbers.",6,Expressions & Equations
+Math,6.EE.3,Apply the properties of operations to generate equivalent expressions. ,6,Expressions & Equations
+Math,6.EE.4,Identify when two expressions are equivalent,6,Expressions & Equations
+Math,6.EE.5,"Understand solving an equation or inequality as a process of answering a question: which values from a specified set, if any, make the equation or inequality true? Use substitution to determine whether a given number in a specified set makes an equation or inequality true.",6,Expressions & Equations
+Math,6.EE.6,"Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.",6,Expressions & Equations
+Math,6.EE.7,"Solve real-world and mathematical problems by writing and solving equations of the form x + p = q and px = q for cases in which p, q and x are all nonnegative rational numbers.",6,Expressions & Equations
+Math,6.EE.8,Write an inequality of the form x > c or x < c to represent a constraint or condition in a real-world or mathematical problem. Recognize that inequalities of the form x > c or x < c have infinitely many solutions; represent solutions of such inequalities on number line diagrams.Write an inequality of the form x > c or x < c to represent a constraint or condition in a real-world or mathematical problem. ,6,Expressions & Equations
+Math,6.EE.9,"Use variables to represent two quantities in a real-world problem that change in relationship to one another; write an equation to express one quantity, thought of as the dependent variable, in terms of the other quantity, thought of as the independent variable. Analyze the relationship between the dependent and independent variables using graphs and tables, and relate these to the equation. For example, in a problem involving motion at constant speed, list and graph ordered pairs of distances and times, and write the equation d = 65t to represent the relationship between distance and time.",6,Expressions & Equations
+Math,6.G.1,"Find the area of right triangles, other triangles, special quadrilaterals, and polygons by composing into rectangles or decomposing into triangles and other shapes; apply these techniques in the context of solving real-world and mathematical problems.",6,Geometry
+Math,6.G.2,"Find the volume of a right rectangular prism with fractional edge lengths by packing it with unit cubes of the appropriate unit fraction edge lengths, and show that the volume is the same as would be found by multiplying the edge lengths of the prism. Apply the formulas V = l w h and V = b h to find volumes of right rectangular prisms with fractional edge lengths in the context of solving real-world and mathematical problems.",6,Geometry
+Math,6.G.3,Draw polygons in the coordinate plane given coordinates for the vertices; use coordinates to find the length of a side joining points with the same first coordinate or the same second coordinate. Apply these techniques in the context of solving real-world and mathematical problems.,6,Geometry
+Math,6.G.4,"Represent three-dimensional figures using nets made up of rectangles and triangles, and use the nets to find the surface area of these figures. Apply these techniques in the context of solving real-world and mathematical problems.",6,Geometry
+Math,6.SP.1,Recognize a statistical question as one that anticipates variability in the data related to the question and accounts for it in the answers.,6,Statistics & Probability
+Math,6.SP.2,"Understand that a set of data collected to answer a statistical question has a distribution which can be described by its center, spread, and overall shape.",6,Statistics & Probability
+Math,6.SP.3,"Recognize that a measure of center for a numerical data set summarizes all of its values with a single number, while a measure of variation describes how its values vary with a single number.",6,Statistics & Probability
+Math,6.SP.4,"Display numerical data in plots on a number line, including dot plots, histograms, and box plots.",6,Statistics & Probability
+Math,6.SP.5,Summarize numerical data sets in relation to their context,6,Statistics & Probability
+Science,RST.6.1,Cite specific textual evidence to support analysis of science and technical texts.,6,Key Ideas and Details
+Science,RST.6.2,Determine the central ideas or conclusions of a text; provide an accurate summary of the text distinct from prior knowledge or opinions.,6,Key Ideas and Details
+Science,RST.6.3,"Follow precisely a multistep procedure when carrying out experiments, taking measurements, or performing technical tasks.",6,Key Ideas and Details
+Science,RST.6-8.4,"Determine the meaning of symbols, key terms, and other domain-specific words and phrases as they are used in a specific scientific or technical context relevant to grades 6–8 texts and topics.",6,Craft & Structure
+Science,RST.6.5," Analyze the structure an author uses to organize a text, including how the major sections contribute to the whole and to an understanding of the topic.",6,Craft & Structure
+Science,RST.6.6,"Analyze the author’s purpose in providing an explanation, describing a procedure, or discussing an experiment in a text.",6,Craft & Structure
+Science,RST.6.7,"Integrate quantitative or technical information expressed in words in a text with a version of that information expressed visually (e.g., in a flowchart, diagram, model, graph, or table).",6,Integration of Knowledge and Ideas
+Science,RST.6.8,"Distinguish among facts, reasoned judgment based on research findings, and speculation in a text.",6,Integration of Knowledge and Ideas
+Science,RST.6.9,"Compare and contrast the information gained from experiments, simulations, video, or multimedia sources with that gained from reading a text on the same topic.",6,Integration of Knowledge and Ideas
+Science,RST.6.10,"By the end of grade 8, read and comprehend science/technical texts in the grades 6–8 text complexity band independently and proficiently.",6,Range of Reading and Level of Text Complexity
+Reading,SL.6.1,"Engage effectively in a range of collaborative discussions (one-on-one, in groups, and teacher-led) with diverse partners on grade 6 topics, texts, and issues, building on others’ ideas and expressing their own clearly.",6,Speaking & Listening
+Reading,SL.6.1a,"Come to discussions prepared, having read or studied required material; explicitly draw on that preparation by referring to evidence on the topic, text, or issue to probe and reflect on ideas under discussion.",6,Speaking & Listening
+Reading,SL.6.1b,"Follow rules for collegial discussions, set specific goals and deadlines, and define individual roles as needed.",6,Speaking & Listening
+Reading,SL.6.1c,"Pose and respond to specific questions with elaboration and detail by making comments that contribute to the topic, text, or issue under discussion.",6,Speaking & Listening
+Reading,SL.6.2. ,"Interpret information presented in diverse media and formats (e.g., visually, quantitatively, orally) and explain how it contributes to a topic, text, or issue under study.",6,Speaking & Listening
+Reading,SL.6.3. ,"Delineate a speaker’s argument and specific claims, distinguishing claims that are supported by reasons and evidence from claims that are not.",6,Speaking & Listening
+Reading,RL.6.1,Cite textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text.,6,Key Ideas and Details
+Reading,RL.6.2,Determine a theme or central idea of a text and how it is conveyed through particular details; provide a summary of the text distinct from personal opinions or judgments.,6,Key Ideas and Details
+Reading,RL.6.3,Describe how a particular story’s or drama’s plot unfolds in a series of episodes as well as how the characters respond or change as the plot moves toward a resolution.,6,Key Ideas and Details
+Reading,RL.6.4,"Determine the meaning of words and phrases as they are used in a text, including figurative and connotative meanings; analyze the impact of a specific word choice on meaning and tone",6,Craft and Structure
+Reading,RL.6.5,"Analyze how a particular sentence, chapter, scene, or stanza fits into the overall structure of a text and contributes to the development of the theme, setting, or plot.",6,Craft and Structure
+Reading,RL.6.6,Explain how an author develops the point of view of the narrator or speaker in a text.,6,Craft and Structure
+Reading,RL.6.7,"Compare and contrast the experience of reading a story, drama, or poem to listening to or viewing an audio, video, or live version of the text, including contrasting what they “see” and “hear” when reading the text to what they perceive when they listen or watch.",6,Integration of Knowledge and Ideas
+Reading,RL.6.9,"Compare and contrast texts in different forms or genres (e.g., stories and poems; historical novels and fantasy stories) in terms of their approaches to similar themes and topics.",6,Integration of Knowledge and Ideas
+Reading,RL.6.10,"By the end of the year, read and comprehend literature, including stories, dramas, and poems, in the grades 6–8 text complexity band proficiently, with scaffolding as needed at the high end of the range.",6,Range of Reading and Level of Text Complexity
+Reading,RI.6.1,Cite textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text.,6,Key Ideas and Details
+Reading,RI.6.2,Determine a central idea of a text and how it is conveyed through particular details; provide a summary of the text distinct from personal opinions or judgments.,6,Key Ideas and Details
+Reading,RI.6.3,"Analyze in detail how a key individual, event, or idea is introduced, illustrated, and elaborated in a text (e.g., through examples or anecdotes).",6,Key Ideas and Details
+Reading,RI.6.4,"Determine the meaning of words and phrases as they are used in a text, including figurative, connotative, and technical meanings.",6,Craft and Structure
+Reading,RI.6.5,"Analyze how a particular sentence, paragraph, chapter, or section fits into the overall structure of a text and contributes to the development of the ideas.",6,Craft and Structure
+Reading,RI.6.6,Determine an author’s point of view or purpose in a text and explain how it is conveyed in the text.,6,Craft and Structure
+Reading,RI.6.7,"Integrate information presented in different media or formats (e.g., visually, quantitatively) as well as in words to develop a coherent understanding of a topic or issue.",6,Integration of Knowledge and Ideas
+Reading,RI.6.8,"Trace and evaluate the argument and specific claims in a text, distinguishing claims that are supported by reasons and evidence from claims that are not.",6,Integration of Knowledge and Ideas
+Reading,RI.6.9,"Compare and contrast one author’s presentation of events with that of another (e.g., a memoir written by and a biography on the same person).",6,Integration of Knowledge and Ideas
+Reading,RI.6.10,"By the end of the year, read and comprehend literary nonfiction in the grades 6–8 text complexity band proficiently, with scaffolding as needed at the high end of the range.",6,Range of Reading and Level of Text Complexity
+Writing,SL.6.4,"Present claims and findings, sequencing ideas logically and using pertinent descriptions, facts, and details to accentuate main ideas or themes; use appropriate eye contact, adequate volume, and clear pronunciation.",6,Speaking and Listening Presentation of Knowledge and Ideas
+Writing,SL.6.5,"Include multimedia components (e.g., graphics, images, music, sound) and visual displays in presentations to clarify information.",6,Speaking and Listening Presentation of Knowledge and Ideas
+Writing,SL.6.6,"Adapt speech to a variety of contexts and tasks, demonstrating command of formal English when indicated or appropriate.",6,Speaking and Listening Presentation of Knowledge and Ideas
+Writing,WHST.6.1,Write arguments focused on discipline-specific content.Write arguments focused on discipline-specific content.Write arguments focused on discipline-specific content.Write arguments focused on discipline-specific content.,6,Text Types and Purposes
+Writing,WHST.6.1a,"Introduce claim(s) about a topic or issue, acknowledge and distinguish the claim(s) from alternate or opposing claims, and organize the reasons and evidence logically.",6,Text Types and Purposes
+Writing,WHST.6.1b,"Support claim(s) with logical reasoning and relevant, accurate data and evidence that demonstrate an understanding of the topic or text, using credible sources.",6,Text Types and Purposes
+Writing,WHST.6.1c,"Use words, phrases, and clauses to create cohesion and clarify the relationships among claim(s), counterclaims, reasons, and evidence.",6,Text Types and Purposes
+Writing,WHST.6.1d,Establish and maintain a formal style.,6,Text Types and Purposes
+Writing,WHST.6.1e,Provide a concluding statement or section that follows from and supports the argument presented.,6,Text Types and Purposes
+Writing,WHST.6.2,"Write informative/explanatory texts, including the narration of historical events, scientific procedures/ experiments, or technical processes.",6,Text Types and Purposes
+Writing,WHST.6.2a,"Introduce a topic clearly, previewing what is to follow; organize ideas, concepts, and information into broader categories as appropriate to achieving purpose; include formatting (e.g., headings), graphics (e.g., charts, tables), and multimedia when useful to aiding comprehension.",6,Text Types and Purposes
+Writing,WHST.6.2b,"Develop the topic with relevant, well-chosen facts, definitions, concrete details, quotations, or other information and examples.",6,Text Types and Purposes
+Writing,WHST.6.2c,Use appropriate and varied transitions to create cohesion and clarify the relationships among ideas and concepts.,6,Text Types and Purposes
+Writing,WHST.6.2d,Use precise language and domain-specific vocabulary to inform about or explain the topic.,6,Text Types and Purposes
+Writing,WHST.6.2e,Establish and maintain a formal style and objective tone.,6,Text Types and Purposes
+Writing,WHST.6.2f,Provide a concluding statement or section that follows from and supports the information or explanation presented.,6,Text Types and Purposes
+Writing,WHST.6.4,"Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.",6,Production and Distribution of Writing
+Writing,WHST.6.5,"With some guidance and support from peers and adults, develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach, focusing on how well purpose and audience have been addressed.",6,Production and Distribution of Writing
+Writing,WHST.6.6,"Use technology, including the Internet, to produce and publish writing and present the relationships between information and ideas clearly and efficiently.",6,Production and Distribution of Writing
+Writing,WHST.6.7,"Conduct short research projects to answer a question (including a self-generated question), drawing on several sources and generating additional related, focused questions that allow for multiple avenues of exploration.",6,Research to Build and Present Knowledge
+Writing,WHST.6.8,"Gather relevant information from multiple print and digital sources, using search terms effectively; assess the credibility and accuracy of each source; and quote or paraphrase the data and conclusions of others while avoiding plagiarism and following a standard format for citation.",6,Research to Build and Present Knowledge
+Writing,WHST.6.9,"Draw evidence from informational texts to support analysis reflection, and research.",6,Research to Build and Present Knowledge
+Writing,WHST.6.10,"Write routinely over extended time frames (time for reflection and revision) and shorter time frames (a single sitting or a day or two) for a range of discipline-specific tasks, purposes, and audiences.",6,Range of Writing
+Social Studies,WHST.6.1a,Write arguments focused on discipline-specific content.Write arguments focused on discipline-specific content.,6,Arguments
+Social Studies,WHST.6.1b,"Introduce claim(s) about a topic or issue, acknowledge and distinguish the claim(s) from alternate or opposing claims, and organize the reasons and evidence logically.",6,Arguments
+Social Studies,WHST.6.1c,"Support claim(s) with logical reasoning and relevant, accurate data and evidence that demonstrate an understanding of the topic or text, using credible sources.",6,Arguments
+Social Studies,WHST.6.1d,"Use words, phrases, and clauses to create cohesion and clarify the relationships among claim(s), counterclaims, reasons, and evidence.",6,Arguments
+Social Studies,WHST.6.1e,Establish and maintain a formal style.,6,Arguments
+Social Studies,WHST.6.1f,Provide a concluding statement or section that follows from and supports the argument presented.,6,Arguments
+Social Studies, WHST.6.2. ,"Write informative/explanatory texts, including the narration of historical events, scientific procedures/ experiments, or technical processes.",6,Informational
+Social Studies, WHST.6.2a ,"Introduce a topic clearly, previewing what is to follow; organize ideas, concepts, and information into broader categories as appropriate to achieving purpose; include formatting (e.g., headings), graphics (e.g., charts, tables), and multimedia when useful to aiding comprehension.",6,Informational
+Social Studies, WHST.6.2b ,"Develop the topic with relevant, well-chosen facts, definitions, concrete details, quotations, or other information and examples.",6,Informational
+Social Studies, WHST.6.2c ,Use appropriate and varied transitions to create cohesion and clarify the relationships among ideas and concepts.,6,Informational
+Social Studies, WHST.6.2d ,Use precise language and domain-specific vocabulary to inform about or explain the topic.,6,Informational
+Social Studies, WHST.6.2e ,Establish and maintain a formal style and objective tone.,6,Informational
+Social Studies, WHST.6.2f ,Provide a concluding statement or section that follows from and supports the information or explanation presented.,6,Informational
+Social Studies,WHST.6.4,"Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.",6,Genre
+Social Studies,WHST.6.5. ,"With some guidance and support from peers and adults, develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach, focusing on how well purpose and audience have been addressed.",6,Process
+Social Studies,RH.6.1,Cite specific textual evidence to support analysis of primary and secondary sources.,6,Key Ideas and Details
+Social Studies,RH.6.2,Determine the central ideas or information of a primary or secondary source; provide an accurate summary of the source distinct from prior knowledge or opinions.,6,Key Ideas and Details
+Social Studies,RH.6.3,"Identify key steps in a text’s description of a process related to history/social studies (e.g., how a bill becomes law, how interest rates are raised or lowered).",6,Key Ideas and Details
+Social Studies,RH.6.4,"Determine the meaning of words and phrases as they are used in a text, including vocabulary specific to domains related to history/social studies.",6,Craft and Structure
+Social Studies,RH.6.5,"Describe how a text presents information (e.g., sequentially, comparatively, causally).",6,Craft and Structure
+Social Studies,RH.6.6,"Identify aspects of a text that reveal an author’s point of view or purpose (e.g., loaded language, inclusion or avoidance of particular facts).",6,Craft and Structure
+Social Studies,RH.6.7,"Integrate visual information (e.g., in charts, graphs, photographs, videos, or maps) with other information in print and digital texts.",6,Integration of Knowledge and Ideas
+Social Studies,RH.6.8,"Distinguish among fact, opinion, and reasoned judgment in a text.",6,Integration of Knowledge and Ideas
+Social Studies,RH.6.9,Analyze the relationship between a primary and secondary source on the same topic.,6,Integration of Knowledge and Ideas
+Social Studies,RH.6.10,"By the end of grade 8, read and comprehend history/social studies texts in the grades 6–8 text complexity band independently and proficiently.",6,Range of Reading and Level of Text Complexity
+Unison Reading,UR.SP.1,"Cooperative behaviors: request, inform, share",6,Social Process
+Unison Reading,UR.SP.2,Social norms & reciprocity,6,Social Process
+Unison Reading,UR.SP.3,Affective factors,6,Social Process
+Unison Reading,UR.SP.4,Relational & interpersonal factors,6,Social Process
+Unison Reading,UR.SP.5,Pacing/synchronizing,6,Social Process
+Unison Reading,UR.SP.6,Establish joint attention / common ground,6,Social Process
+Unison Reading,UR.SP.7,Cooperative reasoning,6,Social Process
+Unison Reading,UR.SP.8,Gesture / pantomime,6,Social Process
+Unison Reading,UR.G.1,Text purpose & form,6,Genre
+Unison Reading,UR.G.2,Reader stance,6,Genre
+Unison Reading,UR.G.3,"Genre conventions & devices (syntax, language use, etc.)",6,Genre
+Unison Reading,UR.G.4,Layout & document elements,6,Genre
+Unison Reading,UR.C.1,Establish relevance,6,Comprehension
+Unison Reading,UR.C.2,Evaluate,6,Comprehension
+Unison Reading,UR.C.3,Summarize,6,Comprehension
+Unison Reading,UR.C.4,"Infer, draw conclusions",6,Comprehension
+Unison Reading,UR.C.5,Reference prior knowledge,6,Comprehension
+Unison Reading,UR.C.6,Predict,6,Comprehension
+Unison Reading,UR.C.7,Interpret illocutionary force,6,Comprehension
+Unison Reading,UR.C.8,Synthesize,6,Comprehension
+Unison Reading,UR.C.9,Create images,6,Comprehension
+Unison Reading,UR.C.10,Vocabulary,6,Comprehension
+Unison Reading,UR.C.11,Oral interpretation (expressive reading & prosody),6,Comprehension
+Unison Reading,UR.C.12,Clarify,6,Comprehension
+Unison Reading,UR.D.1,"Strategy use (reread, cross-check, etc.)",6,Decoding
+Unison Reading,UR.D.2,Grapheme/phoneme relationships,6,Decoding
+Unison Reading,UR.D.3,Onset/rime,6,Decoding
+Unison Reading,UR.D.4,Syllables,6,Decoding
+Unison Reading,UR.D.5,Morphemes,6,Decoding
+Unison Reading,UR.D.6,Blending/segmenting,6,Decoding
+Unison Reading,UR.D.7,Word/symbol reading strategies,6,Decoding
