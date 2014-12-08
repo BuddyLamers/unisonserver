@@ -1,9 +1,9 @@
 <%= form_for @conference do |f| %>
   <%= render partial: 'layouts/form_errors', locals: {instance: @conference} %>
+  <h3>New Conference for <%= current_person.name %></h3>
 
   <fieldset>
-    <%= f.label :teacher %>
-    <%= f.collection_select :teacher, Teacher.all, :id, :name, prompt: true %>
+    <%= hidden_field_tag 'conference[teacher]', "#{current_person.id}"%>
   </fieldset>
   
   <fieldset>

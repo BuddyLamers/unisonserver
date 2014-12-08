@@ -47,8 +47,6 @@ class ConferencesController < ApplicationController
   end
 
   def create
-   
-    
     respond_to do |format|
       format.html do
         @conference = Conference.new()
