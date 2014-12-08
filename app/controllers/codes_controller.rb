@@ -84,6 +84,11 @@ class CodesController < ApplicationController
   end
 
   def csv
+    # the app needs to skip an entry if there is no text... 
+    # this means the "name" is just a category marker.
+
+    # model validations are needed... this is too likely to
+    # to screw up data right now, so it shouldn't be used.
     topics = {}
     subjects = {}
     code_types = {}

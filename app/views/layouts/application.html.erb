@@ -5,9 +5,20 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "shepherd-theme-arrows" %>
+  <%= javascript_include_tag "shepherd.min" %>
+
 </head>
 <body>
-	<% if flash.any? %>
+  <script type="text/javascript">
+  tour = new Shepherd.Tour({
+    defaults: {
+      classes: 'shepherd-theme-arrows',
+      scrollTo: true
+    }
+  });
+  </script>
+  	<% if flash.any? %>
 		<% flash.each do |key, value| %>
 			<%= content_tag :div, value, id: key, class: 'flash' %>
 		<% end %>
@@ -19,5 +30,17 @@
 			<%= yield %>
 		</section>
 	</div><!-- .container .container-fluid -->
+
+  <script type="text/javascript">
+  if (tour.steps.length === 0) {
+    tour.addStep('no-steps', {
+      title: "No tutorial Here!",
+      text: "Please ask for help or request a tutorial."
+    });
+  };
+    $('#help-button').on('click', function() {
+     tour.start()
+    });
+</script>
 </body>
 </html>

@@ -77,12 +77,18 @@ class StudentsController < ApplicationController
   end
 
   def csv
+    # TEMPORARY
+
+    # should default to unison as school
     CSV.foreach(params[:csv].path, {
         headers: :first_row
       }) do |row|
-        Student.create(fname: row[0], lname: row[1], school: row[2],section: row[3])
+        Student.create(fname: row[0].titleize, lname: row[1].titleize, school: row[2].titleize, section: row[3])
         
     end
+
+    # add student to all teachers which have their section.
+    # this needs to work whether student or teacher csv is uploaded first. Lots of ifs
 
     redirect_to students_path
   end

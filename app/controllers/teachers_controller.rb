@@ -86,6 +86,10 @@ class TeachersController < ApplicationController
   end
 
   def csv
+    # TEMPORARY
+
+    # re-format to a different spreadsheet type
+    # needs also to add students based on section. Perhaps this should be done in student
     CSV.foreach(params[:csv].path, {
         headers: :first_row
       }) do |row|

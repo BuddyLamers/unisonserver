@@ -1,0 +1,27 @@
+<script type="text/javascript">
+
+tour.addStep('step1', {
+  title: "Teacher Page",
+  text: 'This is the Teacher page. It contains information about a teacher, in this case <%= @teacher.name %>, and lists their students.'
+})
+tour.addStep('step2', {
+  title: 'Meeting Statistics',
+  text: 'These statistics measure how often <%= @teacher.name %> is having individual conferences or group sessions',
+  attachTo: '.data-points bottom'
+})
+tour.addStep('step3',{
+  title: "What is a Breach?",
+  text: "During a group session, a breach is a break in the lesson during which someone speaks up and starts a conversation. The speaker (breacher) creates the breach, then everyone else can contribute to the conversation.",
+  attachTo: ".breach-stats bottom"
+})
+tour.addStep('step4', {
+  title: "Breach Stats",
+  text: "Out of all the breaches <%= @teacher.name %> has been present for, this shows 1. How many conversations they contributed to, and 2. How many conversations they initiated.",
+  attachTo: ".breach-stats bottom"
+})
+tour.addStep('step5', {
+  title: "Students",
+  text: "This is a list of all <%= @teacher.name %>'s students. Click their name to view their Student Page. Also shown is how many individual conferences and group sessions they have had together recently.",
+  attachTo: ".teacher-students bottom"
+})
+</script>

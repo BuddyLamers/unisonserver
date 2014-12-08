@@ -1,6 +1,8 @@
 <header id="global">
   <h1>UnisonServer</h1>
 
+
+
   <div class="authentication group">
     <% if current_user %>
       <%= link_to "#{current_user.email}", current_user.person %>
@@ -8,6 +10,7 @@
     <% else %>
       <a class="btn btn-primary btn-small" href="<%= login_path %>">Login</a>
     <% end %>
+    <button id="help-button" class="btn btn-primary btn-danger">Help, explain this page!</button>
   </div>
 
   <nav id="global">

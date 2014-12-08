@@ -1,0 +1,36 @@
+<script type="text/javascript">
+tour.addStep('step1', {
+  title: "What are Users?",
+  text: "A User is someone able to use the site. They could be a Student or a Teacher, or just an admin. Not all Students/Teachers are users! Likewise, not all users are associated with a student or teacher."
+})
+tour.addStep('step2', {
+  title: "User Privileges",
+  text: ["Users can fall in to four categories:", "Student: limited privilieges and can mostly view information and stats", "Teacher: able to create conferences and sessions, and view slightly more information", "Admin: able to access special actions to create/delete user accounts, add teachers/students, etc...", "Super: able to add/delete Admin accounts. This is the highest level."]
+})
+tour.addStep('step3', {
+  title: "Actions",
+  text: "Here, admins and supers are able to see special actions. You are currently a <%= current_user.role %>",
+  attachTo: ".actions left"
+})
+tour.addStep('step4', {
+  title: "Edit Teacher",
+  text: "Clicking 'Edit Teacher' to edit the teacher AND add/remove students from them.",
+  attachTo: ".actions left"
+})
+tour.addStep('step5', {
+  title: "Edit",
+  text: "Clicking 'Edit' will allow you to edit the user info, and assign a new Teacher to it.",
+  attachTo: ".actions left"
+})
+tour.addStep('step6', {
+  title: "Delete",
+  text: "Careful! Clicking 'Delete' will delete that user account, but not the Teacher/Student associated with it.",
+  attachTo: ".actions left"
+})
+tour.addStep('step7', {
+  title: "Add a User",
+  text: "Click here to add a user. You will be able to select a teacher for them.",
+  attachTo: ".new-user-link right"
+})
+
+</script>
