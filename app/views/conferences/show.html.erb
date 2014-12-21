@@ -1,4 +1,4 @@
-<h1>Conference for <%= @conference.teacher.name %> and <%= @conference.student.name %></h1>
+<h1 class="page-title">Conference for <%= @conference.teacher.name %> and <%= @conference.student.name %></h1>
 
 <!-- show the info for the conference -->
 <%= render partial: "details" %>
@@ -36,7 +36,7 @@
 <%= render partial: '/conferences/show_tour' %>
 <% else %>
 <h2>Code Scores and Comments</h2>
-  <table class="table">
+  <table class="table code-scores-comments">
     <thead>
       <tr>
         <th>Notion</th>

@@ -1,7 +1,7 @@
   <tr class="clickableRow" href="<%= conference_url(conference) %>">
     <td><%= conference.teacher.name  %></td>
     <td><%= conference.student.name %></td>
-    <td><%= conference.subject.name %></td>
+    <td class="note-subject"><%= conference.subject.name %></td>
     <td><%= human_time_full_datetime(conference.time) %></td>
     <td><%= conference.notes %></td>
     <td>

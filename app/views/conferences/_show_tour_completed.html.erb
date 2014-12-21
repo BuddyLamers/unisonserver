@@ -1,0 +1,26 @@
+<script type="text/javascript">
+tour.addStep('step1', {
+  title: "Completed Conference Page",
+  text: "This is the conference page for a completed conference. After a conference is completed, the comments and code scores show here."
+})
+tour.addStep('step2', {
+  title: "Basic Info",
+  text: "Here is basic info about the conference, as well as a button to delete it.",
+  attachTo: ".clickableRow bottom"
+})
+tour.addStep('step3', {
+  title: "Subject",
+  text: "Note the subject.",
+  attachTo: ".note-subject bottom"
+})
+tour.addStep('step4', {
+  title: "Code Scores and Comments",
+  text: "Here are the comments and scores <%= @conference.teacher.name %> left about <%= @conference.student.name %> after the conference.",
+  attachTo: ".code-scores-comments bottom"
+})
+tour.addStep('step5', {
+  title: "Code Scores and Comments",
+  text: ["1. Strength , Weakness, or Goal", "2: The code the comment is based on", "3: A score out of 4", "4: Teacher's description"],
+  attachTo: ".code-scores-comments bottom"
+})
+</script>
