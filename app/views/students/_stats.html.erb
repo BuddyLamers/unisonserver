@@ -1,38 +1,50 @@
-<h3><%= @student.name %></h3>
+<h3><%= @student.name %>, <%= @student.section %></h3>
 
-<h4>Section <%= @student.section %></h4>
 
-<% breach_count = Breach.where(person_ids: {"$in" => [@student.id]}).count %>
-<% breached = @student.breaches_breached %>
-<% contributed = @student.breaches_contributed %>
-<div class="breach-stats">
-<h4>Has contributed to 
-  <%= contributed %> out of
-<%= breach_count %> breaches. (<%= (contributed/ (breach_count.nonzero? || 1)).to_f * 100 %>%)
-</h4>
 
-<h4>Has breached
-<%= breached %> out of
-<%= breach_count %> breaches. (<%= (breached / (breach_count.nonzero? || 1)).to_f * 100 %>%)
-</h4>
-</div>
 
-<div class="code-stats">
-<% @student.code_types_counts.each do |k, v| %>
-<div><%=k  %> : <%= v %></div>
-<% end %>
-</div>
+<table class="table">
+  <tr>
+    <td>
+      <% breach_count = Breach.where(person_ids: {"$in" => [@student.id]}).count %>
+      <% breached = @student.breaches_breached %>
+      <% contributed = @student.breaches_contributed %>
+      <div class="breach-stats">
+        <h4>Has contributed to 
+          <%= contributed %> out of
+          <%= breach_count %> breaches. (<%= (contributed/ (breach_count.nonzero? || 1)).to_f * 100 %>%)
+        </h4>
 
-<h3>Teachers</h3>
-<div class="teacher-students">
-  <div class="teacher-student header"><span class="name">Name</span> <span class="count">Conferences last 30 days</span> <span class="count">Sessions last 7 days</span></div>
-  <% @student.teachers.each do |teacher| %>
-    <div class="teacher-student">
-      <span class="name"><a href="<%= person_url(teacher) %>"><%= teacher.name %></a></span>
-      <span class="count"><%= teacher.conferences.where(created_at: {"$gt" => 1.month.ago}, student: @student).count %></span>
-      <span class="count"><%= Session.where(created_at: {"$gt" => 1.week.ago}, student_ids: {"$in" => [@student.id]}, person_ids: {"$in" => [teacher.id]}).count %></span>
-    </div>
-  <% end %>
-</div>
+        <h4>Has breached
+          <%= breached %> out of
+          <%= breach_count %> breaches. (<%= (breached / (breach_count.nonzero? || 1)).to_f * 100 %>%)
+        </h4>
+      </div>
+      <h3>Teachers</h3>
+      <div class="teacher-students">
+        <div class="teacher-student header"><span class="name">Name</span> <span class="count">Conferences last 30 days</span> <span class="count">Sessions last 7 days</span></div>
+        <% @student.teachers.each do |teacher| %>
+        <div class="teacher-student">
+          <span class="name"><a href="<%= person_url(teacher) %>"><%= teacher.name %></a></span>
+          <span class="count"><%= teacher.conferences.where(created_at: {"$gt" => 1.month.ago}, student: @student).count %></span>
+          <span class="count"><%= Session.where(created_at: {"$gt" => 1.week.ago}, student_ids: {"$in" => [@student.id]}, person_ids: {"$in" => [teacher.id]}).count %></span>
+        </div>
+        <% end %>
+      </div>
+    </td>
+    <td>
+
+      <h3>Total breaches in each code type:</h3>
+      <div class="code-stats">
+        <% @student.code_types_counts.each do |k, v| %>
+        <div><%=k  %> : <%= v %></div>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+
 
 <%= render partial: '/students/show_tour' %>

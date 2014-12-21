@@ -2,7 +2,7 @@
     <td><%= session.teacher.name  %></td>
     <td><%= session.section %></td>
     <td><%= session.subject.andand.name %></td>
-    <td><%= session.code.andand.name %></td>
+    <td><%= session.code.andand.subject.name + ": " + session.code.andand.name %></td>
     <td><%= human_time_full_datetime(session.time) %></td>
     <td><%= session.length %> min</td>
     <td>
