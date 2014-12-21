@@ -12,9 +12,9 @@
 
 <h4>Code Scores and Comments</h4>
     <div class="input_fields_wrap">
-      <button class="add_field_button btn btn-primary btn-primary">Add Another Score</button>
+      <button class="add_field_button btn btn-primary btn-primary">Add Another Input</button>
       <br>
-      <div>
+      <div class="comments">
             <select name="code_scores[notions][]">
               <option value="strength">Strength</option>
               <option value="weakness">Weakness</option>
@@ -33,7 +33,7 @@
 
     <input type="hidden" name="conference[is_completed]" value="true">
     <input type="submit" class="end-conference btn btn-lg btn-success" value="End Conference" >
-
+<%= render partial: '/conferences/show_tour' %>
 <% else %>
 <h2>Code Scores and Comments</h2>
   <table class="table">
@@ -47,8 +47,10 @@
     </thead>
     <%= render @conference.code_scores %>
   </table>
-  
+  <%= render partial: '/conferences/show_tour_completed' %>
 <% end %>
+
+
 
 
 <script type="text/javascript">
@@ -72,7 +74,7 @@ $(document).ready(function() {
 
     $('.end-conference').click(function clicked() {
        if (confirm('This will finalize the conference. No more comments/scores may be added. Are you sure?')) {
-           yourformelement.submit();
+          formelement.submit();
        } else {
            return false;
        }
