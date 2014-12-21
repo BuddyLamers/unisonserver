@@ -1,9 +1,9 @@
 
-<h1>Session on <%= human_time(@session.time) %> 
+<h1>Session at <%= human_time_full_datetime(@session.time) %> 
 
 <%= form_tag session_path(@session), method: 'put' do -%>
 <%= hidden_field_tag :completed, true -%>
-<%= submit_tag 'Complete the Session', class: "btn btn-lg btn-success" -%>
+<%= submit_tag 'Complete the Session', class: "btn btn-lg btn-success", confirm: "This will finalize the session. No more breaches may be added." -%>
 <% end %>
 
 </h1>

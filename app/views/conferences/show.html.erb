@@ -32,7 +32,7 @@
     </div>
 
     <input type="hidden" name="conference[is_completed]" value="true">
-    <input type="submit" class="btn btn-lg btn-success" value="End Conference">
+    <input type="submit" class="end-conference btn btn-lg btn-success" value="End Conference" >
 
 <% else %>
 <h2>Code Scores and Comments</h2>
@@ -68,6 +68,14 @@ $(document).ready(function() {
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+
+    $('.end-conference').click(function clicked() {
+       if (confirm('This will finalize the conference. No more comments/scores may be added. Are you sure?')) {
+           yourformelement.submit();
+       } else {
+           return false;
+       }
     })
 });
 </script>
