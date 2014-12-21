@@ -2,46 +2,44 @@
 
 <form method="post" action="<%= sessions_url%>">
 
-<%= auth_token %>
+  <%= auth_token %>
 
-<!-- <label>Teacher -->
+  <!-- <label>Teacher -->
   
   <!-- <input name="session[:teacher]" value="<%= current_person.name %>"> -->
-<!-- </label> -->
-
-<label>Subject
-  <select id="subject" name="session[subject]">
-    <%= options_from_collection(Subject.all) %>
-    <%# Subject.all.each do |subject| %>
-      <!-- <option value="<%# subject.name %>"><%# subject.name %></option> -->
-    <%# end %>
-  </select>
-</label>
-
-<label>Code (select if coded)
-  <select name="session[code]">
-    <option value="" disabled selected>Select if Coded</option>
-<%= options_from_collection_codes_subjects(Code.all) %>
-  </select>
-</label>
-
-<label>Section
-  <select name="session[section]">
-    <% Student.section_list.each do |item| %>
-      <option value='<%= item %>'><%= item %></option>
-    <% end %>
-  </select>
-</label>
+  <!-- </label> -->
 
 
-<!-- if students need to be selected individually -->
-<h4>Students</h4>
-  <%if current_person.students%>
-    <% current_person.students.each_with_index do |student, i|%>
-      <% @student, @i = student, i %>
-      <%= render partial: "student_checkbox" %>
-    <% end %>
-  <% end %>
+
+  <table class="table">
+    <tr>
+      <td>
+        <label>Subject
+          <select id="subject" name="session[subject]">
+            <%= options_from_collection(Subject.all) %>
+            <%# Subject.all.each do |subject| %>
+            <!-- <option value="<%# subject.name %>"><%# subject.name %></option> -->
+            <%# end %>
+          </select>
+        </label>
+
+        <label>Code
+          <select name="session[code]">
+            <option value="" disabled selected>Select if Coded</option>
+            <%= options_from_collection_codes_subjects(Code.all) %>
+          </select>
+        </label>
+
+        <label>Section
+          <select name="session[section]">
+            <option value="" disabled selected>For a specific section?</option>
+            <% Student.section_list.each do |item| %>
+            <option value='<%= item %>'><%= item %></option>
+            <% end %>
+          </select>
+        </label>
+
+
 
 
 
@@ -59,7 +57,75 @@
   <input name="session[length]">
 </label>
 
+<input type="submit" class="btn btn-success">
+
+</td>
+
+<td>
+  <table class="table table-bordered">
+    <tr class="row">
+      <% students = current_person.students.in_groups(7) %>
+      <!-- make this more efficient -->
+      <% if students %>
+      <td>
+        <% students[0].each_with_index do |student, i| %>
+        <% next if student.nil? %>
+        <% @student, @i = student, i %>
+        <%= render partial: "student_checkbox" %>
+        <% end %>
+      </td>
+      <td>
+        <% students[1].each_with_index do |student, i| %>
+        <% next if student.nil? %>
+        <% @student, @i = student, i %>
+        <%= render partial: "student_checkbox" %>
+        <% end %>
+      </td>
+      <td>
+        <% students[2].each_with_index do |student, i| %>
+        <% next if student.nil? %>
+        <% @student, @i = student, i %>
+        <%= render partial: "student_checkbox" %>
+        <% end %>
+      </td>
+      <td>
+        <% students[3].each_with_index do |student, i| %>
+        <% next if student.nil? %>
+        <% @student, @i = student, i %>
+        <%= render partial: "student_checkbox" %>
+        <% end %>
+      </td>
+      <td>
+        <% students[4].each_with_index do |student, i| %>
+        <% next if student.nil? %>
+        <% @student, @i = student, i %>
+        <%= render partial: "student_checkbox" %>
+        <% end %>
+      </td>
+      <td>
+        <% students[5].each_with_index do |student, i| %>
+        <% next if student.nil? %>
+        <% @student, @i = student, i %>
+        <%= render partial: "student_checkbox" %>
+        <% end %>
+      </td>
+      <td>
+        <% students[6].each_with_index do |student, i| %>
+        <% next if student.nil? %>
+        <% @student, @i = student, i %>
+        <%= render partial: "student_checkbox" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</td>
 
 
-<input type="submit">
+</tr>
+
+
+</table>
+
+
 </form>
