@@ -3,12 +3,13 @@
     <td><%= session.section %></td>
     <td><%= session.subject.andand.name %></td>
     <td><%= session.code.andand.name %></td>
-    <td><%= session.order %></td>
-    <td><%= session.time.strftime("%a, %B %d %Y") %></td>
+    <td><%= human_time_full_datetime(session.time) %></td>
     <td><%= session.length %> min</td>
     <td>
       <% if session.is_completed? %>
       &#x2713;
       <% end %>
     </td>
+    <td><%=  link_to 'Delete', session_path(session),
+            :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger" %></td>
   </tr>

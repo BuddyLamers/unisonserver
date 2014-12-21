@@ -31,6 +31,15 @@ module ApplicationHelper
     html_string.gsub("\n", "\\n").html_safe
   end
 
+  def options_from_collection_codes_subjects(collection)
+    html_string = ""
+    collection.each do |item|
+      html_string += "<option class='code-option' value='#{item.id}'>#{item.subject.name}: #{item.name}: #{item.text}</option>"
+    end
+    # some codes in math contain \n : so gsub to escape
+    html_string.gsub("\n", "\\n").html_safe
+  end
+
   def human_time(time)
     # http://apidock.com/ruby/DateTime/strftime
     time.strftime("%a, %B %d %Y")

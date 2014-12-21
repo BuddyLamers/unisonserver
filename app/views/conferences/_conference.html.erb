@@ -9,4 +9,6 @@
       &#x2713;
       <% end %>
     </td>
+    <td><%=  link_to 'Delete', conference_path(conference),
+            :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger" %></td>
   </tr>

@@ -119,12 +119,27 @@ class ConferencesController < ApplicationController
   def destroy
     @conference = Conference.realize(params[:id])
 
-    if @conference.destroy
-      render json: @conference
-    else
-      render json: @conference.errors, status: :failed
+    respond_to do |format|
+      format.html do
+        if @conference.destroy
+          redirect_to conferences_url
+        else
+          flash[:errors] = @conference.errors.full_messages
+          redirect_to conferences_url
+        end
+      end
+
+      format.json do
+       if @conference.destroy
+        render json: @conference
+      else
+        render json: @conference.errors, status: :failed
+      end
     end
   end
+
+  
+end
 
 private
 

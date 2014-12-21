@@ -14,7 +14,7 @@ class Session
   field :is_coded, type: Boolean
   field :is_completed, type: Boolean
   field :length, type: Integer
-  field :order, type: Integer
+  field :order, type: Integer # not needed in webapp
   field :time, type: DateTime
   field :section, type: String
 

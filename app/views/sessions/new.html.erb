@@ -10,7 +10,7 @@
 <!-- </label> -->
 
 <label>Subject
-  <select name="session[subject]">
+  <select id="subject" name="session[subject]">
     <%= options_from_collection(Subject.all) %>
     <%# Subject.all.each do |subject| %>
       <!-- <option value="<%# subject.name %>"><%# subject.name %></option> -->
@@ -21,7 +21,7 @@
 <label>Code (select if coded)
   <select name="session[code]">
     <option value="" disabled selected>Select if Coded</option>
-<%= options_from_collection(Code.all) %>
+<%= options_from_collection_codes_subjects(Code.all) %>
   </select>
 </label>
 

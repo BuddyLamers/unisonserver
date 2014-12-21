@@ -107,17 +107,29 @@ class SessionsController < ApplicationController
     
   end
 
-  def delete
-  end
-
   def destroy
     @session = Session.realize(params[:id])
 
-    if @session.destroy
-      render json: @session
-    else
-      render json: @session.errors, status: :failed
+    respond_to do |format|
+      format.html do
+        if @session.destroy
+          redirect_to sessions_url
+        else
+          flash[:errors] = @session.errors.full_messages
+          redirect_to sessions_url
+        end
+      end
+
+      format.json do
+        if @session.destroy
+          render json: @session
+        else
+          render json: @session.errors, status: :failed
+        end   
+      end
     end
+
+    
   end
 
 private
@@ -152,7 +164,7 @@ private
     # end
 
     @session.subject = Subject.where(name: params["session"]["subject"]).first
-    code = Code.where(name: params["session"]["code"]).first
+    code = Code.where(id: params["session"]["code"]).first
     @session.code = code
     if @session.code
       @session.is_coded = true

@@ -1,5 +1,5 @@
-<h1>Session on <%= human_time(@session.time) %> 
 
+<h1>Session on <%= human_time(@session.time) %> 
 
 <%= form_tag session_path(@session), method: 'put' do -%>
 <%= hidden_field_tag :completed, true -%>
