@@ -3,7 +3,7 @@
 
 <%= form_tag session_path(@session), method: 'put' do -%>
 <%= hidden_field_tag :completed, true -%>
-<%= submit_tag 'Complete the Session', class: "btn btn-lg btn-success", confirm: "This will finalize the session. No more breaches may be added." -%>
+<%= submit_tag 'Complete the Session', class: "complete-session btn btn-lg btn-success", confirm: "This will finalize the session. No more breaches may be added." -%>
 <% end %>
 
 </h1>
@@ -18,9 +18,9 @@
 
 
 
-<table class="table table-bordered">
+<table class="breaches table table-bordered">
   <tr>
-    <td>
+    <td class="previous-breaches">
       <% unless @session.breaches.empty? %>
       <h2>Previous Breaches</h2>
       <%= render @breaches %>
@@ -33,12 +33,12 @@
   </tr>
 </table>
 
-
+<%= render partial: "/sessions/show_tour" %>
 
 <% else %>
 
 <% unless @session.breaches.empty? %>
-<h2>Breaches</h2>
+<h2 class="previous">Breaches</h2>
 <%= render @breaches %>
 <% end %>
 

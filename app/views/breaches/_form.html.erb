@@ -5,19 +5,19 @@
   <input type="hidden" name="breach[session_id]" value="<%= @session.id %>">
 
   <label>Code Type
-    <select name="breach[code_type_id]">
+    <select class="code-type" name="breach[code_type_id]">
       <%= options_from_collection_with_id(CodeType.all) %>
     </select>
   </label> 
 
 Breacher:
-    <select name="breach[person_ids][]">
+    <select class="breacher" name="breach[person_ids][]">
       <%= options_from_collection_with_id(@session.people) %>
     </select>
 
 
 First Contribution:
-    <input name="breach[contributions][]">
+    <input class="contribution" name="breach[contributions][]">
 
   <h4>Additional Contributions</h4>
     <div class="input_fields_wrap">
@@ -38,7 +38,7 @@ First Contribution:
     </div>
   <!-- </tbody> -->
   
-  <h4>Select Specific Codes</h4>
+  <h4 class="select-codes">Select Specific Codes</h4>
   <ul>
   <% @session.subject.codes.each do |code| %>
     <%= render partial: "codes/checkbox", locals: {code: code} %>
@@ -48,7 +48,7 @@ First Contribution:
 
 
   <label>
-  <input type="submit" class="btn btn-lg btn-success" value="Close the Breach">
+  <input type="submit" class="close-breach btn btn-lg btn-success" value="Close the Breach">
   </label>
 </form>
 
