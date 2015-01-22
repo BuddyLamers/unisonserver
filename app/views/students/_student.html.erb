@@ -1,0 +1,6 @@
+<tr class="row clickableRow">
+  <td><%= student.name %></td>
+  <td><%= student.section %></td>
+  <td><%= student.conferences.where(created_at: {"$gt" => 1.month.ago}, teacher: @teacher).count %></td>
+  <td><%= Session.where(created_at: {"$gt" => 1.week.ago}, teacher: @teacher, person_ids: {"$in" => [student.id]}).count %></td>
+</tr>

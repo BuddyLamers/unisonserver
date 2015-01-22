@@ -29,15 +29,20 @@
 </div>
 
 <h3>Students</h3>
-<div class="teacher-students">
-  <div class="teacher-student header"><span class="name">Name</span> <span class="count">Conferences last 30 days</span> <span class="count">Sessions last 7 days</span></div>
-  <% @teacher.students.each do |student| %>
-    <div class="teacher-student">
-      <span class="name"><a href="<%= person_url(student) %>"><%= student.name %></a></span>
-      <span class="count"><%= student.conferences.where(created_at: {"$gt" => 1.month.ago}, teacher: @teacher).count %></span>
-      <span class="count"><%= Session.where(created_at: {"$gt" => 1.week.ago}, teacher: @teacher, person_ids: {"$in" => [student.id]}).count %></span>
-    </div>
+
+<table class="table table-bordered">
+  <thead>
+  <tr class="row">
+    <th>Student</th>
+    <th>Section</th>
+    <th>Conerences last 30 days</th>
+    <th>Sessions last 7 days</th>
+  </tr>
+  </thead>
+
+  <% @teacher.students.asc(:section).each do |student|  %>
+    <%=render partial: "/students/student", locals: {student: student}  %>
   <% end %>
-</div>
+</table>
 
 <%= render partial: "/teachers/show_tour" %>
