@@ -42,6 +42,8 @@
 <%= render @breaches %>
 <% end %>
 
+<%= render partial: "/sessions/breach_stats", locals: {session: @session} %>
+
 <% end %>
 
 <script type="text/javascript">

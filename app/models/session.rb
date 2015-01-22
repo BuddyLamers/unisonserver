@@ -11,6 +11,7 @@ class Session
   has_and_belongs_to_many :students, inverse_of: nil
   belongs_to :code, inverse_of: nil
 
+  # TODO: remove codes and make sure it doesn't break things tablet-side
   field :is_coded, type: Boolean
   field :is_completed, type: Boolean
   field :length, type: Integer

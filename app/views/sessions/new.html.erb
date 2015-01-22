@@ -23,12 +23,12 @@
           </select>
         </label>
 
-        <label>Code
+        <!-- <label>Code
           <select name="session[code]">
             <option value="" disabled selected>Select if Coded</option>
-            <%= options_from_collection_codes_subjects(Code.all) %>
+            <%#options_from_collection_codes_subjects(Code.all) %>
           </select>
-        </label>
+        </label> -->
 
         <label>Section
           <select name="session[section]">
@@ -60,6 +60,8 @@
 <input type="submit" class="btn btn-success">
 
 </td>
+
+<!-- TODO: sort this by section. -->
 
 <td>
   <table class="table table-bordered">
