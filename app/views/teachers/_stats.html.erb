@@ -30,6 +30,22 @@
 
 <h3>Students</h3>
 
+<!-- sort students -->
+
+<% sorted_students = {} %>
+  <% @teacher.students.asc(:section).each do |student|  %>
+    <% sorted_students[student.section] = [] unless sorted_students.has_key?(student.section) %>
+   <% sorted_students[student.section] << student  %>
+   <% end %>
+
+<div class="btn-group" data-toggle="buttons">
+   <% sorted_students.each_key do |section_num|%>
+      <label class="btn btn-default">
+        <input type="checkbox" id="checkbox-<%= section_num %>" class="group-select"> <%= section_num %>
+      </label>
+   <% end %> 
+</div>
+
 <table class="table table-bordered">
   <thead>
   <tr class="row">
@@ -40,9 +56,36 @@
   </tr>
   </thead>
 
-  <% @teacher.students.asc(:section).each do |student|  %>
-    <%=render partial: "/students/student", locals: {student: student}  %>
-  <% end %>
+
+
+<!-- keep track of keys for jQuery later -->
+    <% key_string = "" %>
+    <!-- insert a tbody for each section of students -->
+   <% sorted_students.each_key do |section_num|%>
+   <% key_string += section_num + " " %>
+      <tbody id="<%= section_num %>" class="hide">
+     <% sorted_students[section_num].each do |student| %>
+        <%=render partial: "/students/student", locals: {student: student}  %>
+     <% end %>
+      </tbody>
+   <% end %> 
+
+
+  
+
 </table>
 
 <%= render partial: "/teachers/show_tour" %>
+
+<script type="text/javascript">
+  $('document').ready(function () {
+    /*get variables from rails*/
+    var section_nums = ("<%= key_string[0..-2] %>").split(" ");
+    
+    $(".group-select").on("click", function() {
+      section_number = this.id.substr(9)
+      $("#" + section_number).toggleClass("hide");
+    });
+
+  });
+</script>
