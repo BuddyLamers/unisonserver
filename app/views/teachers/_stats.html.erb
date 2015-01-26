@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<% breach_count = Breach.where(person_ids: {"$in" => [@teacher.id]}).count %>
+<% breach_count = @teacher.total_breaches %>
 <% breached = @teacher.breaches_breached %>
 <% contributed = @teacher.breaches_contributed %>
 

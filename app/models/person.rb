@@ -14,14 +14,14 @@ class Person
   field :school, type: String
 
 
-def self.find_and_sort_by_ids(ids)
-  self.find(ids).sort_by{|m| ids.index(m.id) }
-end
+  def self.find_and_sort_by_ids(ids)
+    self.find(ids).sort_by{|m| ids.index(m.id) }
+  end
 
-def breaches_breached
+  def breaches_breached
     breached = 0
     self.breaches.each do |breach|
-      breached += 1 if breach.contributions[0].person == self
+      breached += 1 if breach.contributions[0].person == self && breach.session.is_completed == true
     end
     breached
   end
@@ -31,13 +31,21 @@ def breaches_breached
     breaches = self.breaches.includes(:contributions)
     self.contributions.each do |contribution|
       breaches.each do |breach|
-        if breach.contributions.include?(contribution)
+        if breach.contributions.include?(contribution) && breach.session.is_completed == true
           count += 1
           next
         end
       end
     end
     count
+  end
+
+  def total_breaches
+    breach_count = 0
+   Breach.where(person_ids: {"$in" => [self.id]}).each do |breach| 
+    breach_count += 1 if Session.find(breach.session_id).is_completed == true 
+    end 
+    return breach_count
   end
 
 def name
