@@ -11,6 +11,7 @@
 
 
 
+
   <table class="table">
     <tr>
       <td>
@@ -59,75 +60,60 @@
 
 <input type="submit" class="btn btn-success">
 
-</td>
-
-<!-- TODO: sort this by section. -->
-
 <td>
-  <table class="table table-bordered">
-    <tr class="row">
-      <% students = current_person.students.in_groups(7) %>
-      <!-- make this more efficient -->
-      <% if students %>
-      <td>
-        <% students[0].each_with_index do |student, i| %>
-        <% next if student.nil? %>
-        <% @student, @i = student, i %>
-        <%= render partial: "student_checkbox" %>
-        <% end %>
-      </td>
-      <td>
-        <% students[1].each_with_index do |student, i| %>
-        <% next if student.nil? %>
-        <% @student, @i = student, i %>
-        <%= render partial: "student_checkbox" %>
-        <% end %>
-      </td>
-      <td>
-        <% students[2].each_with_index do |student, i| %>
-        <% next if student.nil? %>
-        <% @student, @i = student, i %>
-        <%= render partial: "student_checkbox" %>
-        <% end %>
-      </td>
-      <td>
-        <% students[3].each_with_index do |student, i| %>
-        <% next if student.nil? %>
-        <% @student, @i = student, i %>
-        <%= render partial: "student_checkbox" %>
-        <% end %>
-      </td>
-      <td>
-        <% students[4].each_with_index do |student, i| %>
-        <% next if student.nil? %>
-        <% @student, @i = student, i %>
-        <%= render partial: "student_checkbox" %>
-        <% end %>
-      </td>
-      <td>
-        <% students[5].each_with_index do |student, i| %>
-        <% next if student.nil? %>
-        <% @student, @i = student, i %>
-        <%= render partial: "student_checkbox" %>
-        <% end %>
-      </td>
-      <td>
-        <% students[6].each_with_index do |student, i| %>
-        <% next if student.nil? %>
-        <% @student, @i = student, i %>
-        <%= render partial: "student_checkbox" %>
-        <% end %>
-      </td>
+
+  <h3>Select Students</h3>
+  <% sorted_students = {} %>
+  <% current_person.students.asc(:section).each do |student|  %>
+    <% sorted_students[student.section] = [] unless sorted_students.has_key?(student.section) %>
+   <% sorted_students[student.section] << student  %>
+   <% end %>
+
+   <div class="btn-group" data-toggle="buttons">
+   <% sorted_students.each_key do |section_num|%>
+      <label class="btn btn-default">
+        <input type="checkbox" id="checkbox-<%= section_num %>" class="group-select"> <%= section_num %>
+      </label>
+   <% end %> 
+</div>
+
+<table class="table table-bordered">
+
+  <!-- keep track of keys for jQuery later -->
+  <% key_string = "" %>
+  <!-- insert a tbody for each section of students -->
+  <% sorted_students.each_key do |section_num|%>
+  <% key_string += section_num + " " %>
+  <tbody id="<%= section_num %>" class="hide">
+   <% sorted_students[section_num].each do |student| %>
+   <tr>
+    <td>
+    <label><%= student.name %>, <%= student.section %>
+      <input type="checkbox" name="session[students[<%= student.id %>]]">
+    </label>
+    </td>
     </tr>
-    <% end %>
-  </table>
+  <% end %>
+</tbody>
+<% end %> 
+
+</table>
 </td>
-
-
 </tr>
-
-
 </table>
 
 
 </form>
+
+<script type="text/javascript">
+  $('document').ready(function () {
+    /*get variables from rails*/
+    var section_nums = ("<%= key_string[0..-2] %>").split(" ");
+    
+    $(".group-select").on("click", function() {
+      section_number = this.id.substr(9)
+      $("#" + section_number).toggleClass("hide");
+    });
+
+  });
+</script>
