@@ -19,15 +19,15 @@
 
 
 <table class="breaches table table-bordered">
-  <tr>
-    <td class="previous-breaches">
+  <tr class="row">
+    <td class="previous-breaches col-lg-3">
       <% unless @session.breaches.empty? %>
       <h2>Previous Breaches</h2>
       <%= render @breaches %>
       <% end %>
-
     </td>
-    <td>
+    
+    <td class="col-lg-9">
       <%= render "breaches/form" %> 
     </td>
   </tr>
