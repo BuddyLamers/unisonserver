@@ -2,7 +2,7 @@
   <thead>
     <tr><h3>Breach at <%= human_time_of_day(breach.time) %></h3> </tr>
     <tr>
-        <b>Type:</b>   <%= breach.code_type.name %> --   
+        <!-- <b>Type:</b>   <%# breach.code_type.andand.name %> --  -->  
         <b>Codes:</b> <% breach.codes.each do |code| %>
             <%= code.name %>, 
 

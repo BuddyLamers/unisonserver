@@ -1,41 +1,29 @@
 <h1>New Breach</h1>
-<form action="<%= breaches_url %>" method="post">
-  <%= auth_token %>
 
-  <input type="hidden" name="breach[session_id]" value="<%= @session.id %>">
+<h4>Contributions</h4>
 
-  <!-- <label>Code Type
-    <select class="code-type" name="breach[code_type_id]">
-      <%# options_from_collection_with_id(CodeType.all) %>
-    </select>
-  </label>  -->
-
-  Breacher:
-  <select class="breacher" name="breach[person_ids][]">
-    <%= options_from_collection_with_id(@session.people) %>
-  </select>
-
-
-  First Contribution:
-  <input class="contribution" name="breach[contributions][]">
-
-  <h4>Additional Contributions</h4>
-
-
-
-
-  <div class="input_fields_wrap">
-    <button class="add_field_button btn btn-primary btn-primary">Add Another Blank</button>
-    <br>
     <div>
-        <select name="breach[person_ids][]">
-          <%= options_from_collection_with_id(@session.people) %>
-        </select>
-         
-            <input type="text" name="breach[contributions][]">
-      </div>
+      <% @session.people.each do |person| %>
+      <form>
+      <label><%= person.name %>
+        <div id="<%= person.name.gsub(/\s+/, '-') %>">
+        <input type="text" class="input-<%= person.name.gsub(/\s+/, '-') %>"> 
+        <button  class="add_field_button btn-primary btn-primary">Add contribution</button>
+        </div>
+      </label>
+      </form>
+      <% end %>
     </div>
 
+<form action="<%= breaches_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="breach[session_id]" value="<%= @session.id %>">
+
+<!-- actual rails-readable inputs go here -->
+    <h4>Conversation:</h4>
+    <div class="input_fields_wrap"></div>
+
+<!-- good from here down -->
 
     <h4 class="select-codes">Select Specific Codes</h4>
     <table>
@@ -60,10 +48,6 @@
         <% end %> 
       </div>
         </td>
-
-
-
-
         <td>
           
           <% sorted_codes.each_key do |code_name| %>
@@ -73,9 +57,6 @@
             <% end %>
           </ul>
           <% end %>
-
-        
-
       </td>
     </tr>
   </table>
@@ -87,19 +68,23 @@
 
 
 
+
 <script type="text/javascript">
 $(document).ready(function() {
     var max_fields      = 42; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
+    var add_button      = $(".add_field_button"); //Add button class
     
     
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
       e.preventDefault();
+      id = this.parentElement.id;
+      input_field = $('.input-' + id)
+      // alert('hi' + input_field.attr('class'))
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div><select name='breach[person_ids][]'><%= options_from_collection_with_id(@session.people) %></select> <input type='text' name='breach[contributions][]'/><a href='#'' class='remove_field'>Remove</a></div>"); //add input box
+            $(wrapper).append("<div> <input type='text' name='breach[person_ids][]' value='" + id.replace('-', ' ') + "'> <input type='text' name='breach[contributions][]' value='" + input_field.val() + "'/><a href='#'' class='remove_field'>Remove</a></div>"); //add contribution field so rails can see it properly
           }
         });
     
@@ -107,8 +92,8 @@ $(document).ready(function() {
       e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 
-// stuff dealing with checkboxes
 
+// stuff dealing with checkboxes
 /*get variables from rails*/
     var code_names = ("<%= key_string[0..-2] %>").split(" ");
     

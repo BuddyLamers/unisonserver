@@ -38,15 +38,17 @@ class BreachesController < ApplicationController
           @breach.code_ids << key if value == "on"
         end
         
-
         # initialize contributions
         params[:breach][:contributions].each_with_index do |text, i|
            
+           person_name = params[:breach][:person_ids][i].split(" ")
+           person_id = Person.where(fname: person_name[0], lname: person_name[1]).first.id
+
           new_contribution = Contribution.new(
             text: text,
             time: Time.now,
             breach: @breach,
-            person_id: params[:breach][:person_ids][i]
+            person_id: person_id
             )
           if new_contribution.save
             @breach.contribution_ids << new_contribution.id

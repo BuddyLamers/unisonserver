@@ -1,5 +1,5 @@
 
-<h1>Session at <%= human_time_full_datetime(@session.time) %> 
+<h1>Session at <%= human_time_full_datetime(@session.andand.time) %> 
 
 <%= form_tag session_path(@session), method: 'put' do -%>
 <%= hidden_field_tag :completed, true -%>
@@ -26,9 +26,9 @@
       <%= render @breaches %>
       <% end %>
     </td>
-    
+
     <td class="col-lg-9">
-      <%= render "breaches/form" %> 
+      <%= render "breaches/form_new" %> 
     </td>
   </tr>
 </table>

@@ -19,6 +19,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+# TODO: use this
+# gem 'railsstrap'
+
 gem 'jquery-rails'
 
 # Authorization (https://github.com/ryanb/cancan)

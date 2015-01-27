@@ -52,4 +52,12 @@ module ApplicationHelper
   def human_time_full_datetime(time)
     time.strftime("%a, %B %d %Y") + " " + time.strftime("%I:%M%P")
   end
+
+  def despace(str)
+    str.gsub(/\s+/, '-')
+  end
+
+  def respace(str)
+    str.gsub('-', ' ')
+  end
 end
