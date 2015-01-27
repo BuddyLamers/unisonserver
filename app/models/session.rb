@@ -18,8 +18,11 @@ class Session
   field :order, type: Integer # not needed in webapp
   field :time, type: DateTime
   field :section, type: String
+  field :text_title, type: String
+  field :genre, type: String
 
-  validates_presence_of :students
+  validates_presence_of :student_ids
+  validates_length_of :student_ids, minimum: 1
 
 
   def as_json(options)

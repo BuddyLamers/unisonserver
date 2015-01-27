@@ -145,6 +145,8 @@ private
     # not being used
     # @session.order = params["session"]["order"]
     @session.length = params["session"]["length"]
+    @session.text_title = p_s["text_title"]
+    @session.genre = p_s["genre"]
     @session.is_completed = false
 
     @session.teacher = current_person
