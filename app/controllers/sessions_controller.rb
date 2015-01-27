@@ -53,8 +53,8 @@ class SessionsController < ApplicationController
         format.json {render json: @session, status: :created, location: @session}
       else
         format.html do
-          flash.now[:errors] += "Something went wrong"
-          render :new
+          flash[:errors] = @session.errors.full_messages
+          render :new, notice: flash[:errors]
         end 
         format.json {render json: @student.errors, status: :failed}
       end
@@ -153,7 +153,7 @@ private
     # if needing to find students by session
     # students = Student.where(section: @session.section)
 
-    p_s["students"].each do |student_option|
+    p_s["students"].andand.each do |student_option|
       if student_option[1] == "on"
         @session.person_ids << student_option[0]
         @session.student_ids << student_option[0]

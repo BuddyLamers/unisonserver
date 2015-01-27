@@ -19,6 +19,9 @@ class Session
   field :time, type: DateTime
   field :section, type: String
 
+  validates_presence_of :students
+
+
   def as_json(options)
     {
       id: id,
