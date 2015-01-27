@@ -61,8 +61,13 @@ class ConferencesController < ApplicationController
         @conference.is_completed = false
         @conference.notes = conference_params[:notes]
 
-        @conference.save
-        redirect_to @conference
+        if @conference.save
+          redirect_to @conference
+        else
+          flash[:errors] = @conference.errors.full_messages
+          render :new
+        end
+        
       end
       format.json do
          @conference = Conference.create(params[:conference])

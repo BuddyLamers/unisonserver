@@ -13,6 +13,10 @@ class Conference
   field :notes, type: String
   field :time, type: DateTime
 
+  validates_presence_of :student
+  validates_presence_of :teacher
+  validates_presence_of :subject
+
   def as_json(options)
     {
       id: id,
