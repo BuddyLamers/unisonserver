@@ -7,7 +7,7 @@
       <form>
       <label><%= person.name %>
         <div id="<%= person.name.gsub(/\s+/, '-') %>">
-        <input type="text" class="input-<%= person.name.gsub(/\s+/, '-') %>"> 
+        <input type="text" class="input-<%= person.name.gsub(/\s+/, '-') %> input-xxlarge"> 
         <button  class="add_field_button btn-primary btn-primary">Add contribution</button>
         </div>
       </label>
@@ -43,7 +43,7 @@
         <div class="btn-group-vertical" data-toggle="buttons">
          <% sorted_codes.each_key do |code_name|%>
          <label class="btn btn-default">
-          <input type="checkbox" id="checkbox-<%= code_name %>" class="group-select"> <%= code_name %>
+          <input type="checkbox" id="checkbox-<%= code_name %>" class="group-select"> <%= respace(code_name) %>
         </label>
         <% end %> 
       </div>
@@ -84,7 +84,7 @@ $(document).ready(function() {
       // alert('hi' + input_field.attr('class'))
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div> <input type='text' name='breach[person_ids][]' value='" + id.replace('-', ' ') + "'> <input type='text' name='breach[contributions][]' value='" + input_field.val() + "'/><a href='#'' class='remove_field'>Remove</a></div>"); //add contribution field so rails can see it properly
+            $(wrapper).append("<div> <input type='text' name='breach[person_ids][]' value='" + id.replace('-', ' ') + "' class='input-medium'> <input type='text' name='breach[contributions][]' value='" + input_field.val() + "' class='input-xxlarge'/><a href='#'' class='remove_field'>Remove</a></div>"); //add contribution field so rails can see it properly
           }
         });
     
