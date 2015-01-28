@@ -53,6 +53,8 @@ class ConferencesController < ApplicationController
 
         @conference.teacher_id = conference_params[:teacher]
           @conference.student_id = conference_params[:student]
+          @conference.person_ids << conference_params[:student]
+          @conference.person_ids << conference_params[:teacher]
           @conference.subject_id = conference_params[:subject_id]
 
           datetime = DateTime.civil(conference_params["time(1i)"].to_i, conference_params["time(2i)"].to_i, conference_params["time(3i)"].to_i,

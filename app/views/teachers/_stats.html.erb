@@ -28,6 +28,20 @@
 </h4>
 </div>
 
+<% counts = @teacher.conference_standard_counts %>
+<% if !counts.empty? %>
+<h4>Conference Standards Breakdown:</h4> 
+<% end %>
+<table>
+  <% counts.each do |standard, count| %>
+  <tr>
+    <td><%= standard  %></td>
+    <td><%= count %></td>
+  </tr>
+<% end %>
+  </table>
+
+
 <h3>Students</h3>
 
 <!-- sort students -->

@@ -6,7 +6,7 @@
 <table class="table">
   <tr>
     <td>
-      <% breach_count = Breach.where(person_ids: {"$in" => [@student.id]}).count %>
+      <% breach_count = @student.total_breaches %>
       <% breached = @student.breaches_breached %>
       <% contributed = @student.breaches_contributed %>
       <div class="breach-stats">
@@ -31,6 +31,20 @@
         </div>
         <% end %>
       </div>
+
+      <% counts = @teacher.conference_standard_counts %>
+      <% if !counts.empty? %>
+      <h4>Conference Standards Breakdown:</h4> 
+      <% end %>
+      <table>
+        <% counts.each do |standard, count| %>
+        <tr>
+          <td><%= standard  %></td>
+          <td><%= count %></td>
+        </tr>
+        <% end %>
+      </table>
+      
     </td>
     <td>
 

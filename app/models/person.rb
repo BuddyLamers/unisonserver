@@ -48,6 +48,15 @@ class Person
     return breach_count
   end
 
+  def conference_standard_counts
+    standard_counts = {}
+    standard_counts.default = 0
+    Conference.where(person_ids: {"$in" => [self.id]}).each do |conference|
+        standard_counts[conference.subject.name] +=1
+    end
+    standard_counts
+  end
+
 def name
   "#{fname} #{lname}"
 end
