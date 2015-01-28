@@ -1,5 +1,5 @@
 class Student < Person
-  has_many :conferences
+  has_and_belongs_to_many :conferences
   has_many :code_scores
   has_and_belongs_to_many :teachers
   has_and_belongs_to_many :sessions

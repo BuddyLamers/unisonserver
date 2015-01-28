@@ -1,77 +1,37 @@
-<h1 class="page-title">Conference for <%= @conference.teacher.name %> and <%= @conference.student.name %></h1>
+<h1 class="page-title">Conference for <%= @conference.teacher.name %>  </h1>
+<% student_string = "" %>
+<% @conference.students.each {|s| student_string += s.name + ", "} %>
+<h3>Students: <%= student_string[0...-2] %> </h3>
 
 <!-- show the info for the conference -->
 <%= render partial: "details" %>
 
+<h4>Breach</h4>
+<p><%= @conference.breach %></p>
+<h4>Known</h4>
+<p><%= @conference.known %></p>
+<h4>Unknown</h4>
+<p><%= @conference.unknown %></p>
+<h4>Resolution</h4>
+<p><%= @conference.resolution %></p>
+<h4>Narrative</h4>
+<p><%= @conference.narrative %></p>
+<h4>Takeaway/Commitment</h4>
+<p><%= @conference.takeaway %></p>
 
-<% unless @conference.is_completed %>
 
-<form action="<%= conference_url(@conference) %>" method="post">
-  <%= auth_token %>
+<!-- end conference button -->
+<!-- <form action="<%= conference_url(@conference) %>" method="post">
+  <%# auth_token %>
   <input type="hidden" name="_method" value="put">
-
-<h4>Code Scores and Comments</h4>
-    <div class="input_fields_wrap">
-      <button class="add_field_button btn btn-primary btn-primary">Add Another Input</button>
-      <br>
-      <div class="comments">
-            <select name="code_scores[notions][]">
-              <option value="strength">Strength</option>
-              <option value="weakness">Weakness</option>
-              <option value="goal">Goal</option>
-            </select>
-            <select name="code_scores[codes][]">
-              <optgroup class="code-options">
-              <%= options_from_collection_codes(@conference.subject.codes) %>
-              </optgroup>
-            </select>
-            <input type="text" name="code_scores[scores][]" placeholder="Score, out of 4">
-            
-            <input type="text" name="code_scores[comments][]" placeholder="Comment">
-      </div>
-    </div>
-
     <input type="hidden" name="conference[is_completed]" value="true">
     <input type="submit" class="end-conference btn btn-lg btn-success" value="End Conference" >
-<%= render partial: '/conferences/show_tour' %>
-<% else %>
-<h2>Code Scores and Comments</h2>
-  <table class="table code-scores-comments">
-    <thead>
-      <tr>
-        <th>Notion</th>
-        <th>Code</th>
-        <th>Score</th>
-        <th>Comment</th>
-      </tr>
-    </thead>
-    <%= render @conference.code_scores %>
-  </table>
-  <%= render partial: '/conferences/show_tour_completed' %>
-<% end %>
-
+</form> -->
 
 
 
 <script type="text/javascript">
 $(document).ready(function() {
-    var max_fields      = 42; //maximum input boxes allowed. Arbitrary number.
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
-    
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper).append("<div><select name='code_scores[notions][]'><option value='strength'>Strength</option><option value='weakness'>Weakness</option><option value='goal'>Goal</option> </select><select name='code_scores[codes][]'><optgroup class='code-options'><%= options_from_collection_codes(@conference.subject.codes) %></optgroup></select> <input type='text' name='code_scores[scores][]' placeholder='Score, out of 4'/> <input type='text' name='code_scores[comments][]' placeholder='Comment'/><a href='#' class='remove_field'>Remove</a></div>"); //add input box
-        }
-    });
-    
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
-    })
-
     $('.end-conference').click(function clicked() {
        if (confirm('This will finalize the conference. No more comments/scores may be added. Are you sure?')) {
           formelement.submit();

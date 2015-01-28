@@ -1,33 +1,83 @@
-<%= form_for @conference do |f| %>
-  <%= render partial: 'layouts/form_errors', locals: {instance: @conference} %>
-  <h3>New Conference for <%= current_person.name %></h3>
+<h1>Schedule a new Conference for <%= current_person.name %></h1>
+<%= render partial: 'layouts/form_errors', locals: {instance: @conference} %>
+<form method="post" action="<%= conferences_url%>">
+  <%= auth_token %>
+  <input type="hidden" name="conference[teacher]" value="<%= current_person.id %>">
+  <table class="table">
+    <tr>
+      <td>
 
-  <fieldset>
-    <%= hidden_field_tag 'conference[teacher]', "#{current_person.id}"%>
-  </fieldset>
-  
-  <fieldset>
-    <%= f.label :student %>
-    <%= f.collection_select :student, current_person.students.all, :id, :name, prompt: true %>
-  </fieldset>
+        <label>Subject
+          <select id="subject" name="conference[subject_id]">
+            <%= options_from_collection_with_id(Subject.all) %>
+          </select>
+        </label>    
 
-  <fieldset>
-    <%= f.label :subject %>
-    <%= f.collection_select :subject_id, Subject.all, :id, :name, prompt: true %>
-  </fieldset>
+<label>Time
+  <br>
+  <%= datetime_select("conference", "time", prompt: true) %>
+</label>
 
-  
-  <fieldset>
-    <%= f.label :time %>
-    <%= f.datetime_select :time, :class => "datepicker" %>
-  </fieldset>
+<label>Notes
+  <input class="input-xxlarge" name="conference[notes]">
+</label>
 
-  <fieldset>
-    <%= f.label :notes %>
-    <%= f.text_field :notes %>
-  </fieldset>
-  
-  <fieldset>
-    <%= f.submit %>
-  </fieldset>
-<% end %>
+<input type="submit" class="btn btn-success">
+
+<td>
+
+  <h3>Select Students</h3>
+  <% sorted_students = {} %>
+  <% current_person.students.asc(:section).each do |student|  %>
+    <% sorted_students[student.section] = [] unless sorted_students.has_key?(student.section) %>
+   <% sorted_students[student.section] << student  %>
+   <% end %>
+
+   <div class="btn-group" data-toggle="buttons">
+   <% sorted_students.each_key do |section_num|%>
+      <label class="btn btn-default">
+        <input type="checkbox" id="checkbox-<%= section_num %>" class="group-select"> <%= section_num %>
+      </label>
+   <% end %> 
+</div>
+
+<table class="table table-bordered">
+
+  <!-- keep track of keys for jQuery later -->
+  <% key_string = "" %>
+  <!-- insert a tbody for each section of students -->
+  <% sorted_students.each_key do |section_num|%>
+  <% key_string += section_num + " " %>
+  <tbody id="<%= section_num %>" class="hide">
+   <% sorted_students[section_num].each do |student| %>
+   <tr>
+    <td>
+    <label><%= student.name %>, <%= student.section %>
+      <input type="checkbox" name="conference[students][<%= student.id %>]">
+    </label>
+    </td>
+    </tr>
+  <% end %>
+</tbody>
+<% end %> 
+
+</table>
+</td>
+</tr>
+</table>
+
+
+</form>
+
+<script type="text/javascript">
+  $('document').ready(function () {
+    /*get variables from rails*/
+    var section_nums = ("<%= key_string[0..-2] %>").split(" ");
+    
+    $(".group-select").on("click", function() {
+      section_number = this.id.substr(9)
+      $("#" + section_number).toggleClass("hide");
+    });
+
+  });
+</script>

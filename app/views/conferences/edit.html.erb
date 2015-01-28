@@ -1,19 +1,55 @@
-<h1>Conference for <%= @conference.teacher.name %> and <%= @conference.student.name %></h1>
+<h1 class="page-title">Conference for <%= @conference.teacher.name %>  </h1>
+<% student_string = "" %>
+<% @conference.students.each {|s| student_string += s.name + ", "} %>
+<h3>Students: <%= student_string[0...-2] %> </h3>
 
+<form action="/conferences/<%= @conference.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <%= auth_token %>
 
-<%= @conference.time %>
-<%= @conference.subject %>
+  <label>Subject
+    <select id="subject" name="conference[subject_id]">
+      <option selected="selected" value="<%= @conference.subject_id %>"><%= @conference.subject.name %></option>
+      <%= options_from_collection_with_id(Subject.all) %>
+    </select>
+  </label>    
 
-<form action="<%= conferences_url %>" method="post">
-  <input type="hidden" method="_patch">
-<%= auth_token %>
-<label> Notes
-<input type="text" name="conference[:notes]">
-</label>
+  <label>Time
+    <br>
+    <%= datetime_select("conference", "time", default: @conference.time) %>
+  </label>
 
-<label> Completed?
-<input type="checkbox" name="conference[is_completed]">
-</label>
+  <label>Notes
+    <input class="input-xxlarge" name="conference[notes]" value="<%= @conference.notes %>">
+  </label>
 
-<input type="submit">
+  <label>Completed?
+    <input type="checkbox" name="conference[is_completed]">
+  </label>
+
+  <label>Breach
+    <textarea class="field span12" name="conference[breach]"><%= @conference.breach %></textarea>
+  </label>
+
+  <label>Known
+    <textarea class="field span12" name="conference[known]"><%= @conference.known %></textarea>
+  </label>
+
+  <label>Unknown
+    <textarea class="field span12" name="conference[unknown]"><%= @conference.unknown %></textarea>
+  </label>
+
+  <label>Resolution
+    <textarea class="field span12" name="conference[resolution]"><%= @conference.resolution %></textarea>
+  </label>
+
+  <label>Narrative
+    <textarea class="field span12" name="conference[narrative]"><%= @conference.narrative %></textarea>
+  </label>
+
+  <label>Takeaway/Commitment
+    <textarea class="field span12" name="conference[takeaway]"><%= @conference.takeaway %></textarea>
+  </label>
+
+  <input class="btn btn-lg btn-success" type="submit" value="Save Conference">
 </form>

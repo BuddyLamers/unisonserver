@@ -1,0 +1,33 @@
+<%= form_for @conference do |f| %>
+  <%= render partial: 'layouts/form_errors', locals: {instance: @conference} %>
+  <h3>New Conference for <%= current_person.name %></h3>
+
+  <fieldset>
+    <%= hidden_field_tag 'conference[teacher]', "#{current_person.id}"%>
+  </fieldset>
+  
+  <fieldset>
+    <%= f.label :student %>
+    <%= f.collection_select :student, current_person.students.all, :id, :name, prompt: true %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :subject %>
+    <%= f.collection_select :subject_id, Subject.all, :id, :name, prompt: true %>
+  </fieldset>
+
+  
+  <fieldset>
+    <%= f.label :time %>
+    <%= f.datetime_select :time, :class => "datepicker" %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :notes %>
+    <%= f.text_field :notes %>
+  </fieldset>
+  
+  <fieldset>
+    <%= f.submit %>
+  </fieldset>
+<% end %>

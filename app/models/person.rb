@@ -8,6 +8,7 @@ class Person
   has_and_belongs_to_many :breaches, inverse_of: :people, class_name: 'Breach', foreign_key: :breach_ids
   has_many :sessions
   has_many :contributions
+  has_and_belongs_to_many :conferences
 
   field :fname, type: String
   field :lname, type: String

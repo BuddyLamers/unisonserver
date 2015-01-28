@@ -51,10 +51,16 @@ class ConferencesController < ApplicationController
       format.html do
         @conference = Conference.new()
 
+        cp = conference_params
+
         @conference.teacher_id = conference_params[:teacher]
-          @conference.student_id = conference_params[:student]
-          @conference.person_ids << conference_params[:student]
-          @conference.person_ids << conference_params[:teacher]
+        @conference.person_ids << conference_params[:teacher]
+
+        cp[:students].each do |student|
+          @conference.student_ids << student[0]
+          @conference.person_ids << student[0]
+        end
+
           @conference.subject_id = conference_params[:subject_id]
 
           datetime = DateTime.civil(conference_params["time(1i)"].to_i, conference_params["time(2i)"].to_i, conference_params["time(3i)"].to_i,
@@ -84,29 +90,40 @@ class ConferencesController < ApplicationController
     
   end
 
+  def edit
+    @conference = Conference.find(params[:id])
+  end
+
   def update
     @conference = Conference.realize(params[:id])
 
     respond_to do |format|
 
       format.html do
-        pcs = params[:code_scores]
-        pcs[:notions].length.times do |i|
-          code_score = CodeScore.new(
-            notion: pcs[:notions][i],
-            score: pcs[:scores][i],
-            comment: pcs[:comments][i],
-            code: Code.find(pcs[:codes][i]),
-            conference: @conference,
-            student: @conference.student).save
+        cp = conference_params
+       
+        @conference.subject_id = conference_params[:subject_id]
+
+        datetime = DateTime.civil(conference_params["time(1i)"].to_i, conference_params["time(2i)"].to_i, conference_params["time(3i)"].to_i,
+                            conference_params["time(4i)"].to_i, conference_params["time(5i)"].to_i)
+        @conference.time = datetime
+        @conference.is_completed = !(conference_params[:is_completed]).nil?
+        @conference.notes = conference_params[:notes]
+      
+        @conference.breach = cp[:breach]
+        @conference.known = cp[:known]
+        @conference.unknown = cp[:unknown]
+        @conference.resolution = cp[:resolution]
+        @conference.narrative = cp[:narrative]
+        @conference.takeaway = cp[:takeaway]
+
+        if @conference.save
+          redirect_to @conference
+        else
+          flash[:errors] = @conference.errors.full_messages
+          render :edit
         end
 
-        @conference.is_completed = true
-          if @conference.save
-            redirect_to @conference
-          else
-
-          end
       end
 
       format.json do
