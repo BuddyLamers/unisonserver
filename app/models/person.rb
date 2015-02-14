@@ -22,7 +22,7 @@ class Person
   def breaches_breached
     breached = 0
     self.breaches.each do |breach|
-      breached += 1 if breach.contributions[0].person == self && breach.session.is_completed == true
+      breached += 1 if breach.contributions[0].andand.person == self && breach.session.is_completed == true
     end
     breached
   end
