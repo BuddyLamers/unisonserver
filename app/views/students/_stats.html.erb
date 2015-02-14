@@ -26,7 +26,7 @@
         <% @student.teachers.each do |teacher| %>
         <div class="teacher-student">
           <span class="name"><a href="<%= person_url(teacher) %>"><%= teacher.name %></a></span>
-          <span class="count"><%= teacher.conferences.where(created_at: {"$gt" => 1.month.ago}, student: @student).count %></span>
+          <span class="count"><%= teacher.conferences.where(created_at: {"$gt" => 1.month.ago}, student_ids: {"$in" => [@student.id]}).count %></span>
           <span class="count"><%= Session.where(created_at: {"$gt" => 1.week.ago}, student_ids: {"$in" => [@student.id]}, person_ids: {"$in" => [teacher.id]}).count %></span>
         </div>
         <% end %>
