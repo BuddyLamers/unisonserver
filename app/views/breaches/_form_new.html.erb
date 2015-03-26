@@ -34,7 +34,7 @@
           <% key_string = "Unison-Reading " %>
 
           <% @session.subject.codes.each do |code|  %>
-          <%  code_name = code.code_type.name.gsub(/\s+/, '-').gsub("&"){'and'} %>
+          <% code_name = code.code_type.name.gsub(/\s+/, '-').gsub("&"){'and'} %>
           <% key_string += code_name + " " %>
           <% sorted_codes[code_name] = [] unless sorted_codes.has_key?(code_name) %>
           <% sorted_codes[code_name] << code  %>
@@ -81,6 +81,7 @@ $(document).ready(function() {
       e.preventDefault();
       id = this.parentElement.id;
       input_field = $('.input-' + id)
+      console.log(input_field.val())
       // alert('hi' + input_field.attr('class'))
         if(x < max_fields){ //max input box allowed
             x++; //text box increment

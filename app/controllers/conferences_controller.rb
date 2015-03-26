@@ -70,7 +70,7 @@ class ConferencesController < ApplicationController
         @conference.notes = conference_params[:notes]
 
         if @conference.save
-          redirect_to @conference
+          redirect_to edit_conference_url(@conference)
         else
           flash[:errors] = @conference.errors.full_messages
           render :new

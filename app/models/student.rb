@@ -16,6 +16,7 @@ class Student < Person
       breach_types[type.name] = 0
     end
     self.breaches.includes(:code_type).each do |breach|
+      next if breach.code_type.nil?
       current_type = breach.code_type.name
       breach_types[current_type] += 1
     end
