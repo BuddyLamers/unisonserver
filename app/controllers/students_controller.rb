@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
   before_filter :require_admin, only: [:create, :update, :destroy, :csv]
 
   def index
-    @students = Student.all
+    @students = Student.asc(:section)
     respond_to do |format|
       format.html
       format.json do

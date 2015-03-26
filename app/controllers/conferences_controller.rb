@@ -2,11 +2,11 @@ class ConferencesController < ApplicationController
 
   def index
     if params[:teacher_id]
-      @conferences = Teacher.find(params[:teacher_id]).conferences
+      @conferences = Teacher.find(params[:teacher_id]).conferences.desc(:time)
     elsif params[:student_id]
-      @conferences = Student.find(params[:student_id]).conferences
+      @conferences = Student.find(params[:student_id]).conferences.desc(:time)
     else
-      @conferences = Conference.all
+      @conferences = Conference.desc(:time)
     end
 
     respond_to do |format|

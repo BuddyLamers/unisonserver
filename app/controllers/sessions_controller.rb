@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
     # will work for a student or a teacher
     person_id = params[:person_id] || params[:student_id] || params[:teacher_id]
     if person_id
-      @sessions = Session.where(person_ids: {"$in" => [Moped::BSON::ObjectId(person_id)]})
+      @sessions = Session.where(person_ids: {"$in" => [Moped::BSON::ObjectId(person_id)]}).desc(:time)
     else
-      @sessions = Session.all
+      @sessions = Session.desc(:time)
     end
 
     respond_to do |format|

@@ -22,6 +22,20 @@ class Student < Person
     end
     breach_types
   end
+
+# TODO working on creating stats by standards
+#On the CUR section you were able to view how many times a specific type of breach occurred, 
+#could we have the same feature but rather than the breach, 
+#have it be a tally of the standards that happened in a conference for each individual kid?
+  def standards_counts
+    standards = {}
+    standards.default(0)
+
+    self.breaches.each do |b|
+      standards[b.subject] += 1
+    end
+    return standards
+  end
     
 
   def as_json(options)
