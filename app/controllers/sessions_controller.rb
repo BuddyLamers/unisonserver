@@ -141,7 +141,7 @@ private
                             p_s["time(4i)"].to_i, p_s["time(5i)"].to_i)
     @session.time = datetime
 
-    @session.section = params["session"]["section"]
+
     # not being used
     # @session.order = params["session"]["order"]
     @session.length = params["session"]["length"]
@@ -161,9 +161,16 @@ private
         @session.student_ids << student_option[0]
       end
     end
-    # @session.students.each do |student|
-    #    student.sessions << @session
-    # end
+
+    @session.section = params["session"]["section"]
+    if @session.section
+      students = Student.where(section: @session.section)
+      students.each do | s |
+        next if @session.people.include?(s)
+        @session.people << s
+        @session.students << s
+      end
+    end
 
     @session.subject = Subject.where(name: params["session"]["subject"]).first
     code = Code.where(id: params["session"]["code"]).first
