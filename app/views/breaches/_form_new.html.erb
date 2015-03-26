@@ -85,7 +85,7 @@ $(document).ready(function() {
       // alert('hi' + input_field.attr('class'))
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div> <input type='text' name='breach[person_ids][]' value='" + id.replace('-', ' ') + "' class='input-medium'> <input type='text' name='breach[contributions][]' value='" + input_field.val() + "' class='input-xxlarge'/><a href='#'' class='remove_field'>Remove</a></div>"); //add contribution field so rails can see it properly
+            $(wrapper).append("<div> <input type='text' name='breach[person_ids][]' value='" + id.replace('-', ' ') + "' class='input-medium'> <input type='text' name='breach[contributions][]' value='" + input_field.val().replace(/'/g, "&apos;") + "' class='input-xxlarge'/><a href='#'' class='remove_field'>Remove</a></div>"); //add contribution field so rails can see it properly
           }
         });
     
