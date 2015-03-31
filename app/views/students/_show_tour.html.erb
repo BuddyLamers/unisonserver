@@ -1,31 +1,37 @@
 <script type="text/javascript">
 tour.addStep('step1', {
   title: "Student Page",
-  text: "This is the Student Page. It contains information about a student, in this case <%= @student.name %>, and lists their teachers"
+  text: "This is the Student Page. It contains information about a student, in this case <%= @student.name %>, and lists their teachers",
+  showCancelLink: true
 })
 tour.addStep('step2',{
   title: "What is a Breach?",
   text: "During a group session, a breach is a break in the lesson during which someone speaks up and starts a conversation. The speaker (breacher) creates the breach, then everyone else can contribute to the conversation.",
-  attachTo: ".breach-stats bottom"
+  attachTo: ".breach-stats bottom",
+  showCancelLink: true
 })
 tour.addStep('step3', {
   title: "Breach Stats",
   text: "Out of all the breaches <%= @student.name %> has been present for, this shows 1. How many conversations they contributed to, and 2. How many conversations they initiated.",
-  attachTo: ".breach-stats bottom"
+  attachTo: ".breach-stats bottom",
+  showCancelLink: true
 })
 tour.addStep('step4', {
   title: "What are code types?",
   text: "Codes are part of on the Common Core Standards, and they fall into general types. When a student is part of a breach, the breach gets categorized in one of four types.",
-  attachTo: ".code-stats bottom"
+  attachTo: ".code-stats bottom",
+  showCancelLink: true
 })
 tour.addStep('step6', {
   title: "Code Types",
   text: "This section shows how many conversations a student has been a part of that fall under a particular code type.",
-  attachTo: ".code-stats bottom"
+  attachTo: ".code-stats bottom",
+  showCancelLink: true
 })
 tour.addStep('step7', {
   title: "Teachers",
   text: "At the bottom is a list of all <%= @student.name %>'s teachers. Click their name to view their Teacher Page. Also shown is how many individual conferences and group sessions they have had together recently.",
-  attachTo: ".teacher-students bottom"
+  attachTo: ".teacher-students bottom",
+  showCancelLink: true
 })
 </script>
