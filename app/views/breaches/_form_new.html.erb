@@ -1,26 +1,15 @@
-<h1>New Breach</h1>
 
-<h4>Contributions</h4>
 
-    <div>
-      <% @session.people.each do |person| %>
-      <form>
-      <label><%= person.name %>
-        <div id="<%= person.name.gsub(/\s+/, '-') %>">
-        <input type="text" class="input-<%= person.name.gsub(/\s+/, '-') %> input-xxlarge"> 
-        <button  class="add_field_button btn-primary btn-primary">Add contribution</button>
-        </div>
-      </label>
-      </form>
-      <% end %>
-    </div>
 
-<form action="<%= breaches_url %>" method="post">
+ <form action="<%= breaches_url %>" method="post">
+    
+
+
   <%= auth_token %>
   <input type="hidden" name="breach[session_id]" value="<%= @session.id %>">
 
 <!-- actual rails-readable inputs go here -->
-    <h4>Conversation:</h4>
+    <h2>Conversation:</h2>
     <div class="input_fields_wrap"></div>
 
 <!-- good from here down -->
@@ -60,11 +49,12 @@
       </td>
     </tr>
   </table>
-
   <label>
-    <input type="submit" class="close-breach btn btn-lg btn-success" value="Close the Breach">
-  </label>
+          <input type="submit" class="close-breach btn btn-lg btn-success" value="Close the Breach">
+        </label>
 </form>
+  
+
 
 
 
@@ -72,7 +62,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
     var max_fields      = 42; //maximum input boxes allowed
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var wrapper         = $('.input_fields_wrap'); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button class
     
     

@@ -1,10 +1,10 @@
 
 <h1>Session at <%= human_time_full_datetime(@session.andand.time) %> 
 
-<%= form_tag session_path(@session), method: 'put' do -%>
-<%= hidden_field_tag :completed, true -%>
-<%= submit_tag 'Complete the Session', class: "complete-session btn btn-lg btn-success", confirm: "This will finalize the session. No more breaches may be added." -%>
-<% end %>
+  <%= form_tag session_path(@session), method: 'put' do -%>
+  <%= hidden_field_tag :completed, true -%>
+  <%= submit_tag 'Complete the Session', class: "complete-session btn btn-lg btn-success", confirm: "This will finalize the session. No more breaches may be added." -%>
+  <% end %>
 
 </h1>
 
@@ -20,15 +20,35 @@
 
 <table class="breaches table table-bordered">
   <tr class="row">
-    <td class="previous-breaches col-lg-3">
+    <td class="previous-breaches col-lg-6">
+     
+        <div id="stream-box">
+      <%= render "breaches/form_new" %> 
+          <!-- rails-readable inputs get appended here -->
+        </div>
+      
+
       <% unless @session.breaches.empty? %>
       <h2>Previous Breaches</h2>
       <%= render @breaches %>
       <% end %>
     </td>
 
-    <td class="col-lg-9">
-      <%= render "breaches/form_new" %> 
+    <td class="col-lg-6">
+      <h1>New Breach</h1>
+      <h4>Add Contributions</h4>
+      <div>
+        <% @session.people.each do |person| %>
+        <form>
+          <label><%= person.name %>
+            <div id="<%= person.name.gsub(/\s+/, '-') %>">
+              <input type="text" class="input-<%= person.name.gsub(/\s+/, '-') %> input-xxlarge"> 
+              <button  class="add_field_button btn-primary btn-primary">Add contribution</button>
+            </div>
+          </label>
+        </form>
+        <% end %>
+      </div>
     </td>
   </tr>
 </table>
