@@ -34,6 +34,7 @@
         <label>Section
           <select name="session[section]">
             <option value="" disabled selected>(optional) Whole Section</option>
+            <option value="">None</option>
             <% Student.section_list.each do |item| %>
             <option value='<%= item %>'><%= item %></option>
             <% end %>
