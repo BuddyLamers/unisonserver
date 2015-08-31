@@ -23,7 +23,7 @@
   <% end %>
 
 <td><%= person.name %></td>
-<td><%= contribution_count %>/<%= contribution_total %> : <%= (contribution_count / contribution_total.to_f * 100).to_i %>%</td>
+<td><%= contribution_count %>/<%= contribution_total%> : <%= try((contribution_count / contribution_total.to_f * 100).to_i) rescue 0 %>%</td>
 </tr>
 <% end %>
   
