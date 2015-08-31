@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+# ruby '1.9.3'
+
 gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
@@ -28,10 +29,10 @@ gem 'jquery-rails'
 gem "cancan", "~> 1.6.9"
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jbuilder'
 
 
 
@@ -47,7 +48,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   # To use debugger
-  gem 'debugger'
+  # gem 'debugger'
   # debugger is depreciated and should be used only for ruby 1.9
   #gem 'byebug'
   gem 'binding_of_caller'
@@ -67,6 +68,8 @@ gem 'andand'
 gem 'figaro', '~> 1.0'
 
 gem 'newrelic_rpm'
+
+gem 'test-unit'
 
 # not being used
 # gem 'momentjs-rails', '>= 2.8.1'
