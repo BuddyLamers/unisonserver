@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
-        format.html {redirect_to teacher_sessions_path(current_person), notice: "Session created"}
+        format.html {render :show, notice: "Session created"}
         format.json {render json: @session, status: :created, location: @session}
       else
         format.html do
