@@ -19,14 +19,14 @@
 </label>
 
 <label>Notes
-  <input class="input-xxlarge" name="conference[notes]">
+  <input class="input-xxlarge" name="conference[notes]" placeholder=" (optional) Notes, relevant information, etc...">
 </label>
 
 <input type="submit" class="btn btn-success">
 
 <td>
 
-  <h3>Select Students</h3>
+  <h3>Select Students <small> (click a section to select individual students)</small></h3>
   <% sorted_students = {} %>
   <% current_person.students.asc(:section).each do |student|  %>
     <% sorted_students[student.section] = [] unless sorted_students.has_key?(student.section) %>

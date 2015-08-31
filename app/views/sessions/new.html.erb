@@ -33,7 +33,7 @@
 
         <label>Section
           <select name="session[section]">
-            <option value="" disabled selected>For a specific section?</option>
+            <option value="" disabled selected>(optional) Whole Section</option>
             <% Student.section_list.each do |item| %>
             <option value='<%= item %>'><%= item %></option>
             <% end %>
@@ -42,11 +42,11 @@
 
 
         <label>Text Title
-          <input name="session[text_title]">
+          <input name="session[text_title]" placeholder=" (optional)">
         </label>
 
         <label>Genre
-          <input name="session[genre]">
+          <input name="session[genre]" placeholder=" (optional)">
         </label>
 
 
@@ -61,14 +61,14 @@
 </label>
 
 <label>Length (minutes)
-  <input name="session[length]">
+  <input name="session[length]" placeholder=" (optional)">
 </label>
 
 <input type="submit" class="btn btn-success">
 
 <td>
 
-  <h3>Select Students</h3>
+  <h3>Select Students <small> (click a section to select individual students)</small></h3>
   <% sorted_students = {} %>
   <% current_person.students.asc(:section).each do |student|  %>
     <% sorted_students[student.section] = [] unless sorted_students.has_key?(student.section) %>
