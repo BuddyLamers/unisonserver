@@ -56,7 +56,7 @@ class ConferencesController < ApplicationController
         @conference.teacher_id = conference_params[:teacher]
         @conference.person_ids << conference_params[:teacher]
 
-        cp[:students].each do |student|
+        cp[:students].andand.each do |student|
           @conference.student_ids << student[0]
           @conference.person_ids << student[0]
         end

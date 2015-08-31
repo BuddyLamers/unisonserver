@@ -15,7 +15,7 @@
 
 <label>Time
   <br>
-  <%= datetime_select("conference", "time", prompt: true) %>
+  <%= datetime_select("conference", "time", default: DateTime.now) %>
 </label>
 
 <label>Notes
