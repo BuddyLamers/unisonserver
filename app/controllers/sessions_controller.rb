@@ -139,7 +139,7 @@ private
 
     datetime = DateTime.civil(p_s["time(1i)"].to_i, p_s["time(2i)"].to_i, p_s["time(3i)"].to_i,
                             p_s["time(4i)"].to_i, p_s["time(5i)"].to_i)
-    @session.time = datetime
+    @session.time = datetime || DateTime.now
 
 
     # not being used

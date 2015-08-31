@@ -57,7 +57,7 @@
 
 <label>Time
   <br>
-  <%= datetime_select("session", "time", prompt: true) %>
+  <%= datetime_select("session", "time", default: DateTime.now) %>
 </label>
 
 <label>Length (minutes)
