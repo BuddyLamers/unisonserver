@@ -77,7 +77,8 @@ $(document).ready(function() {
             x++; //text box increment
             $(wrapper).append("<div> <input type='text' name='breach[person_ids][]' value='" + id.replace('-', ' ') + "' class='input-medium'> <input type='text' name='breach[contributions][]' value='" + input_field.val().replace(/'/g, "&apos;") + "' class='input-xxlarge'/><a href='#'' class='remove_field'>Remove</a></div>"); //add contribution field so rails can see it properly
           }
-        });
+        $('.breachInput').val('');
+      });
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
       e.preventDefault(); $(this).parent('div').remove(); x--;
