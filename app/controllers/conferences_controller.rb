@@ -70,7 +70,8 @@ class ConferencesController < ApplicationController
         @conference.notes = conference_params[:notes]
 
         if @conference.save
-          redirect_to edit_conference_url(@conference)
+          # flash[:success] = "Conference successfully created"
+          redirect_to conferences_path
         else
           flash[:errors] = @conference.errors.full_messages
           render :new
