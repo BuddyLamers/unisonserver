@@ -58,7 +58,7 @@ group :development, :test do
 end
 
 gem 'mongo'
-# gem 'heroku'
+gem 'heroku'
 gem 'bson'
 
 # going to try not using mongoid
