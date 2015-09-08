@@ -39,9 +39,15 @@ class BreachesController < ApplicationController
         params[:breach][:code_ids].andand.each do |key, value|
           @breach.code_ids << key if value == "on"
         end
+
+        # # if there are no contributions, skip it.
+        # if params[:breach][:contributions].empty?
+        #   lash.now[:errors] += "No contributions present"
+        #   redirect_to "#{@breach.session_id}"
+        # end
         
         # initialize contributions
-        params[:breach][:contributions].each_with_index do |text, i|
+        params[:breach][:contributions].andand.each_with_index do |text, i|
            
            person_name = params[:breach][:person_ids][i].split(" ")
            person_id = Person.where(fname: person_name[0], lname: person_name[1]).first.id
@@ -66,8 +72,8 @@ class BreachesController < ApplicationController
         if @breach.save
           redirect_to "/sessions/#{@breach.session_id}"
         else
-          flash.now[:errors] += @breach.errors.full_messages
-          redirect_to "#{@breach.session_id}"
+          flash[:errors] = @breach.errors.full_messages
+          redirect_to "/sessions/#{@breach.session_id}"
         end
 
       end

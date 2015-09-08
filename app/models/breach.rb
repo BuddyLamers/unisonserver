@@ -12,6 +12,8 @@ class Breach
   # has_and_belongs_to_many :codes, inverse_of: nil
   has_many :contributions
 
+  validates :contributions, presence: true
+
   field :time, type: DateTime
   field :code, type: String
 
