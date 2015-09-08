@@ -10,12 +10,12 @@
       <% breached = @student.breaches_breached %>
       <% contributed = @student.breaches_contributed %>
       <div class="breach-stats">
-        <h4>Has contributed to 
-          <%= contributed %> out of
+        <h4>Has contributed 
+          <%= contributed %> times over
           <%= breach_count %> breaches. (<%= (contributed/ (breach_count.nonzero? || 1)).to_f * 100 %>%)
         </h4>
 
-        <h4>Has breached
+        <h4>Has opened
           <%= breached %> out of
           <%= breach_count %> breaches. (<%= (breached / (breach_count.nonzero? || 1)).to_f * 100 %>%)
         </h4>
