@@ -4,13 +4,16 @@ class Breach
   include Mongoid::Paranoia
   include Mongoid::Realization
 
+  CODES = ['SP', 'G', 'C', 'D']
+
   belongs_to :session
   belongs_to :code_type
   has_and_belongs_to_many :people, inverse_of: :breaches
-  has_and_belongs_to_many :codes, inverse_of: nil
+  # has_and_belongs_to_many :codes, inverse_of: nil
   has_many :contributions
 
   field :time, type: DateTime
+  field :code, type: String
 
   def breacher
     self.contributions.first.person

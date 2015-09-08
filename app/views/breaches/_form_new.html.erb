@@ -1,66 +1,43 @@
 
 
 
- <form action="<%= breaches_url %>" method="post">
-    
+<form action="<%= breaches_url %>" method="post">
+
 
 
   <%= auth_token %>
   <input type="hidden" name="breach[session_id]" value="<%= @session.id %>">
 
-<!-- actual rails-readable inputs go here -->
-    <h2>Conversation:</h2>
-    <div class="input_fields_wrap"></div>
+  <!-- actual rails-readable inputs go here -->
+  <h2>Conversation:</h2>
+  <div class="input_fields_wrap"></div>
 
-<!-- good from here down -->
+  <!-- good from here down -->
 
-    <h4 class="select-codes">Select Specific Codes</h4>
-    <table>
-      <tr>
-        <td>
-          <% sorted_codes = {} %>
-          <% sorted_codes["Unison-Reading"] = Subject.where(name: "Unison Reading").first.codes %>
-          <% key_string = "Unison-Reading " %>
-
-          <% @session.subject.codes.each do |code|  %>
-          <% code_name = code.code_type.name.gsub(/\s+/, '-').gsub("&"){'and'} %>
-          <% key_string += code_name + " " %>
-          <% sorted_codes[code_name] = [] unless sorted_codes.has_key?(code_name) %>
-          <% sorted_codes[code_name] << code  %>
-          <% end %>
-
-        <div class="btn-group-vertical" data-toggle="buttons">
-         <% sorted_codes.each_key do |code_name|%>
-         <label class="btn btn-default">
-          <input type="checkbox" id="checkbox-<%= code_name %>" class="group-select"> <%= respace(code_name) %>
-        </label>
-        <% end %> 
-      </div>
-        </td>
-        <td>
-          
-          <% sorted_codes.each_key do |code_name| %>
-          <ul id="<%= code_name %>" class="list-group hide">
-            <% sorted_codes[code_name].each do |code| %>
-            <%= render partial: "codes/checkbox", locals: {code: code} %>
-            <% end %>
-          </ul>
-          <% end %>
-      </td>
-    </tr>
-  </table>
-  <label>
-          <input type="submit" class="close-breach btn btn-lg btn-success" value="Close the Breach">
-        </label>
+    <!-- REMOVED codes checkbox option. commented out ERB-->
+  <div>
+    <%# render partial: 'codes/codes_select_box' %>
+  <label> Code:
+  <select name="breach[code]"> 
+    <option value='' selected disabled>Select a Code</option>
+    <%= Breach::CODES.each do |code|  %>
+      <option value="<%= code %>"><%=code%></option>
+    <% end %>
+  </select>
+  </label>
+  </div>
+<label>
+  <input type="submit" class="close-breach btn btn-lg btn-success" value="Close the Breach">
+</label>
 </form>
-  
+
 
 
 
 
 
 <script type="text/javascript">
-$(document).ready(function() {
+  $(document).ready(function() {
     var max_fields      = 42; //maximum input boxes allowed
     var wrapper         = $('.input_fields_wrap'); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button class
@@ -77,22 +54,12 @@ $(document).ready(function() {
             x++; //text box increment
             $(wrapper).append("<div> <input type='text' name='breach[person_ids][]' value='" + id.replace('-', ' ') + "' class='input-medium'> <input type='text' name='breach[contributions][]' value='" + input_field.val().replace(/'/g, "&apos;") + "' class='input-xxlarge'/><a href='#'' class='remove_field'>Remove</a></div>"); //add contribution field so rails can see it properly
           }
-        $('.breachInput').val('');
-      });
+          $('.breachInput').val('');
+        });
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
       e.preventDefault(); $(this).parent('div').remove(); x--;
     })
-
-
-// stuff dealing with checkboxes
-/*get variables from rails*/
-    var code_names = ("<%= key_string[0..-2] %>").split(" ");
-    
-    $(".group-select").on("click", function() {
-      code_name = this.id.substr(9)
-      $("#" + code_name).toggleClass("hide");
-    });
 
 });
 </script>
