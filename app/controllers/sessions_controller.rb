@@ -80,7 +80,7 @@ class SessionsController < ApplicationController
 
       format.html do
         @session = Session.find(params[:id])
-        @session.is_completed = true
+        @session.is_completed = params[:completed]
         @session.save
         redirect_to sessions_url
       end

@@ -10,10 +10,17 @@
 
 <h1>Session at <%= human_time_full_datetime(@session.andand.time) %> 
 
+<% if(!@session.is_completed) %>
   <%= form_tag session_path(@session), method: 'put' do -%>
   <%= hidden_field_tag :completed, true -%>
   <%= submit_tag 'Complete the Session', class: "complete-session btn btn-lg btn-success", confirm: "This will finalize the session. No more breaches may be added." -%>
   <% end %>
+<% else %>
+  <%= form_tag session_path(@session), method: 'put' do -%>
+  <%= hidden_field_tag :completed, false -%>
+  <%= submit_tag 'Un-Complete Session', class: "complete-session btn btn-lg btn-warning"-%>
+  <% end %>
+<% end %>
 
 </h1>
 
