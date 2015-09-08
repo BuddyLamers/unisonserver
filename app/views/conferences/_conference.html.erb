@@ -1,6 +1,15 @@
   <tr class="clickableRow" href="<%= conference_url(conference) %>">
     <td><%= conference.teacher.name  %></td>
-    <td><%= conference.students.each {|s| s.name + ", "} %></td>
+    <td>
+      <% studs = conference.students %>
+      <% len = studs.length %>
+      <% len.times do |i| %>
+        <%=  studs[i].name %>
+        <% if (i != len - 1) %>
+        , 
+        <% end %>
+      <% end %>
+    </td>
     <td class="note-subject"><%= conference.subject.name %></td>
     <td><%= human_time_full_datetime(conference.time) %></td>
     <td><%= conference.notes %></td>
