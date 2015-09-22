@@ -22,7 +22,7 @@ class Person
   def breaches_breached
     breached = 0
     self.breaches.each do |breach|
-      breached += 1 if breach.contributions[0].andand.person == self && breach.session.is_completed == true
+      breached += 1 if breach.contributions[0].andand.person == self && breach.session.andand.is_completed == true
     end
     breached
   end
@@ -32,7 +32,7 @@ class Person
     breaches = self.breaches.includes(:contributions)
     self.contributions.each do |contribution|
       breaches.each do |breach|
-        if breach.contributions.include?(contribution) && breach.session.is_completed == true
+        if breach.contributions.include?(contribution) && breach.session.andand.is_completed == true
           count += 1
           next
         end
@@ -43,8 +43,13 @@ class Person
 
   def total_breaches
     breach_count = 0
-   Breach.where(person_ids: {"$in" => [self.id]}).each do |breach| 
-    breach_count += 1 if Session.find(breach.session_id).is_completed == true 
+    Breach.where(person_ids: {"$in" => [self.id]}).each do |breach| 
+      begin
+        session = Session.find(breach.session_id)
+      rescue Exception => e
+        session = nil
+      end
+    breach_count += 1 if session.andand.is_completed == true 
     end 
     return breach_count
   end
