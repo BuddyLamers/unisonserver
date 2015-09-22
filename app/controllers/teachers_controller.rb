@@ -107,8 +107,8 @@ class TeachersController < ApplicationController
         headers: :first_row
       }) do |row|
         attrs = {
-          email: row[0]
-          fname: row[1]
+          email: row[0],
+          fname: row[1],
           lname: row[2]
         }
 
