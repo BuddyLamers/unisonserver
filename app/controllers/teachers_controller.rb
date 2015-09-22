@@ -90,17 +90,32 @@ class TeachersController < ApplicationController
 
     # re-format to a different spreadsheet type
     # needs also to add students based on section. Perhaps this should be done in student
+    # CSV.foreach(params[:csv].path, {
+    #     headers: :first_row
+    #   }) do |row|
+    #     attrs = {
+    #       name: row[0]
+    #     }
+
+    #     name = attrs[:name].split(' ')
+
+    #     teacher = Teacher.where(fname: name[0], lname: name[1]).first
+    #     Teacher.create(fname: name[0], lname: name[1]) unless teacher
+    # end
+
     CSV.foreach(params[:csv].path, {
         headers: :first_row
       }) do |row|
         attrs = {
-          name: row[0]
+          email: row[0]
+          fname: row[1]
+          lname: row[2]
         }
 
         name = attrs[:name].split(' ')
 
-        teacher = Teacher.where(fname: name[0], lname: name[1]).first
-        Teacher.create(fname: name[0], lname: name[1]) unless teacher
+        teacher = Teacher.where(fname: attrs[:fname], lname: attrs[:lname]).first
+        Teacher.create(email: attrs[:email], fname: attrs[:fname], lname: attrs[:lname]) unless teacher
     end
 
     redirect_to teachers_path
