@@ -107,15 +107,13 @@ class TeachersController < ApplicationController
         headers: :first_row
       }) do |row|
         attrs = {
-          email: row[0],
-          fname: row[1],
-          lname: row[2]
+          # email: row[1],
+          fname: row[0],
+          lname: row[1]
         }
 
-        name = attrs[:name].split(' ')
-
         teacher = Teacher.where(fname: attrs[:fname], lname: attrs[:lname]).first
-        Teacher.create(email: attrs[:email], fname: attrs[:fname], lname: attrs[:lname]) unless teacher
+        Teacher.create(fname: attrs[:fname], lname: attrs[:lname]) unless teacher
     end
 
     redirect_to teachers_path
